@@ -1,0 +1,142 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-accordion" data-faq-accordion>
+  {items.map((item, index) => {
+    const triggerId = `faq-trigger-${index}`;
+    const panelId = `faq-panel-${index}`;
+
+    return (
+      <article class="faq-item" data-faq-item>
+        <h3 class="faq-question">
+          <button
+            class="faq-trigger"
+            type="button"
+            id={triggerId}
+            aria-expanded="false"
+            aria-controls={panelId}
+            data-faq-trigger
+          >
+            <span>{item.question}</span>
+            <span class="faq-caret" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div
+          class="faq-panel"
+          id={panelId}
+          role="region"
+          aria-labelledby={triggerId}
+          data-faq-panel
+          hidden
+        >
+          <div class="faq-answer">{item.answer}</div>
+        </div>
+      </article>
+    );
+  })}
+</div>
+
+<script is:inline>
+  (() => {
+    const initFaqAccordions = () => {
+      const accordions = Array.from(document.querySelectorAll("[data-faq-accordion]"));
+
+      accordions.forEach((accordion) => {
+        if (accordion.dataset.bound === "true") return;
+        accordion.dataset.bound = "true";
+
+        const items = Array.from(accordion.querySelectorAll("[data-faq-item]"));
+        let openItem = null;
+
+        const closeItem = (item) => {
+          if (!item) return;
+          const trigger = item.querySelector("[data-faq-trigger]");
+          const panel = item.querySelector("[data-faq-panel]");
+          if (!trigger || !panel) return;
+
+          trigger.setAttribute("aria-expanded", "false");
+          item.classList.remove("is-open");
+          panel.style.maxHeight = `${panel.scrollHeight}px`;
+          panel.style.opacity = "1";
+
+          requestAnimationFrame(() => {
+            panel.style.maxHeight = "0px";
+            panel.style.opacity = "0";
+          });
+
+          const onTransitionEnd = (event) => {
+            if (event.propertyName !== "max-height") return;
+            if (item.classList.contains("is-open")) return;
+            panel.hidden = true;
+            panel.style.maxHeight = "";
+            panel.style.opacity = "";
+            panel.removeEventListener("transitionend", onTransitionEnd);
+          };
+
+          panel.addEventListener("transitionend", onTransitionEnd);
+        };
+
+        const openPanel = (item) => {
+          const trigger = item.querySelector("[data-faq-trigger]");
+          const panel = item.querySelector("[data-faq-panel]");
+          if (!trigger || !panel) return;
+
+          panel.hidden = false;
+          panel.style.maxHeight = "0px";
+          panel.style.opacity = "0";
+          item.classList.add("is-open");
+          trigger.setAttribute("aria-expanded", "true");
+
+          requestAnimationFrame(() => {
+            panel.style.maxHeight = `${panel.scrollHeight}px`;
+            panel.style.opacity = "1";
+          });
+
+          const onTransitionEnd = (event) => {
+            if (event.propertyName !== "max-height") return;
+            if (!item.classList.contains("is-open")) return;
+            panel.style.maxHeight = "none";
+            panel.removeEventListener("transitionend", onTransitionEnd);
+          };
+
+          panel.addEventListener("transitionend", onTransitionEnd);
+        };
+
+        items.forEach((item) => {
+          const trigger = item.querySelector("[data-faq-trigger]");
+          if (!trigger) return;
+
+          trigger.addEventListener("click", () => {
+            const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+
+            if (isExpanded) {
+              closeItem(item);
+              openItem = null;
+              return;
+            }
+
+            if (openItem && openItem !== item) {
+              closeItem(openItem);
+            }
+
+            openPanel(item);
+            openItem = item;
+          });
+        });
+      });
+    };
+
+    initFaqAccordions();
+    document.addEventListener("astro:page-load", initFaqAccordions);
+  })();
+</script>

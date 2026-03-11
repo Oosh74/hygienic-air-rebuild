@@ -1,0 +1,153 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+import ImageCarousel from "@components/Site/ImageCarousel.astro";
+import Lightbox from "@components/Site/Lightbox.astro";
+
+const heroImageUrl = "/images/heroes/commercial-chimney-hero.jpg";
+
+const risks = [
+  "Creosote and soot buildup can trigger chimney fires.",
+  "Blockages can restrict draft and reduce safe appliance operation.",
+  "Oil and gas byproducts can corrode flue liners over time.",
+  "Poor flow can increase risk of harmful gas backdrafting.",
+];
+
+const processSteps = [
+  "Connect power vacuum equipment at the base of the system.",
+  "Brush and sweep the full flue path from top to bottom.",
+  "Capture soot and debris under controlled negative pressure.",
+  "Inspect cap, damper, and serviceable components.",
+  "Provide recommendations for repairs and replacements.",
+];
+
+const pizzaOvenHighlights = [
+  "Wood-fired, gas-fired, and coal-fired pizza oven systems",
+  "Soot, grease, and ash removal on service schedules",
+  "2-3 month maintenance cadence recommended for heavy use",
+  "Cleaner combustion and more consistent oven performance",
+];
+
+const galleryItems = [
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/314482061_578808767394912_5991150344996773558_n-cdacb152-1920w.jpg",
+    alt: "Commercial chimney sweep at rooftop access point.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/453251710_1042334137401329_6416276907757708881_n-18bcbb25-1920w.jpg",
+    alt: "Industrial chimney cleaning equipment in use.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/296001884_8019877804718780_8434515183961045373_n-b618dbd9-1920w.jpg",
+    alt: "Commercial chimney maintenance service.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/451454205_459124960267208_7997479178998928180_n-f4a5c03b-1920w.jpg",
+    alt: "Technician cleaning chimney flue interior.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/chimney-damper-5c33ad2f-1920w.jpg",
+    alt: "Commercial damper component detail.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/chimney-repair-and-restoration-653bcdb0-1920w.jpg",
+    alt: "Commercial chimney repair and restoration work.",
+  },
+];
+---
+
+<SiteLayout
+  title="Commercial Chimney Cleaning | Hygienic Air, Inc"
+  description="Commercial chimney cleaning and repair services for safer operation, better draft performance, and long-term system reliability."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="Commercial / Industrial Service"
+    title="Commercial Chimney Cleaning / Repairs"
+    body="Keep commercial flue systems clear, compliant, and ready to perform with scheduled cleaning and professional repair support."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      {
+        href: "https://client.housecallpro.com/customer_portal/request-link?token=e189962ac4d546e3b9e813944ff69b3c",
+        label: "Book Online",
+        variant: "secondary",
+        external: true,
+      },
+    ]}
+  />
+
+  <section class="section section--page-intro">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Why Clean The Chimney?</p>
+        <h2 class="section-title">Protect People, Property, and Equipment</h2>
+      </header>
+
+      <div class="split-grid content-grid">
+        <div class="rich-text">
+          <p>
+            Commercial and industrial chimney systems require routine cleaning to prevent hazardous
+            buildup, maintain ventilation, and support safe combustion appliance operation.
+          </p>
+          <p>
+            Hygienic Air, Inc performs thorough chimney cleaning using vacuum-assisted methods,
+            detailed inspections, and practical recommendations for repairs and component updates.
+          </p>
+        </div>
+
+        <aside class="notice-box">
+          <h3>Common Safety Risks We Address</h3>
+          <ul class="check-list">
+            {risks.map((item) => <li>{item}</li>)}
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Our Chimney Cleaning Process</p>
+        <h2 class="section-title">Systematic and Documented Service</h2>
+      </header>
+
+      <div class="notice-box">
+        <ul class="feature-list">
+          {processSteps.map((step) => <li>{step}</li>)}
+        </ul>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Pizza Oven Cleaning Expertise</h3>
+        <ul class="feature-list">
+          {pizzaOvenHighlights.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">View Our Gallery</p>
+        <h2 class="section-title">Commercial Chimney Projects</h2>
+      </header>
+
+      <ImageCarousel
+        id="commercial-chimney-gallery"
+        label="Commercial chimney project gallery"
+        items={galleryItems}
+        fit="contain"
+      />
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+
+  <Lightbox slot="after-body" />
+</SiteLayout>

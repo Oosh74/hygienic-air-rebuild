@@ -1,0 +1,172 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+import ImageCarousel from "@components/Site/ImageCarousel.astro";
+import Lightbox from "@components/Site/Lightbox.astro";
+
+const heroImageUrl = "/images/heroes/residential-air-duct-hero.jpg";
+
+const warningSigns = [
+  "Have your air ducts been cleaned in the last 3 to 5 years?",
+  "Do you have allergies, asthma, or frequent respiratory irritation?",
+  "Do you smell musty odors when your HVAC system turns on?",
+  "Are persistent pet, smoke, or nicotine odors hard to remove?",
+  "Have you recently renovated or moved into a new home?",
+  "Do you see visible dirt buildup around vent covers?",
+];
+
+const airQualityFacts = [
+  "Indoor air pollution is among the top environmental risks to public health.",
+  "Indoor air can be more polluted than outdoor air.",
+  "Most people spend the majority of their time indoors.",
+  "Dirty duct systems can recirculate contaminants 5 to 7 times per hour.",
+];
+
+const galleryItems = [
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/1-Jun-21--2024-22-16-44-vgAF-1920w.jpg",
+    alt: "Residential HVAC ductwork ready for cleaning.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/3-Jun-18--2024-20-42-21-aM47-1920w.jpg",
+    alt: "Technician working on residential duct cleaning setup.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/2-Jun-21--2024-22-16-47-hqYK-1920w.jpg",
+    alt: "Air duct interior and access panel during service.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/4-Jun-21--2024-22-17-47-Tost-1920w.jpg",
+    alt: "Duct cleaning equipment and hoses at residential jobsite.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/candle-filter-1920w.jpg",
+    alt: "Air filter with soot buildup demonstrating contamination.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/20211101_174802-be64c3c5-1920w.jpg",
+    alt: "Residential vent cleaning in progress.",
+  },
+];
+---
+
+<SiteLayout
+  title="Air Duct Cleaning Services"
+  description="Professional residential air duct cleaning services for cleaner indoor air, improved HVAC efficiency, and healthier homes across Central Florida."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="Residential Service"
+    title="Residential Air Duct Cleaning"
+    body="At Hygienic Air, Inc, we enhance home air quality through comprehensive duct cleaning delivered by experienced, certified technicians."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      {
+        href: "https://client.housecallpro.com/customer_portal/request-link?token=e189962ac4d546e3b9e813944ff69b3c",
+        label: "Book Online",
+        variant: "secondary",
+        external: true,
+      },
+    ]}
+  />
+
+  <section class="section section--page-intro">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">What Is Air Duct Cleaning?</p>
+        <h2 class="section-title">Clean Ducts, Cleaner Home Air</h2>
+      </header>
+
+      <div class="split-grid content-grid">
+        <div class="rich-text">
+          <p>
+            Air duct cleaning removes built-up contaminants from your home's HVAC system using
+            high-powered negative suction and agitation tools. Supply and return ducts, plus key
+            HVAC components, are cleaned to improve indoor air quality and airflow performance.
+          </p>
+          <p>
+            Over time, dust, pollen, mold particles, and pet dander collect inside ductwork.
+            When the system runs, those pollutants can recirculate throughout the home.
+            Professional cleaning helps reduce that load and supports long-term equipment health.
+          </p>
+        </div>
+
+        <aside class="notice-box">
+          <h3>Does Your Home Need Air Duct Cleaning?</h3>
+          <ul class="check-list">
+            {warningSigns.map((item) => <li>{item}</li>)}
+          </ul>
+        </aside>
+      </div>
+
+      <div class="notice-band" style="margin-top: var(--space-l);">
+        <p>
+          Protect your family's health and extend the life of your HVAC system with periodic duct
+          cleaning and proper filter maintenance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Do You Need Air Duct Cleaning?</p>
+        <h2 class="section-title">Why It Matters</h2>
+      </header>
+
+      <div class="highlight-grid">
+        <article class="highlight-card">
+          <h3>Better Indoor Air Quality</h3>
+          <p>
+            Cleaning helps reduce recirculation of allergens and airborne debris trapped in
+            ductwork.
+          </p>
+        </article>
+        <article class="highlight-card">
+          <h3>Improved HVAC Efficiency</h3>
+          <p>
+            Removing buildup from system pathways can improve airflow and reduce equipment strain.
+          </p>
+        </article>
+        <article class="highlight-card">
+          <h3>Odor Reduction</h3>
+          <p>
+            Dust and residue in ducts can hold lingering odors that return whenever the system runs.
+          </p>
+        </article>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Indoor Air Quality Facts</h3>
+        <ul class="feature-list">
+          {airQualityFacts.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Explore Our Work</p>
+        <h2 class="section-title">Residential Air Duct Projects</h2>
+      </header>
+
+      <ImageCarousel
+        id="residential-air-duct-gallery"
+        label="Residential air duct project gallery"
+        items={galleryItems}
+        fit="contain"
+      />
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+
+  <Lightbox slot="after-body" />
+</SiteLayout>

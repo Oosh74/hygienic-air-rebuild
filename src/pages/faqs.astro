@@ -1,0 +1,53 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+import FaqAccordion from "@components/Site/FaqAccordion.astro";
+import { faqs } from "@data/faqs";
+
+const heroImageUrl = "/images/heroes/faqs-hero.jpg";
+---
+
+<SiteLayout
+  title="Frequently Asked Questions | Hygienic Air, Inc"
+  description="Answers to common questions about air duct cleaning, dryer vent cleaning, service expectations, pricing, and safety standards."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="About Hygienic Air"
+    title="Frequently Asked Questions"
+    body="Review our most common service and safety questions to make informed decisions about your home or facility air systems."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      { href: "/services", label: "View Services", variant: "secondary" },
+    ]}
+  />
+
+  <section class="section section--page-intro">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Common Questions</p>
+        <h2 class="section-title">Everything You Need to Know Before You Book</h2>
+      </header>
+
+      <div class="rich-text">
+        <p>
+          When shopping for air duct or dryer vent cleaning services, asking the right questions is
+          essential. These FAQs cover service scope, safety, equipment, pricing transparency,
+          cleaning frequency, and what to expect from a qualified provider.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <FaqAccordion items={faqs} />
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+</SiteLayout>

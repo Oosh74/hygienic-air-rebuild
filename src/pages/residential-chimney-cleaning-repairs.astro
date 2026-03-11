@@ -1,0 +1,170 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+import ImageCarousel from "@components/Site/ImageCarousel.astro";
+import Lightbox from "@components/Site/Lightbox.astro";
+
+const heroImageUrl = "/images/heroes/residential-chimney-hero.jpg";
+
+const reasonsToClean = [
+  "Prevent chimney fires caused by creosote and soot accumulation.",
+  "Reduce blockage risks from debris and animal intrusion.",
+  "Maintain safe ventilation for wood, gas, and oil systems.",
+  "Protect flue liners from corrosive byproducts.",
+  "Support reliable appliance performance and draft.",
+];
+
+const safetyFacts = [
+  "Over 250,000 chimney fires are reported annually in the U.S.",
+  "Failure to keep heating systems clean is a leading fire cause.",
+  "Oil and gas byproducts can damage flue liners over time.",
+  "Restricted chimney flow can increase carbon monoxide risk.",
+];
+
+const processSteps = [
+  "Connect a power vacuum truck to create constant negative suction.",
+  "Sweep the full flue path from top to bottom with proper chimney tools.",
+  "Capture soot and debris directly into the vacuum system.",
+  "Inspect cap, damper, and critical chimney components.",
+  "Recommend repairs or replacement parts where needed.",
+];
+
+const galleryItems = [
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/120366594_4668438859862708_8245985451948799327_n-06836df3-1920w.jpg",
+    alt: "Residential chimney service in progress.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/121808322_4760170340689559_784714374917580093_n-75c60b0f-1920w.jpg",
+    alt: "Chimney cleaning tools and setup.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/138817212_5143293509043905_4284558922839957839_n-d8052e2c-1920w.jpg",
+    alt: "Technician inspecting residential chimney top.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/236702974_6164607643579148_3031194368481838994_n-929b164c-1920w.jpg",
+    alt: "Chimney sweep process at rooftop.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/chimney-damper-5c33ad2f-1920w.jpg",
+    alt: "Chimney damper component detail.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/chimney-repair-and-restoration-653bcdb0-1920w.jpg",
+    alt: "Chimney repair and restoration example.",
+  },
+];
+---
+
+<SiteLayout
+  title="Professional Chimney Cleaning | Hygienic Air, Inc"
+  description="Residential chimney cleaning and repair services focused on fire prevention, safe ventilation, and reliable heating performance."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="Residential Service"
+    title="Residential Chimney Cleaning / Repairs"
+    body="Soot happens. Let our certified team keep your chimney clean, code-conscious, and ready to perform safely all year."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      {
+        href: "https://client.housecallpro.com/customer_portal/request-link?token=e189962ac4d546e3b9e813944ff69b3c",
+        label: "Book Online",
+        variant: "secondary",
+        external: true,
+      },
+    ]}
+  />
+
+  <section class="section section--page-intro">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Why Clean The Chimney?</p>
+        <h2 class="section-title">Fire Safety Starts with Routine Maintenance</h2>
+      </header>
+
+      <div class="split-grid content-grid">
+        <div class="rich-text">
+          <p>
+            Both wood-burning chimneys and systems venting gas or oil appliances need regular
+            inspection and cleaning. Buildup can restrict airflow, affect appliance performance,
+            and create serious safety risks.
+          </p>
+          <p>
+            Hygienic Air, Inc prioritizes annual chimney sweeps and inspections using professional
+            equipment and experienced technicians trained in CSIA, NCSG, and NFPA best practices.
+          </p>
+        </div>
+
+        <aside class="notice-box">
+          <h3>Common Reasons Homeowners Schedule Service</h3>
+          <ul class="check-list">
+            {reasonsToClean.map((item) => <li>{item}</li>)}
+          </ul>
+        </aside>
+      </div>
+
+      <div class="metric-grid">
+        {safetyFacts.map((item) => (
+          <article class="metric-card">
+            <strong class="metric-card__icon" aria-hidden="true">
+              <svg
+                width="100%"
+                height="100%"
+                version="1.1"
+                viewBox="0 0 100 100"
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg"
+                data-icon-custom="true"
+                data-icon-name="Warning_6961319.svg"
+              >
+                <path d="m57.367 13.984 36.676 63.531c3.3555 5.8125-0.95703 12.758-7.3633 12.758h-73.352c-4.8164 0-8.5352-3.9492-8.5352-8.5117 0-2.5039 1.0625-3.8516 1.1719-4.2539l36.676-63.523c0.76953-1.3359 1.832-2.3945 3.1016-3.125l-0.003907-0.003906c2.6055-1.5039 5.9297-1.5039 8.5352 0l-0.003907 0.003906c1.2617 0.73438 2.3242 1.7891 3.0977 3.125zm-7.3672 54.469c-3.4453 0-6.2422 2.7969-6.2422 6.2422 0 5.5391 6.7305 8.3398 10.656 4.4141 3.9258-3.9258 1.1289-10.656-4.4141-10.656zm1.3711 4.8711c-1.8047-1.8047-4.543 0.9375-2.7383 2.7383 1.8008 1.8047 4.543-0.93359 2.7383-2.7383zm-4.2383-36.375c-2.2656 0-4.2461 1.7617-4.1172 4.0547l1.2148 21.781c0.023437 1.2617 0.96484 2.1836 2.1523 2.1836h7.2383v-0.003906c1.1328 0 2.082-0.88672 2.1445-2.0312l1.2227-21.93c0.0625-1.1367-0.40234-2.2109-1.25-2.9727l-0.003906 0.003906c-1.8281-1.6406-5.3086-1.0859-8.6016-1.0859zm5.5391 4.3047h-5.3398l1.082 19.41h3.1758zm37.656 38.402-0.003906 0.003906-36.676-63.523c-1.6289-2.8203-5.668-2.8203-7.2969 0l-36.672 63.523-0.003907-0.003906c-0.76953 1.3398-0.76953 2.8711 0 4.2109l0.003907-0.003907c0.79297 1.3711 2.0625 2.1016 3.6484 2.1016h73.348c1.5859 0 2.8555-0.73047 3.6484-2.1016l0.003906 0.003907c0.76953-1.3398 0.76953-2.8711 0-4.2109z" fill-rule="evenodd"></path>
+              </svg>
+            </strong>
+            <span>{item}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Our Chimney Cleaning Process</p>
+        <h2 class="section-title">Thorough, Controlled, and Documented</h2>
+      </header>
+
+      <div class="notice-box">
+        <ul class="feature-list">
+          {processSteps.map((step) => <li>{step}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">View Our Gallery</p>
+        <h2 class="section-title">Residential Chimney Projects</h2>
+      </header>
+
+      <ImageCarousel
+        id="residential-chimney-gallery"
+        label="Residential chimney project gallery"
+        items={galleryItems}
+        fit="contain"
+      />
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+
+  <Lightbox slot="after-body" />
+</SiteLayout>

@@ -1,0 +1,70 @@
+---
+interface Testimonial {
+  quote: string;
+  author: string;
+}
+
+interface Props {
+  id: string;
+  label: string;
+  items: Testimonial[];
+}
+
+const { id, label, items } = Astro.props;
+---
+
+<div class="quote-slider" data-quote-slider id={id} aria-label={label}>
+  <button class="carousel-arrow" type="button" data-quote-prev aria-label="Previous review">‹</button>
+
+  <div class="quote-slider__viewport">
+    <div class="quote-slider__track" data-quote-track>
+      {items.map((item) => (
+        <article class="quote-slide">
+          <p class="stars" aria-label="5 star review">★★★★★</p>
+          <blockquote>{item.quote}</blockquote>
+          <p class="author">{item.author}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <button class="carousel-arrow" type="button" data-quote-next aria-label="Next review">›</button>
+</div>
+
+<script is:inline>
+  (() => {
+    const initQuoteSliders = () => {
+      const sliders = Array.from(document.querySelectorAll("[data-quote-slider]"));
+
+      sliders.forEach((slider) => {
+        if (slider.dataset.bound === "true") return;
+        slider.dataset.bound = "true";
+
+        const track = slider.querySelector("[data-quote-track]");
+        const prev = slider.querySelector("[data-quote-prev]");
+        const next = slider.querySelector("[data-quote-next]");
+        const total = track?.children.length || 0;
+
+        if (!track || total <= 1) {
+          prev?.setAttribute("disabled", "true");
+          next?.setAttribute("disabled", "true");
+          return;
+        }
+
+        let index = 0;
+
+        const setSlide = (nextIndex) => {
+          index = (nextIndex + total) % total;
+          track.style.transform = `translateX(-${index * 100}%)`;
+        };
+
+        prev?.addEventListener("click", () => setSlide(index - 1));
+        next?.addEventListener("click", () => setSlide(index + 1));
+        setSlide(0);
+      });
+    };
+
+    initQuoteSliders();
+    document.addEventListener("astro:page-load", initQuoteSliders);
+  })();
+</script>

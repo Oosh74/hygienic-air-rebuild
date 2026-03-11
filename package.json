@@ -1,5 +1,5 @@
 {
-	"name": "intermediate-astro-decap-cms-starter-kit",
+	"name": "hygienic-air-rebuild",
 	"type": "module",
 	"version": "3.0.0",
 	"scripts": {
@@ -7,15 +7,11 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
-		"preview": "astro preview",
-		"remove-decap": "node scripts/remove-decap.js",
-		"remove-demo": "node scripts/remove-demo.js",
-		"remove-dark-mode": "node scripts/remove-dark-mode.js"
+		"preview": "astro preview"
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.7.0",
 		"astro": "^5.18.0",
-		"astro-icon": "^1.1.5",
 		"autoprefixer": "^10.4.27",
 		"less": "^4.5.1"
 	},

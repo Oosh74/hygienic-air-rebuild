@@ -1,30 +1,211 @@
 ---
-// Utils
-import { getImage } from "astro:assets";
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ServiceIcon from "@components/Site/ServiceIcon.astro";
+import TestimonialSlider from "@components/Site/TestimonialSlider.astro";
+import Lightbox from "@components/Site/Lightbox.astro";
+import { homeGalleryImages } from "@data/gallery-images";
+import { testimonials } from "@data/reviews";
 
-// Components
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Hero from "@components/Hero/Hero.astro";
-import Services from "@components/Services/Services.astro";
-import SideBySide from "@components/SideBySide/SideBySide.astro";
-import SideBySideReverse from "@components/SideBySideReverse/SideBySideReverse.astro";
-import Gallery from "@components/Gallery/Gallery.astro";
-import Testimonials from "@components/Testimonials/Testimonials.astro";
-import FAQ from "@components/FAQ/FAQ.astro";
-import CTASimple from "@components/CTA/CTASimple.astro";
+const mapEmbedSrc =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.452285900647!2d-81.72405632450307!3d28.526122175723025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7bd3a9d843b11%3A0xc2a2c16e7adc5be2!2sHygienic%20Air%20Plus!5e0!3m2!1sen!2sus!4v1773173616641!5m2!1sen!2sus";
+const heroImageUrl = "/images/heroes/home-hero.jpg";
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Banner (for rendering)
-import heroImage from "@assets/images/hero/hero.jpg";
-const optimizedHeroImage = await getImage({ src: heroImage, format: "webp" });
+const services = [
+  {
+    title: "Residential",
+    body: "Air duct, dryer duct, and chimney cleaning/repairs designed to improve indoor air quality and system performance.",
+    href: "/services",
+    icon: "residential" as const,
+  },
+  {
+    title: "Commercial",
+    body: "Commercial air systems cleaned with high-powered equipment for cleaner airflow, compliance, and safer facilities.",
+    href: "/commercial-air-duct-cleaning",
+    icon: "commercial" as const,
+  },
+  {
+    title: "Industrial",
+    body: "High-dust zone and combustible dust-focused cleaning for large facilities and specialized industrial environments.",
+    href: "/commercial-overhead-contact-cleaning",
+    icon: "industrial" as const,
+  },
+];
+
+const serviceAreas = [
+  "Central Florida",
+  "Orlando Market",
+  "Tampa Market",
+  "Lakeland Market",
+  "Ocala Market",
+  "Daytona Market",
+  "Melbourne Market",
+  "Spring Hill Market",
+  "Homosassa Springs Market",
+  "Port St. Lucie Market",
+  "Sebring Market",
+  "Sarasota Market",
+  "Gainesville Market",
+  "The Villages Market",
+  "Palm Coast Market",
+  "DeLand / Deltona Market",
+];
 ---
 
-<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" heroImage={optimizedHeroImage}>
-	<Hero image={optimizedHeroImage} />
-	<Services />
-	<SideBySide />
-	<SideBySideReverse />
-	<Gallery />
-	<Testimonials />
-	<FAQ />
-	<CTASimple />
-</BaseLayout>
+<SiteLayout
+  title="Central Florida's Leading Duct Cleaning Experts"
+  description="Hygienic Air, Inc specializes in duct cleaning services for homes and businesses in Central Florida."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    imageUrl={heroImageUrl}
+    title="Experience the Difference with Clean Air Solutions"
+    body="Hygienic Air, Inc: Central Florida's premier duct cleaning experts, ensuring healthier indoor air quality since 2002."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      {
+        href: "https://client.housecallpro.com/customer_portal/request-link?token=e189962ac4d546e3b9e813944ff69b3c",
+        label: "Book Online",
+        variant: "secondary",
+        external: true,
+      },
+    ]}
+  />
+
+  <section class="section section--services">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Our Services</p>
+        <h2 class="section-title">Powerful Solutions</h2>
+        <p>
+          At Hygienic Air, Inc, your satisfaction and well-being are our top priorities.
+          Experience the difference with our comprehensive services and let us help you breathe easier.
+        </p>
+      </header>
+
+      <div class="service-grid">
+        {services.map((service) => (
+          <article class="service-card">
+            <div class="service-icon-wrap" aria-hidden="true">
+              <ServiceIcon variant={service.icon} />
+            </div>
+            <h3>{service.title}</h3>
+            <p>{service.body}</p>
+            <a href={service.href}>Explore {service.title}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--gallery" id="explore-our-work">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Explore Our Work</p>
+        <h2 class="section-title">Recent Projects & Jobsite Highlights</h2>
+      </header>
+
+      <div class="gallery-masonry" id="home-gallery">
+        {homeGalleryImages.map((item, idx) => (
+          <a href={item.src} data-lightbox-item data-index={idx} aria-label={`Open gallery image ${idx + 1}`}>
+            <img src={item.src} alt={item.alt} loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--reviews">
+    <div class="u-container reviews-grid">
+      <div class="reviews-copy content-stack">
+        <p class="section-topper content-stack__topper">Customer Reviews</p>
+        <h2 class="section-title content-stack__title">Trusted by Florida Homeowners & Businesses</h2>
+        <p class="content-stack__body">
+          With thousands of positive reviews across major platforms, our crews are known for
+          professionalism, detail, and reliable results.
+        </p>
+        <a href="/reviews" class="btn btn--secondary-light content-stack__actions">Read More Reviews</a>
+      </div>
+
+      <TestimonialSlider id="home-review-slider" label="Homepage testimonial slider" items={testimonials} />
+    </div>
+  </section>
+
+  <section class="section section--areas">
+    <div class="u-container areas-grid">
+      <div class="content-stack">
+        <p class="section-topper content-stack__topper">Areas We Serve</p>
+        <h2 class="section-title content-stack__title">Bringing Powerful Air Quality Solutions to Your Area</h2>
+        <p class="content-stack__body">
+          Our crews are equipped with state-of-the-art vacuum trucks, ready to take on
+          residential and commercial duct cleaning projects across Florida.
+        </p>
+        <ul class="areas-list">
+          {serviceAreas.map((area) => <li>{area}</li>)}
+        </ul>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src={mapEmbedSrc}
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Hygienic Air service area map"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--home-assistance">
+    <div class="u-container home-assistance">
+      <header class="section__head content-stack">
+        <p class="section-topper">Need Help?</p>
+        <h2 class="section-title">Have questions or need assistance?</h2>
+      </header>
+
+      <div class="home-assistance__lead-form">
+        <iframe
+          title="Housecall Pro Lead Form Page"
+          src="https://book.housecallpro.com/lead-form/Hygienic-Air-Inc/7e7d0cd761eb492ea0c1ddd36b69f5c7?buttonColor=rgba%28255%2C+255%2C+255%2C+1%29&buttonTextColor=rgba%2835%2C+62%2C+132%2C+1%29"
+          class="hcp-lead-form-page"
+          id="hcp-lead-iframe"
+          style="border: medium; width: 100%; height: 100%;"
+        ></iframe>
+      </div>
+
+      <p class="home-assistance__copy">
+        We're here to help! Fill out the form below and a member of our team will get back to you
+        as soon as possible.
+      </p>
+
+      <div class="home-assistance__financing">
+        <div class="home-assistance__icon" aria-hidden="true">
+          <svg width="100%" height="100%" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" id="1838187722" class="svg u_1838187722" data-icon-custom="true" data-icon-name="Warning_6961319.svg">
+            <title id="1862289427">A black and white triangle with an exclamation point inside of it.</title>
+            <path d="m57.367 13.984 36.676 63.531c3.3555 5.8125-0.95703 12.758-7.3633 12.758h-73.352c-4.8164 0-8.5352-3.9492-8.5352-8.5117 0-2.5039 1.0625-3.8516 1.1719-4.2539l36.676-63.523c0.76953-1.3359 1.832-2.3945 3.1016-3.125l-0.003907-0.003906c2.6055-1.5039 5.9297-1.5039 8.5352 0l-0.003907 0.003906c1.2617 0.73438 2.3242 1.7891 3.0977 3.125zm-7.3672 54.469c-3.4453 0-6.2422 2.7969-6.2422 6.2422 0 5.5391 6.7305 8.3398 10.656 4.4141 3.9258-3.9258 1.1289-10.656-4.4141-10.656zm1.3711 4.8711c-1.8047-1.8047-4.543 0.9375-2.7383 2.7383 1.8008 1.8047 4.543-0.93359 2.7383-2.7383zm-4.2383-36.375c-2.2656 0-4.2461 1.7617-4.1172 4.0547l1.2148 21.781c0.023437 1.2617 0.96484 2.1836 2.1523 2.1836h7.2383v-0.003906c1.1328 0 2.082-0.88672 2.1445-2.0312l1.2227-21.93c0.0625-1.1367-0.40234-2.2109-1.25-2.9727l-0.003906 0.003906c-1.8281-1.6406-5.3086-1.0859-8.6016-1.0859zm5.5391 4.3047h-5.3398l1.082 19.41h3.1758zm37.656 38.402-0.003906 0.003906-36.676-63.523c-1.6289-2.8203-5.668-2.8203-7.2969 0l-36.672 63.523-0.003907-0.003906c-0.76953 1.3398-0.76953 2.8711 0 4.2109l0.003907-0.003907c0.79297 1.3711 2.0625 2.1016 3.6484 2.1016h73.348c1.5859 0 2.8555-0.73047 3.6484-2.1016l0.003906 0.003907c0.76953-1.3398 0.76953-2.8711 0-4.2109z" fill-rule="evenodd"></path>
+          </svg>
+        </div>
+        <div class="home-assistance__financing-content">
+          <p>
+            We Have Financing Options Available. Give us a call to find out more info!
+          </p>
+          <a
+            class="btn btn--secondary-light"
+            href="http://wisetack.us/#/mxr0gum/prequalify"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Discover Financial Solutions
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Lightbox slot="after-body" />
+</SiteLayout>

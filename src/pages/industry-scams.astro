@@ -1,0 +1,106 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+
+const heroImageUrl = "/images/heroes/industry-scams-hero.png";
+
+const redFlags = [
+  "Unrealistically low whole-home cleaning prices (for example, 'too good to be true' offers).",
+  "No clear company name, address, or verifiable credentials in ads.",
+  "Scare tactics about mold or health hazards without proper evidence.",
+  "Fast 'blow-and-go' service that skips full HVAC system cleaning.",
+  "Pressure to approve expensive add-ons once technicians arrive.",
+  "Large upfront payment requests before work begins.",
+];
+
+const protectionSteps = [
+  "Research the company and verify reputation across trusted platforms.",
+  "Compare written estimates from multiple providers.",
+  "Ask for certifications, insurance details, and references.",
+  "Confirm the exact scope: supply, return, and key HVAC components.",
+  "Request final pricing in writing before scheduling.",
+  "Avoid rushed decisions and get a second opinion when in doubt.",
+];
+
+const pricingTruths = [
+  "Quality duct cleaning requires trained labor, specialized equipment, and full-system cleaning time.",
+  "Ultra-low offers often recover costs through hidden fees and upselling.",
+  "A thorough cleaning should be transparent, documented, and clearly scoped.",
+];
+---
+
+<SiteLayout
+  title="Avoid Industry Scams | Hygienic Air, Inc"
+  description="Learn how to spot common air duct cleaning scams, evaluate providers, and protect your home with informed service decisions."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="Consumer Education"
+    title="Industry Scams"
+    body="Know the warning signs, avoid high-pressure tactics, and choose qualified service providers with confidence."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      { href: "/faqs", label: "Read FAQs", variant: "secondary" },
+    ]}
+  />
+
+  <section class="section section--page-intro">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">How to Protect Yourself Against Scams</p>
+        <h2 class="section-title">The Duct Cleaning Scam Uncovered</h2>
+      </header>
+
+      <div class="rich-text">
+        <p>
+          With social media and search ads pushing rock-bottom pricing, homeowners can be exposed
+          to misleading offers and low-quality service. Scam tactics often start with attractive
+          promotions and end with poor workmanship, hidden charges, or unnecessary upsells.
+        </p>
+        <p>
+          Staying informed is the best defense. Choosing a reputable, transparent provider protects
+          both your budget and your indoor air quality.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container split-grid">
+      <article class="notice-box">
+        <h3>Common Red Flags</h3>
+        <ul class="check-list">
+          {redFlags.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="notice-box">
+        <h3>How to Protect Yourself</h3>
+        <ul class="check-list">
+          {protectionSteps.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Low Prices Often Hide High Costs</p>
+        <h2 class="section-title">What to Expect from a Legitimate Provider</h2>
+      </header>
+
+      <div class="notice-box">
+        <ul class="feature-list">
+          {pricingTruths.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+</SiteLayout>

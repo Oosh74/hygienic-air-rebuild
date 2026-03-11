@@ -1,0 +1,143 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+
+const heroImageUrl = "/images/heroes/high-dust-zone-hero.jpg";
+
+const whatWeClean = [
+  {
+    title: "Wall Niche Detail",
+    body: "Architectural cutouts and decorative recesses where dust, cobwebs, and debris quietly collect.",
+  },
+  {
+    title: "Ceiling Fans & Hardware",
+    body: "Blades, housings, and mounts that redistribute buildup throughout occupied spaces.",
+  },
+  {
+    title: "High Cabinet Tops",
+    body: "Upper surfaces in kitchens, laundry rooms, and service areas that trap fine particulate matter.",
+  },
+  {
+    title: "Beams & High Ledges",
+    body: "Exposed structural and decorative elements that are difficult to reach during routine cleaning.",
+  },
+  {
+    title: "Transoms & Elevated Trim",
+    body: "High window and trim details where pollen and dust accumulate over long periods.",
+  },
+  {
+    title: "Additional High-Dust Surfaces",
+    body: "Service can be scoped for specialty overhead zones based on facility layout and use.",
+  },
+];
+
+const howWeClean = [
+  "Manual contact cleaning with HEPA-filtered vacuums and microfiber systems.",
+  "Extension tools and access equipment for elevated surfaces.",
+  "Containment and floor/furnishing protection during service.",
+  "OSHA-aware work practices and PPE as needed.",
+  "Before-and-after documentation on request.",
+];
+
+const whoBenefits = [
+  "Homes with vaulted ceilings and architectural features",
+  "Facilities preparing for inspections or guest-facing events",
+  "Properties after remodeling or construction dust events",
+  "Commercial and hospitality spaces with high visible surfaces",
+  "Clients pairing overhead cleaning with full duct system cleaning",
+];
+---
+
+<SiteLayout
+  title="Commercial Overhead Cleaning | Hygienic Air, Inc"
+  description="High-dust zone contact cleaning for elevated surfaces that affect indoor air quality, cleanliness, and presentation in homes and businesses."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="Commercial / Industrial Service"
+    title="High-Dust Zone Contact Cleaning / Combustible Dust"
+    body="Cleaner air starts with clean surfaces. We target elevated dust zones that standard cleaning routines often miss."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      {
+        href: "https://client.housecallpro.com/customer_portal/request-link?token=e189962ac4d546e3b9e813944ff69b3c",
+        label: "Book Online",
+        variant: "secondary",
+        external: true,
+      },
+    ]}
+  />
+
+  <section class="section section--page-intro">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Why It Matters</p>
+        <h2 class="section-title">The Perfect Companion to Air Duct Cleaning</h2>
+      </header>
+
+      <div class="split-grid content-grid">
+        <div class="rich-text">
+          <p>
+            High-Dust Zone Contact Cleaning was developed to address elevated buildup that impacts
+            air quality, comfort, and overall cleanliness. These surfaces often go unnoticed but
+            can continuously reintroduce fine debris into occupied environments.
+          </p>
+          <p>
+            This service stands alone or pairs with duct cleaning for a fuller indoor air quality
+            strategy: one clears the system, the other clears the space.
+          </p>
+        </div>
+
+        <aside class="notice-box">
+          <h3>Cleaning Frequency</h3>
+          <p>
+            Service intervals are tailored to each home or facility based on dust load, occupancy,
+            ceiling heights, and environmental conditions.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">What We Clean</p>
+        <h2 class="section-title">Precision Cleaning for Hard-to-Reach Surfaces</h2>
+      </header>
+
+      <div class="tile-grid">
+        {whatWeClean.map((item) => (
+          <article class="tile-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container split-grid">
+      <article class="notice-box">
+        <h3>How We Clean</h3>
+        <ul class="feature-list">
+          {howWeClean.map((step) => <li>{step}</li>)}
+        </ul>
+      </article>
+
+      <article class="notice-box">
+        <h3>Who Benefits</h3>
+        <ul class="feature-list">
+          {whoBenefits.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+</SiteLayout>

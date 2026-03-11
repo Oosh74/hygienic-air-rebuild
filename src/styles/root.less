@@ -91,8 +91,43 @@ h6 {
 		--secondary: #001f3f;
 		--secondaryLight: #001f3f;
 		--headerColor: #1a1a1a;
-		--bodyTextColor: #4e4b66;
+		--bodyTextColor: #43495d;
 		--bodyTextColorWhite: #fafbfc;
+
+		/* Fluid type scale */
+		--step--2: clamp(0.6944rem, 0.6513rem + 0.1919vw, 0.8rem);
+		--step--1: clamp(0.8333rem, 0.7652rem + 0.303vw, 1rem);
+		--step-0: clamp(1rem, 0.8977rem + 0.4545vw, 1.25rem);
+		--step-1: clamp(1.2rem, 1.0517rem + 0.6591vw, 1.5625rem);
+		--step-2: clamp(1.44rem, 1.2301rem + 0.933vw, 1.9531rem);
+		--step-3: clamp(1.728rem, 1.4362rem + 1.2971vw, 2.4414rem);
+		--step-4: clamp(2.0736rem, 1.6734rem + 1.7785vw, 3.0518rem);
+		--step-5: clamp(2.4883rem, 1.9457rem + 2.4116vw, 3.8147rem);
+
+		/* Fluid spacing scale */
+		--space-3xs: clamp(0.25rem, 0.2244rem + 0.1136vw, 0.3125rem);
+		--space-2xs: clamp(0.5rem, 0.4489rem + 0.2273vw, 0.625rem);
+		--space-xs: clamp(0.75rem, 0.6733rem + 0.3409vw, 0.9375rem);
+		--space-s: clamp(1rem, 0.8977rem + 0.4545vw, 1.25rem);
+		--space-m: clamp(1.5rem, 1.3466rem + 0.6818vw, 1.875rem);
+		--space-l: clamp(2rem, 1.7955rem + 0.9091vw, 2.5rem);
+		--space-xl: clamp(3rem, 2.6932rem + 1.3636vw, 3.75rem);
+		--space-2xl: clamp(4rem, 3.5909rem + 1.8182vw, 5rem);
+		--space-3xl: clamp(6rem, 5.3864rem + 2.7273vw, 7.5rem);
+		--space-s-l: clamp(1rem, 0.3864rem + 2.7273vw, 2.5rem);
+
+		/* Grid */
+		--grid-max-width: 77.5rem;
+		--grid-gutter: var(--space-s-l);
+		--grid-columns: 12;
+
+		/* Utility fluid value */
+		--fluid-16-48: clamp(1rem, 0.1818rem + 3.6364vw, 3rem);
+
+		/* Content rhythm tokens */
+		--content-gap-topper-title: var(--space-2xs);
+		--content-gap-title-content: var(--space-s);
+		--content-gap-content-action: var(--space-m);
 
 		/* 13px - 16px */
 		--topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
@@ -147,10 +182,6 @@ html {
 	color: var(--bodyTextColor);
 }
 
-body {
-	transition: background-color 0.3s;
-}
-
 h1,
 h2,
 h3,
@@ -180,10 +211,64 @@ button {
 }
 
 /*-- -------------------------- -->
+<---   Shared Layout Utilities  -->
+<--- -------------------------- -*/
+
+.u-container {
+	width: 100%;
+	max-width: var(--grid-max-width);
+	padding-inline: var(--grid-gutter);
+	margin-inline: auto;
+}
+
+.u-grid {
+	display: grid;
+	gap: var(--grid-gutter);
+}
+
+.section-topper {
+	font-size: var(--step--1);
+	font-weight: 400;
+	line-height: 1.3;
+	letter-spacing: 0.02em;
+	text-transform: none;
+	color: #000;
+	display: block;
+}
+
+.section-title {
+	font-size: var(--step-4);
+	font-weight: 900;
+	line-height: 1.1;
+	color: #000;
+}
+
+.content-stack {
+	display: flex;
+	flex-direction: column;
+}
+
+.content-stack > * {
+	margin: 0;
+}
+
+.content-stack > .content-stack__topper + .content-stack__title {
+	margin-top: var(--content-gap-topper-title);
+}
+
+.content-stack > .content-stack__title + .content-stack__body {
+	margin-top: var(--content-gap-title-content);
+}
+
+.content-stack > .content-stack__body + .content-stack__actions {
+	margin-top: var(--content-gap-content-action);
+}
+
+/*-- -------------------------- -->
 <---   Typography Helpers       -->
 <--- -------------------------- -*/
 
-// Text styles - can be replaced using CodeStitch's "Content Flair" Stitches
+// Text style helpers
 .cs-topper {
 	font-size: var(--topperFontSize);
 	font-weight: 700;
@@ -216,7 +301,7 @@ button {
 <--- -------------------------- -*/
 
 @media only screen and (min-width: 0em) {
-	// Button - can be replaced using CodeStitch's "Button" Stitches
+	// Base button helper
 	.cs-button-solid {
 		font-size: (16/16rem);
 		font-weight: bold;

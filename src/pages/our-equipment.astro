@@ -1,0 +1,136 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+import ImageCarousel from "@components/Site/ImageCarousel.astro";
+import Lightbox from "@components/Site/Lightbox.astro";
+
+const heroImageUrl = "/images/heroes/our-equipment-hero.jpg";
+
+const truckHighlights = [
+  "Up to 16,000 CFM suction capacity",
+  "Up to 35 inches of static pressure",
+  "Dual-side vacuum hose connection architecture",
+  "Dedicated auxiliary V8 drive for sustained suction",
+  "Dual debris collection cans for large-scale jobs",
+];
+
+const airPowerHighlights = [
+  "Quincy 340 setup with 200 PSI and 46 CFM",
+  "Feeds agitation whips for deep debris dislodgement",
+  "Supports long-run residential and commercial system cleaning",
+];
+
+const concerns = [
+  "Low-CFM portable vacuums may loosen debris without fully removing it.",
+  "Weak suction can leave contaminants in the system to recirculate later.",
+  "Rigid hose limitations often reduce full-system cleaning reach.",
+  "Electrical-only portable setups may struggle with heavy contamination.",
+];
+
+const galleryItems = [
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/20211005_171018-9ec3932e-1920w.jpg",
+    alt: "Hygienic Air vacuum truck and mounted equipment.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-07-30-180444-1920w.png",
+    alt: "Equipment performance specification graphic.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-07-30-180126-1920w.png",
+    alt: "Vacuum and air-power system component layout.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-07-30-180758-1920w.png",
+    alt: "Truck setup detail for suction and debris collection.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-07-30-180917-1920w.png",
+    alt: "Commercial-grade duct cleaning rig detail.",
+  },
+  {
+    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/download-%285%29-4c43d425-1920w.jpg",
+    alt: "Example of lower-powered portable equipment.",
+  },
+];
+---
+
+<SiteLayout
+  title="Our State-of-the-Art Equipment | Hygienic Air, Inc"
+  description="See the high-powered vacuum trucks and cleaning systems Hygienic Air uses for thorough residential and commercial duct cleaning."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="About Hygienic Air"
+    title="Better Equipment. Best Results."
+    body="Power and suction matter. Our equipment is engineered for complete debris removal, not partial cleanup."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      { href: "/services", label: "View Services", variant: "secondary" },
+    ]}
+  />
+
+  <section class="section section--page-intro">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Our Equipment</p>
+        <h2 class="section-title">Industrial-Grade Power for Thorough System Cleaning</h2>
+      </header>
+
+      <div class="split-grid">
+        <article class="notice-box">
+          <h3>Vacuum Truck Performance</h3>
+          <ul class="feature-list">
+            {truckHighlights.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+
+        <article class="notice-box">
+          <h3>Air Agitation Power</h3>
+          <ul class="feature-list">
+            {airPowerHighlights.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Types of Equipment to Question</p>
+        <h2 class="section-title">Why Portable-Only Systems Can Fall Short</h2>
+      </header>
+
+      <div class="notice-box">
+        <ul class="feature-list">
+          {concerns.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Equipment Gallery</p>
+        <h2 class="section-title">Power, Suction, and System Design</h2>
+      </header>
+
+      <ImageCarousel
+        id="equipment-gallery"
+        label="Hygienic Air equipment gallery"
+        items={galleryItems}
+        fit="contain"
+      />
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+
+  <Lightbox slot="after-body" />
+</SiteLayout>

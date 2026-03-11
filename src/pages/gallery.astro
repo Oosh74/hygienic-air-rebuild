@@ -1,0 +1,57 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+import Lightbox from "@components/Site/Lightbox.astro";
+import { galleryPageImages } from "@data/gallery-images";
+
+const heroImageUrl = "/images/heroes/gallery-hero.jpg";
+---
+
+<SiteLayout
+  title="See Our Duct Cleaning Results in Central Florida"
+  description="Browse Hygienic Air project photos from residential, commercial, and industrial air system cleaning jobs across Central Florida."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="Explore Our Work"
+    title="Our Gallery"
+    body="No job is too small or too large for the Hygienic Air team. Explore real project photos from homes, commercial facilities, and industrial environments."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      { href: "/services", label: "View Services", variant: "secondary" },
+    ]}
+  />
+
+  <section class="section section--page-intro">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">The Hygienic Way</p>
+        <h2 class="section-title">Browse Our Projects</h2>
+      </header>
+
+      <div class="rich-text">
+        <p>
+          With over 20 years of experience, our crews deliver thorough and efficient cleaning for
+          homes, commercial institutions, and industrial buildings using proven methods and
+          specialized equipment.
+        </p>
+      </div>
+
+      <div class="gallery-masonry" style="margin-top: var(--space-l);">
+        {galleryPageImages.map((item, idx) => (
+          <a href={item.src} data-lightbox-item data-index={idx} aria-label={`Open gallery image ${idx + 1}`}>
+            <img src={item.src} alt={item.alt} loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+
+  <Lightbox slot="after-body" />
+</SiteLayout>

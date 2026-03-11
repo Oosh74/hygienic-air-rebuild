@@ -1,0 +1,86 @@
+---
+import "@styles/root.less";
+import "@styles/home-modern.css";
+import "@styles/interior-modern.css";
+import { ClientRouter } from "astro:transitions";
+import PasswordGate from "@components/Site/PasswordGate.astro";
+import SiteHeader from "@components/Site/SiteHeader.astro";
+import SiteFooter from "@components/Site/SiteFooter.astro";
+import { primaryNavLinks, type NavLink } from "@data/site-nav";
+import { SITE, BUSINESS, OG } from "@data/client";
+import { getLocalBusinessSchema } from "@js/localBusinessSchema.js";
+
+interface Props {
+  title: string;
+  description: string;
+  imageUrl?: string;
+  overlayHeader?: boolean;
+  navLinks?: NavLink[];
+}
+
+const {
+  title,
+  description,
+  imageUrl = "/images/heroes/home-hero.jpg",
+  overlayHeader = false,
+  navLinks = primaryNavLinks,
+} = Astro.props;
+
+const brandName = BUSINESS.name;
+const normalizedTitle = title.toLowerCase().includes(brandName.toLowerCase()) ? title : `${title} | ${brandName}`;
+const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+const imageAbsoluteUrl = new URL(imageUrl || OG.image, SITE.url).toString();
+const twitterDomain = new URL(SITE.url).hostname;
+const localBusinessSchema = getLocalBusinessSchema(new URL(SITE.url).origin);
+---
+
+<html lang={SITE.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{normalizedTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content={SITE.author} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={normalizedTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:locale" content={OG.locale} />
+    <meta property="og:image" content={imageAbsoluteUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={normalizedTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageAbsoluteUrl} />
+    <meta property="twitter:domain" content={twitterDomain} />
+    <meta property="twitter:url" content={canonical} />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico" />
+    <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+    <meta name="theme-color" content="#233e84" />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <PasswordGate password="indigo" />
+    <ClientRouter />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <SiteHeader navLinks={navLinks} overlay={overlayHeader} />
+
+    <main id="main-content" class="site-main">
+      <slot />
+    </main>
+
+    <SiteFooter navLinks={navLinks} />
+    <slot name="after-body" />
+  </body>
+</html>

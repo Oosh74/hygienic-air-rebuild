@@ -1,0 +1,133 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ServiceIcon from "@components/Site/ServiceIcon.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+
+const heroImageUrl = "/images/heroes/services-hero.jpg";
+
+const serviceCategories = [
+  {
+    title: "Residential Services",
+    icon: "residential" as const,
+    links: [
+      { href: "/residential-air-duct-cleaning", label: "Air Duct Cleaning" },
+      { href: "/residential-dryer-duct-cleaning-repairs", label: "Dryer Vent Cleaning / Repairs" },
+      { href: "/residential-chimney-cleaning-repairs", label: "Chimney Cleaning / Repairs" },
+      { href: "/commercial-overhead-contact-cleaning", label: "High-Dust Zone Contact Cleaning" },
+    ],
+    extras: [
+      "Mini Split / PTAC Unit Cleaning",
+      "Bathroom Exhaust Fan Cleaning",
+      "Boiler Cleaning",
+      "Duct Encapsulation / Coating",
+      "Kitchen Exhaust Cleaning",
+      "Luxury Homes",
+      "Central Vacuum System Cleaning",
+      "New Home Builds Air Duct Cleaning",
+      "Renovations Air Duct Cleaning",
+      "RV Air Duct Cleaning",
+    ],
+  },
+  {
+    title: "Commercial Services",
+    icon: "commercial" as const,
+    links: [
+      { href: "/commercial-air-duct-cleaning", label: "Air Duct Cleaning" },
+      { href: "/commercial-dryer-duct-cleaning-repairs", label: "Dryer Vent Cleaning / Repairs" },
+      { href: "/commercial-chimney-cleaning-repairs", label: "Chimney Cleaning / Repairs" },
+      { href: "/commercial-overhead-contact-cleaning", label: "High-Dust Zone Contact Cleaning" },
+    ],
+    extras: [
+      "Mini Split / PTAC Unit Cleaning",
+      "Exhaust System Cleaning",
+      "Duct Encapsulation / Coating",
+      "Boiler Cleaning",
+      "Kitchen Exhaust Cleaning",
+      "Dust Collection System Cleaning",
+      "Pizza Oven Cleaning",
+      "Commercial Bean Roaster Cleaning",
+    ],
+  },
+  {
+    title: "Industrial Services",
+    icon: "industrial" as const,
+    links: [
+      { href: "/commercial-air-duct-cleaning", label: "Air Duct Cleaning" },
+      { href: "/commercial-dryer-duct-cleaning-repairs", label: "Dryer Vent Cleaning / Repairs" },
+      { href: "/commercial-chimney-cleaning-repairs", label: "Chimney Cleaning / Repairs" },
+      { href: "/commercial-overhead-contact-cleaning", label: "High-Dust Zone Contact Cleaning" },
+    ],
+    extras: [
+      "Exhaust System Cleaning",
+      "Duct Encapsulation / Coating",
+      "Boiler Cleaning",
+      "Dust Collection Systems",
+    ],
+  },
+];
+---
+
+<SiteLayout
+  title="Services | Hygienic Air, Inc"
+  description="Explore residential, commercial, and industrial duct cleaning services from Hygienic Air, Inc across Central Florida."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="Our Services"
+    title="Professional Services We Provide"
+    body="From homes to high-demand commercial and industrial sites, we deliver cleaner air systems with dependable crews, specialized equipment, and clear results."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      {
+        href: "https://client.housecallpro.com/customer_portal/request-link?token=e189962ac4d546e3b9e813944ff69b3c",
+        label: "Book Online",
+        variant: "secondary",
+        external: true,
+      },
+    ]}
+  />
+
+  <section class="section section--services-overview">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Service Categories</p>
+        <h2 class="section-title">Residential, Commercial, and Industrial Solutions</h2>
+        <p>
+          Hygienic Air, Inc provides complete cleaning and restoration services for duct,
+          dryer, and chimney systems throughout Florida.
+        </p>
+      </header>
+
+      <div class="services-categories-grid">
+        {serviceCategories.map((category) => (
+          <article class="service-category-card">
+            <div class="service-category-icon" aria-hidden="true">
+              <ServiceIcon variant={category.icon} />
+            </div>
+
+            <h3>{category.title}</h3>
+
+            <ul class="service-links" aria-label={`${category.title} primary services`}>
+              {category.links.map((item) => (
+                <li><a href={item.href}>{item.label}</a></li>
+              ))}
+            </ul>
+
+            <h4>Other Services Provided</h4>
+            <ul class="service-extras" aria-label={`${category.title} additional services`}>
+              {category.extras.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+</SiteLayout>

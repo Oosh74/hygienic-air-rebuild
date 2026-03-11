@@ -1,0 +1,82 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+import LogoSlider from "@components/Site/LogoSlider.astro";
+import { certificationLogos } from "@data/logo-sliders";
+
+const heroImageUrl = "/images/heroes/certifications-hero.jpg";
+
+const points = [
+  "Recognized certifications and affiliations indicate commitment to proven cleaning standards.",
+  "Technician training and continuing education support safe, effective system cleaning.",
+  "Industry membership reinforces accountability, ethics, and process consistency.",
+  "Credentialed companies are better positioned to deliver complete HVAC cleaning and restoration.",
+];
+---
+
+<SiteLayout
+  title="Our Certifications | Hygienic Air, Inc"
+  description="Explore Hygienic Air's certifications and industry associations that support high-quality duct, dryer vent, and chimney cleaning services."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="About Hygienic Air"
+    title="Certifications and Associations"
+    body="Our credentials reflect a long-term commitment to professional standards, technician training, and quality-driven service delivery."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      { href: "/services", label: "View Services", variant: "secondary" },
+    ]}
+  />
+
+  <section class="section section--page-intro">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">What Certifications Should a Duct Cleaning Company Have?</p>
+        <h2 class="section-title">Choose Proven Standards, Not Promises</h2>
+      </header>
+
+      <div class="split-grid content-grid">
+        <div class="rich-text">
+          <p>
+            When selecting a vent cleaning company, prioritize providers with recognized
+            certifications and affiliations. Qualified organizations enforce standards for HVAC
+            cleaning ethics, methods, and technician competency.
+          </p>
+          <p>
+            Hygienic Air is committed to high standards in both field execution and customer care.
+            Our certifications and memberships support safer, cleaner, and more consistent results.
+          </p>
+        </div>
+
+        <aside class="notice-box">
+          <h3>Why Credentials Matter</h3>
+          <ul class="feature-list">
+            {points.map((item) => <li>{item}</li>)}
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Hygienic Air Credentials</p>
+        <h2 class="section-title">Professional Certifications & Memberships</h2>
+      </header>
+
+      <LogoSlider
+        id="certifications-slider"
+        label="Certification logos slider"
+        items={certificationLogos}
+      />
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+</SiteLayout>

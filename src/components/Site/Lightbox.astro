@@ -1,0 +1,102 @@
+---
+interface Props {
+  selector?: string;
+}
+
+const { selector = "[data-lightbox-item]" } = Astro.props;
+---
+
+<div id="site-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox__close" id="site-lightbox-close" aria-label="Close image">×</button>
+  <button class="lightbox__nav" id="site-lightbox-prev" aria-label="Previous image">‹</button>
+  <img id="site-lightbox-image" alt="" />
+  <button class="lightbox__nav" id="site-lightbox-next" aria-label="Next image">›</button>
+</div>
+
+<script is:inline define:vars={{ selector }}>
+  (() => {
+    const initLightbox = () => {
+      const lightbox = document.getElementById("site-lightbox");
+      const lightboxImage = document.getElementById("site-lightbox-image");
+      const lightboxClose = document.getElementById("site-lightbox-close");
+      const lightboxPrev = document.getElementById("site-lightbox-prev");
+      const lightboxNext = document.getElementById("site-lightbox-next");
+
+      if (!lightbox || !lightboxImage || lightbox.dataset.bound === "true") {
+        return;
+      }
+
+      lightbox.dataset.bound = "true";
+
+      const galleryLinks = Array.from(document.querySelectorAll(selector));
+      if (galleryLinks.length === 0) {
+        return;
+      }
+
+      let lightboxIndex = 0;
+
+      const render = () => {
+        const item = galleryLinks[lightboxIndex];
+        if (!item) return;
+        const src = item.getAttribute("href") || "";
+        const thumb = item.querySelector("img");
+        lightboxImage.setAttribute("src", src);
+        lightboxImage.setAttribute("alt", thumb?.getAttribute("alt") || "Gallery image");
+      };
+
+      const open = (idx) => {
+        lightboxIndex = idx;
+        render();
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+
+      const close = () => {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      };
+
+      galleryLinks.forEach((item, idx) => {
+        item.addEventListener("click", (event) => {
+          event.preventDefault();
+          open(idx);
+        });
+      });
+
+      lightboxPrev?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        lightboxIndex = (lightboxIndex - 1 + galleryLinks.length) % galleryLinks.length;
+        render();
+      });
+
+      lightboxNext?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        lightboxIndex = (lightboxIndex + 1) % galleryLinks.length;
+        render();
+      });
+
+      lightboxClose?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        close();
+      });
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          close();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("is-open")) return;
+        if (event.key === "Escape") close();
+        if (event.key === "ArrowLeft") lightboxPrev?.click();
+        if (event.key === "ArrowRight") lightboxNext?.click();
+      });
+    };
+
+    initLightbox();
+    document.addEventListener("astro:page-load", initLightbox);
+  })();
+</script>

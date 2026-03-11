@@ -1,0 +1,312 @@
+---
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  navLinks: NavLink[];
+  overlay?: boolean;
+}
+
+const { navLinks, overlay = true } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+
+const residentialServiceLinks = [
+  { href: "/residential-air-duct-cleaning", label: "Air Duct Cleaning" },
+  { href: "/residential-dryer-duct-cleaning-repairs", label: "Dryer Vent Cleaning / Repairs" },
+  { href: "/residential-chimney-cleaning-repairs", label: "Chimney Cleaning / Repairs" },
+];
+
+const commercialIndustrialLinks = [
+  { href: "/commercial-air-duct-cleaning", label: "Air Duct Cleaning" },
+  { href: "/commercial-dryer-duct-cleaning-repairs", label: "Dryer Vent Cleaning / Repairs" },
+  { href: "/commercial-chimney-cleaning-repairs", label: "Chimney Cleaning / Repairs" },
+  { href: "/commercial-overhead-contact-cleaning", label: "High-Dust Zone Contact Cleaning" },
+];
+
+const aboutLinks = [
+  { href: "/certifications", label: "Certifications" },
+  { href: "/industry-scams", label: "Industry Scams" },
+  { href: "/faqs", label: "FAQs" },
+  { href: "/our-equipment", label: "Our Equipment" },
+];
+
+const servicePaths = new Set([
+  "/services",
+  ...residentialServiceLinks.map((item) => item.href),
+  ...commercialIndustrialLinks.map((item) => item.href),
+]);
+
+const aboutPaths = new Set([
+  "/about",
+  ...aboutLinks.map((item) => item.href),
+]);
+
+const nestedNavPaths = new Set([...aboutLinks.map((item) => item.href)]);
+
+const isServicesActive =
+  servicePaths.has(currentPath) ||
+  currentPath.startsWith("/residential-") ||
+  currentPath.startsWith("/commercial-");
+
+const isAboutActive = aboutPaths.has(currentPath);
+---
+
+<header id="site-header" class:list={["site-header", { "site-header--overlay": overlay }]}> 
+  <div class="topbar">
+    <div class="u-container topbar__inner">
+      <p>Experience excellence. Book today!</p>
+      <a href="tel:+13528012788" class="topbar__phone">(352) 801-2788</a>
+      <a href="http://wisetack.us/#/mxr0gum/prequalify" target="_blank" rel="noreferrer" class="topbar__pill">Discover Financial Solutions</a>
+      <a href="https://client.housecallpro.com/customer_portal/request-link?token=e189962ac4d546e3b9e813944ff69b3c" target="_blank" rel="noreferrer" class="topbar__pill">Login Customer Portal</a>
+    </div>
+  </div>
+
+  <div class="mainnav">
+    <div class="u-container mainnav__inner">
+      <a href="/" class="brand" aria-label="Hygienic Air home">
+        <img class="brand__logo brand__logo--light" src="https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/logo-white-471w.png" alt="Hygienic Air" width="235" height="67" />
+        <img class="brand__logo brand__logo--dark" src="https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/logo-black-1920w.png" alt="Hygienic Air" width="235" height="67" />
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+        <ul>
+          {navLinks.map((link) => {
+            const linkPath = link.href.replace(/\/+$/, "") || "/";
+
+            if (linkPath === "/services") {
+              return (
+                <li class="nav-item--has-dropdown nav-item--services">
+                  <div class="nav-item-trigger">
+                    <a href="/services" aria-current={isServicesActive ? "page" : undefined} class={isServicesActive ? "is-active" : undefined}>Services</a>
+                    <button
+                      class="nav-link-button"
+                      type="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      aria-controls="services-menu"
+                      data-dropdown-toggle
+                      aria-label="Toggle Services menu"
+                    ></button>
+                  </div>
+
+                  <div id="services-menu" class="nav-dropdown nav-dropdown--services" role="menu">
+                    <div class="nav-dropdown__columns">
+                      <div class="nav-dropdown__column">
+                        <p class="nav-dropdown__group-title">Residential</p>
+                        <ul class="nav-dropdown__group" aria-label="Residential services">
+                          {residentialServiceLinks.map((item) => (
+                            <li>
+                              <a
+                                href={item.href}
+                                role="menuitem"
+                                aria-current={item.href === currentPath ? "page" : undefined}
+                                class={item.href === currentPath ? "is-active" : undefined}
+                              >
+                                {item.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div class="nav-dropdown__column">
+                        <p class="nav-dropdown__group-title">Commercial / Industrial</p>
+                        <ul class="nav-dropdown__group" aria-label="Commercial and industrial services">
+                          {commercialIndustrialLinks.map((item) => (
+                            <li>
+                              <a
+                                href={item.href}
+                                role="menuitem"
+                                aria-current={item.href === currentPath ? "page" : undefined}
+                                class={item.href === currentPath ? "is-active" : undefined}
+                              >
+                                {item.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              );
+            }
+
+            if (linkPath === "/about") {
+              return (
+                <li class="nav-item--has-dropdown nav-item--about">
+                  <div class="nav-item-trigger">
+                    <a href="/about" aria-current={isAboutActive ? "page" : undefined} class={isAboutActive ? "is-active" : undefined}>About Us</a>
+                    <button
+                      class="nav-link-button"
+                      type="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      aria-controls="about-menu"
+                      data-dropdown-toggle
+                      aria-label="Toggle About Us menu"
+                    ></button>
+                  </div>
+
+                  <div id="about-menu" class="nav-dropdown nav-dropdown--about" role="menu">
+                    <ul class="nav-dropdown__group" aria-label="About us pages">
+                      {aboutLinks.map((item) => (
+                        <li>
+                          <a
+                            href={item.href}
+                            role="menuitem"
+                            aria-current={item.href === currentPath ? "page" : undefined}
+                            class={item.href === currentPath ? "is-active" : undefined}
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              );
+            }
+
+            if (nestedNavPaths.has(linkPath)) return null;
+
+            const isActive = linkPath === currentPath;
+            return (
+              <li>
+                <a href={link.href} aria-current={isActive ? "page" : undefined} class={isActive ? "is-active" : undefined}>{link.label}</a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <a href="https://client.housecallpro.com/customer_portal/request-link?token=e189962ac4d546e3b9e813944ff69b3c" target="_blank" rel="noreferrer" class="book-button">Book Now</a>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (() => {
+    let cleanup = null;
+
+    const initSiteHeader = () => {
+      cleanup?.();
+
+      const header = document.getElementById("site-header");
+      if (!header) return;
+
+      const topbar = header.querySelector(".topbar");
+      const navToggle = header.querySelector("#nav-toggle");
+      const primaryNav = header.querySelector("#primary-nav");
+      const dropdownItems = Array.from(primaryNav?.querySelectorAll(".nav-item--has-dropdown") || []);
+      const mobileQuery = window.matchMedia("(max-width: 68rem)");
+
+      const syncTopbarHeight = () => {
+        const height = topbar?.getBoundingClientRect().height || 44;
+        document.documentElement.style.setProperty("--topbar-height", `${Math.round(height)}px`);
+      };
+
+      const onScroll = () => {
+        header.classList.toggle("is-scrolled", window.scrollY > 12);
+      };
+
+      const closeAllDropdowns = (except) => {
+        dropdownItems.forEach((item) => {
+          if (except && item === except) return;
+          item.classList.remove("is-open");
+          const button = item.querySelector("[data-dropdown-toggle]");
+          button?.setAttribute("aria-expanded", "false");
+        });
+      };
+
+      const setNavToggleA11y = (isOpen) => {
+        navToggle?.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      };
+
+      const closeNav = () => {
+        navToggle?.setAttribute("aria-expanded", "false");
+        setNavToggleA11y(false);
+        primaryNav?.classList.remove("is-open");
+        document.body.classList.remove("nav-open");
+        closeAllDropdowns();
+      };
+
+      const onToggleClick = () => {
+        const isExpanded = navToggle?.getAttribute("aria-expanded") === "true";
+        const nextOpen = !isExpanded;
+        navToggle?.setAttribute("aria-expanded", String(nextOpen));
+        setNavToggleA11y(nextOpen);
+        primaryNav?.classList.toggle("is-open", nextOpen);
+        document.body.classList.toggle("nav-open", nextOpen);
+        if (isExpanded) closeAllDropdowns();
+      };
+
+      const onPrimaryNavClick = (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        const dropdownButton = target.closest("[data-dropdown-toggle]");
+        if (dropdownButton) {
+          if (!mobileQuery.matches) return;
+          event.preventDefault();
+          event.stopPropagation();
+          const dropdownItem = dropdownButton.closest(".nav-item--has-dropdown");
+          const isExpanded = dropdownButton.getAttribute("aria-expanded") === "true";
+          closeAllDropdowns(dropdownItem);
+          dropdownButton.setAttribute("aria-expanded", String(!isExpanded));
+          dropdownItem?.classList.toggle("is-open", !isExpanded);
+          return;
+        }
+
+        const link = target.closest("a");
+        if (link && mobileQuery.matches) closeNav();
+      };
+
+      const onDocumentClick = (event) => {
+        if (!mobileQuery.matches) return;
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+        if (!header.contains(target)) {
+          closeNav();
+          return;
+        }
+        if (!primaryNav?.contains(target)) closeAllDropdowns();
+      };
+
+      const onResize = () => {
+        syncTopbarHeight();
+        if (!mobileQuery.matches) closeNav();
+      };
+
+      navToggle?.addEventListener("click", onToggleClick);
+      primaryNav?.addEventListener("click", onPrimaryNavClick);
+      document.addEventListener("click", onDocumentClick);
+      window.addEventListener("resize", onResize);
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      syncTopbarHeight();
+      onScroll();
+      setNavToggleA11y(false);
+      closeAllDropdowns();
+
+      cleanup = () => {
+        navToggle?.removeEventListener("click", onToggleClick);
+        primaryNav?.removeEventListener("click", onPrimaryNavClick);
+        document.removeEventListener("click", onDocumentClick);
+        window.removeEventListener("resize", onResize);
+        window.removeEventListener("scroll", onScroll);
+      };
+    };
+
+    initSiteHeader();
+    document.addEventListener("astro:page-load", initSiteHeader);
+  })();
+</script>

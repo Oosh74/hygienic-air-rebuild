@@ -1,20 +1,62 @@
 ---
-// Utils
-import { getImage } from "astro:assets";
+import SiteLayout from "@layouts/SiteLayout.astro";
+import HeroSection from "@components/Site/HeroSection.astro";
+import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
+import TestimonialSlider from "@components/Site/TestimonialSlider.astro";
+import LogoSlider from "@components/Site/LogoSlider.astro";
+import { testimonials } from "@data/reviews";
+import { reviewPlatformLogos } from "@data/logo-sliders";
 
-// Components
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Banner from "@components/Banner/Banner.astro";
-import ReviewsSection from "@components/Reviews/Reviews.astro";
-import CTA from "@components/CTA/CTASimple.astro";
-
-// Images
-import landingImage from "@assets/images/landing.jpg";
-const optimizedImage = await getImage({ src: landingImage, format: "webp" });
+const heroImageUrl = "/images/heroes/reviews-hero.jpg";
 ---
 
-<BaseLayout title="Reviews" description="Meta description for the page" heroImage={optimizedImage}>
-	<Banner title="Reviews" image={optimizedImage} />
-	<ReviewsSection />
-	<CTA />
-</BaseLayout>
+<SiteLayout
+  title="Reviews | Customer Testimonials"
+  description="Read real customer reviews of Hygienic Air services and see why homeowners and businesses trust our team across Florida."
+  imageUrl={heroImageUrl}
+  overlayHeader={true}
+>
+  <HeroSection
+    align="left-bottom"
+    imageUrl={heroImageUrl}
+    topper="Customer Feedback"
+    title="Testimonials"
+    body="Our team is known for responsive scheduling, professional crews, and detailed work that leaves customers confident in their air quality improvements."
+    actions={[
+      { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
+      { href: "/gallery", label: "View Gallery", variant: "secondary" },
+    ]}
+  />
+
+  <section class="section section--reviews">
+    <div class="u-container reviews-grid">
+      <div class="reviews-copy">
+        <p class="section-topper">Satisfied Clients Speak</p>
+        <h2 class="section-title">Why Customers Choose Hygienic Air</h2>
+        <p>
+          With strong ratings across Google, Facebook, BBB, and other platforms, our team has
+          earned long-term trust through consistency, communication, and quality workmanship.
+        </p>
+      </div>
+
+      <TestimonialSlider id="reviews-page-slider" label="Customer testimonials" items={testimonials} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Review Platforms</p>
+        <h2 class="section-title">Where Customers Share Their Experience</h2>
+      </header>
+
+      <LogoSlider
+        id="review-platforms-slider"
+        label="Review platforms slider"
+        items={reviewPlatformLogos}
+      />
+    </div>
+  </section>
+
+  <ContactOptionsSection />
+</SiteLayout>

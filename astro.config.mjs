@@ -1,13 +1,17 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import icon from "astro-icon";
-
 export default defineConfig({
-	site: "https://www.yourwebsite.com", // update me!
+	site: "https://www.hygienicairplus.com",
+	build: {
+		format: "file",
+	},
+	vite: {
+		optimizeDeps: {
+			entries: ["src/**/*.{astro,js,jsx,ts,tsx,md,mdx}"],
+		},
+	},
 	integrations: [
-		icon(),
 		sitemap({
-			filter: (page) => !page.includes("/admin"),
 			changefreq: "weekly",
 			priority: 0.7,
 		}),
