@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
+import ServiceIcon from "@components/Site/ServiceIcon.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
@@ -23,37 +24,62 @@ const airQualityFacts = [
   "Dirty duct systems can recirculate contaminants 5 to 7 times per hour.",
 ];
 
+const whyHomeownersBook = [
+  "Household allergy and asthma sensitivity concerns",
+  "Pet dander, dust, and odor buildup inside the HVAC system",
+  "Post-construction or renovation particulate cleanup",
+  "Long intervals between professional duct cleanings",
+];
+
+const impacts = [
+  {
+    title: "Better Indoor Air Quality",
+    body: "Cleaning helps reduce recirculation of allergens and airborne debris trapped in ductwork.",
+    icon: "residential" as const,
+  },
+  {
+    title: "Improved HVAC Efficiency",
+    body: "Removing buildup from system pathways can improve airflow and reduce equipment strain.",
+    icon: "commercial" as const,
+  },
+  {
+    title: "Odor Reduction",
+    body: "Dust and residue in ducts can hold lingering odors that return whenever the system runs.",
+    icon: "industrial" as const,
+  },
+];
+
 const galleryItems = [
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/1-Jun-21--2024-22-16-44-vgAF-1920w.jpg",
+    src: "/images/cdn-migrated/1-Jun-21--2024-22-16-44-vgAF-1920w.jpg",
     alt: "Residential HVAC ductwork ready for cleaning.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/3-Jun-18--2024-20-42-21-aM47-1920w.jpg",
+    src: "/images/cdn-migrated/3-Jun-18--2024-20-42-21-aM47-1920w.jpg",
     alt: "Technician working on residential duct cleaning setup.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/2-Jun-21--2024-22-16-47-hqYK-1920w.jpg",
+    src: "/images/cdn-migrated/2-Jun-21--2024-22-16-47-hqYK-1920w.jpg",
     alt: "Air duct interior and access panel during service.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/4-Jun-21--2024-22-17-47-Tost-1920w.jpg",
+    src: "/images/cdn-migrated/4-Jun-21--2024-22-17-47-Tost-1920w.jpg",
     alt: "Duct cleaning equipment and hoses at residential jobsite.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/candle-filter-1920w.jpg",
+    src: "/images/cdn-migrated/candle-filter-1920w.jpg",
     alt: "Air filter with soot buildup demonstrating contamination.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/20211101_174802-be64c3c5-1920w.jpg",
+    src: "/images/cdn-migrated/20211101_174802-be64c3c5-1920w.jpg",
     alt: "Residential vent cleaning in progress.",
   },
 ];
 ---
 
 <SiteLayout
-  title="Air Duct Cleaning Services"
-  description="Professional residential air duct cleaning services for cleaner indoor air, improved HVAC efficiency, and healthier homes across Central Florida."
+  title="Residential Air Duct Cleaning in Central Florida"
+  description="Professional residential air duct cleaning services in Central Florida for healthier indoor air, improved HVAC performance, and cleaner home airflow."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -93,6 +119,11 @@ const galleryItems = [
             When the system runs, those pollutants can recirculate throughout the home.
             Professional cleaning helps reduce that load and supports long-term equipment health.
           </p>
+          <p>
+            Our full-service approach focuses on complete source removal, not surface-level
+            blow-and-go cleaning, so contaminants are removed at the system and captured away from
+            your living space.
+          </p>
         </div>
 
         <aside class="notice-box">
@@ -120,31 +151,28 @@ const galleryItems = [
       </header>
 
       <div class="highlight-grid">
-        <article class="highlight-card">
-          <h3>Better Indoor Air Quality</h3>
-          <p>
-            Cleaning helps reduce recirculation of allergens and airborne debris trapped in
-            ductwork.
-          </p>
-        </article>
-        <article class="highlight-card">
-          <h3>Improved HVAC Efficiency</h3>
-          <p>
-            Removing buildup from system pathways can improve airflow and reduce equipment strain.
-          </p>
-        </article>
-        <article class="highlight-card">
-          <h3>Odor Reduction</h3>
-          <p>
-            Dust and residue in ducts can hold lingering odors that return whenever the system runs.
-          </p>
-        </article>
+        {impacts.map((item) => (
+          <article class="highlight-card">
+            <div class="card-icon-wrap" aria-hidden="true">
+              <ServiceIcon variant={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
       </div>
 
       <div class="notice-box" style="margin-top: var(--space-l);">
         <h3>Indoor Air Quality Facts</h3>
         <ul class="feature-list">
           {airQualityFacts.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Common Reasons Homeowners Schedule Service</h3>
+        <ul class="feature-list">
+          {whyHomeownersBook.map((item) => <li>{item}</li>)}
         </ul>
       </div>
     </div>

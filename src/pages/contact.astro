@@ -2,16 +2,15 @@
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
 
-const heroImageUrl =
-  "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Untitled+design+-+2024-04-24T021534.002-1920w.jpg";
+const heroImageUrl = "/images/heroes/services-hero.jpg";
 
 const mapEmbedSrc =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.452285900647!2d-81.72405632450307!3d28.526122175723025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7bd3a9d843b11%3A0xc2a2c16e7adc5be2!2sHygienic%20Air%20Plus!5e0!3m2!1sen!2sus!4v1773173616641!5m2!1sen!2sus";
 ---
 
 <SiteLayout
-  title="Contact | Hygienic Air, Inc"
-  description="Contact Hygienic Air for residential and commercial duct, dryer vent, chimney, and overhead cleaning services in Florida."
+  title="Contact Hygienic Air Plus | Schedule Service"
+  description="Contact Hygienic Air to schedule residential or commercial air duct, dryer vent, chimney, and high-dust cleaning services in Central Florida."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -43,6 +42,7 @@ const mapEmbedSrc =
         <h3>Contact Details</h3>
         <p><strong>Phone:</strong> <a href="tel:+13528012788">(352) 801-2788</a></p>
         <p><strong>Email:</strong> <a href="mailto:info@hygienicairplus.com">info@hygienicairplus.com</a></p>
+        <p><strong>Hours:</strong> Mon-Fri 7:00 am - 8:00 pm</p>
         <p>
           <strong>Address:</strong><br />
           1880 Nature Cove Ln<br />
@@ -62,6 +62,18 @@ const mapEmbedSrc =
           ></iframe>
         </div>
       </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <div class="notice-box">
+        <h3>Service Coverage</h3>
+        <p>
+          We serve homeowners and businesses across Central Florida markets including Orlando,
+          Tampa, Lakeland, Ocala, Daytona, Melbourne, Spring Hill, and surrounding communities.
+        </p>
+      </div>
     </div>
   </section>
 </SiteLayout>

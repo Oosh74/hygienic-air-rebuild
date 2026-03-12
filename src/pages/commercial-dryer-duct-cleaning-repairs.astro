@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
+import ServiceIcon from "@components/Site/ServiceIcon.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
@@ -33,37 +34,55 @@ const clientTypes = [
   "Commercial properties with shared laundry systems",
 ];
 
+const processCards = [
+  {
+    title: "Certified Expertise",
+    body: "Our teams include certified dryer vent technicians with focused training in safety, airflow, and commercial system restoration.",
+    icon: "residential" as const,
+  },
+  {
+    title: "Industrial-Grade Equipment",
+    body: "We use vacuum and agitation systems built for high-volume vent lines and complex commercial pathways.",
+    icon: "commercial" as const,
+  },
+  {
+    title: "Actionable Reporting",
+    body: "We identify restrictions and component issues and provide recommendations for safer, longer-term operation.",
+    icon: "industrial" as const,
+  },
+];
+
 const galleryItems = [
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-06-17-203508-1-1920w.png",
+    src: "/images/cdn-migrated/Screenshot-2024-06-17-203508-1-1920w.png",
     alt: "Dryer vent cover option for commercial installations.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-06-17-203508-2-1920w.png",
+    src: "/images/cdn-migrated/Screenshot-2024-06-17-203508-2-1920w.png",
     alt: "Commercial vent termination detail.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/453359145_1916531795523513_2013473620363757831_n-17b9c4cc-1920w.jpg",
+    src: "/images/cdn-migrated/453359145_1916531795523513_2013473620363757831_n-17b9c4cc-1920w.jpg",
     alt: "Commercial dryer vent cleaning project.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/451691288_1212672889894340_2174070438138457470_n-62ae80e1-1920w.jpg",
+    src: "/images/cdn-migrated/451691288_1212672889894340_2174070438138457470_n-62ae80e1-1920w.jpg",
     alt: "Technician servicing multi-unit dryer exhaust lines.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/commercial-dryer-vent-cleaning-before-94237355-1920w.jpg",
+    src: "/images/cdn-migrated/commercial-dryer-vent-cleaning-before-94237355-1920w.jpg",
     alt: "Before photo of lint buildup in commercial dryer vent.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/commercial-dryer-vent-cleaning-after-1f3be960-1920w.jpg",
+    src: "/images/cdn-migrated/commercial-dryer-vent-cleaning-after-1f3be960-1920w.jpg",
     alt: "After photo of cleaned commercial dryer vent.",
   },
 ];
 ---
 
 <SiteLayout
-  title="Commercial Dryer Duct Cleaning | Hygienic Air, Inc"
-  description="Commercial and industrial dryer duct cleaning and repair services designed to reduce fire risk and improve equipment efficiency."
+  title="Commercial Dryer Vent Cleaning & Repair in Central Florida"
+  description="Commercial and industrial dryer vent cleaning and repair services in Central Florida to reduce fire risk, improve airflow, and support safer operations."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -123,29 +142,15 @@ const galleryItems = [
       </header>
 
       <div class="info-card-grid">
-        <article class="info-card">
-          <h3>Certified Expertise</h3>
-          <p>
-            Our teams include certified dryer vent technicians with focused training in safety,
-            airflow, and commercial system restoration.
-          </p>
-        </article>
-
-        <article class="info-card">
-          <h3>Industrial-Grade Equipment</h3>
-          <p>
-            We use vacuum and agitation systems built for high-volume vent lines and complex
-            commercial pathways.
-          </p>
-        </article>
-
-        <article class="info-card">
-          <h3>Actionable Reporting</h3>
-          <p>
-            We identify restrictions and component issues and provide recommendations for safer,
-            longer-term operation.
-          </p>
-        </article>
+        {processCards.map((item) => (
+          <article class="info-card">
+            <div class="card-icon-wrap" aria-hidden="true">
+              <ServiceIcon variant={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
       </div>
 
       <div class="notice-box" style="margin-top: var(--space-l);">

@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
+import ServiceIcon from "@components/Site/ServiceIcon.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 
 const heroImageUrl = "/images/heroes/high-dust-zone-hero.jpg";
@@ -9,26 +10,32 @@ const whatWeClean = [
   {
     title: "Wall Niche Detail",
     body: "Architectural cutouts and decorative recesses where dust, cobwebs, and debris quietly collect.",
+    icon: "residential" as const,
   },
   {
     title: "Ceiling Fans & Hardware",
     body: "Blades, housings, and mounts that redistribute buildup throughout occupied spaces.",
+    icon: "commercial" as const,
   },
   {
     title: "High Cabinet Tops",
     body: "Upper surfaces in kitchens, laundry rooms, and service areas that trap fine particulate matter.",
+    icon: "industrial" as const,
   },
   {
     title: "Beams & High Ledges",
     body: "Exposed structural and decorative elements that are difficult to reach during routine cleaning.",
+    icon: "commercial" as const,
   },
   {
     title: "Transoms & Elevated Trim",
     body: "High window and trim details where pollen and dust accumulate over long periods.",
+    icon: "residential" as const,
   },
   {
     title: "Additional High-Dust Surfaces",
     body: "Service can be scoped for specialty overhead zones based on facility layout and use.",
+    icon: "industrial" as const,
   },
 ];
 
@@ -50,8 +57,8 @@ const whoBenefits = [
 ---
 
 <SiteLayout
-  title="Commercial Overhead Cleaning | Hygienic Air, Inc"
-  description="High-dust zone contact cleaning for elevated surfaces that affect indoor air quality, cleanliness, and presentation in homes and businesses."
+  title="High-Dust Zone & Combustible Dust Cleaning in Central Florida"
+  description="High-dust zone and combustible dust contact cleaning services in Central Florida for elevated surfaces that affect indoor air quality, safety, and facility cleanliness."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -113,6 +120,9 @@ const whoBenefits = [
       <div class="tile-grid">
         {whatWeClean.map((item) => (
           <article class="tile-card">
+            <div class="card-icon-wrap" aria-hidden="true">
+              <ServiceIcon variant={item.icon} />
+            </div>
             <h3>{item.title}</h3>
             <p>{item.body}</p>
           </article>

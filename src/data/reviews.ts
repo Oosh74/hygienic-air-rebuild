@@ -28,27 +28,27 @@ export const testimonials: Testimonial[] = [
 
 export const reviewBadges = [
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-08-19-173308-1-1920w.png",
+    src: "/images/cdn-migrated/Screenshot-2024-08-19-173308-1-1920w.png",
     alt: "BBB Accredited Business",
     href: "https://www.bbb.org/",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-08-19-173308-2-1920w.png",
+    src: "/images/cdn-migrated/Screenshot-2024-08-19-173308-2-1920w.png",
     alt: "Google reviews",
     href: "https://www.google.com/",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-08-19-173308-3-1920w.png",
+    src: "/images/cdn-migrated/Screenshot-2024-08-19-173308-3-1920w.png",
     alt: "Facebook reviews",
     href: "https://www.facebook.com/",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-08-19-173413-1920w.png",
+    src: "/images/cdn-migrated/Screenshot-2024-08-19-173413-1920w.png",
     alt: "NiceJob reviews",
     href: "https://nicejob.com/",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-08-19-173609-1920w.png",
+    src: "/images/cdn-migrated/Screenshot-2024-08-19-173609-1920w.png",
     alt: "Angi reviews",
     href: "https://www.angi.com/",
   },

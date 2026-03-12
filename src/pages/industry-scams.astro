@@ -28,11 +28,18 @@ const pricingTruths = [
   "Ultra-low offers often recover costs through hidden fees and upselling.",
   "A thorough cleaning should be transparent, documented, and clearly scoped.",
 ];
+
+const smartQuestions = [
+  "What exactly is included in your cleaning scope beyond the vents?",
+  "How long has your company provided duct cleaning specifically?",
+  "Can you share insurance details and recent customer references?",
+  "Will you provide final pricing in writing before the work starts?",
+];
 ---
 
 <SiteLayout
-  title="Avoid Industry Scams | Hygienic Air, Inc"
-  description="Learn how to spot common air duct cleaning scams, evaluate providers, and protect your home with informed service decisions."
+  title="Air Duct Cleaning Scam Tips | Hygienic Air Plus"
+  description="Learn how to identify air duct cleaning scams, compare providers, and protect your home or business with transparent service decisions."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -97,6 +104,13 @@ const pricingTruths = [
       <div class="notice-box">
         <ul class="feature-list">
           {pricingTruths.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Questions to Ask Before You Book</h3>
+        <ul class="feature-list">
+          {smartQuestions.map((item) => <li>{item}</li>)}
         </ul>
       </div>
     </div>

@@ -721,7 +721,7 @@ body.nav-open {
 
 .stars {
   color: #facc15;
-  font-size: clamp(1.35rem, 1.1rem + 0.7vw, 1.8rem);
+  font-size: clamp(1.85rem, 1.5rem + 1.05vw, 2.5rem);
   letter-spacing: 0.08em;
   margin: 0 0 var(--space-xs);
 }

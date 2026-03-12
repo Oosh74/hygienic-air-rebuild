@@ -92,6 +92,19 @@
   padding: var(--space-m);
 }
 
+.card-icon-wrap {
+  width: 3.25rem;
+  height: 3.25rem;
+  color: #233e84;
+  margin-bottom: var(--space-s);
+}
+
+.card-icon-wrap .service-icon-svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
 .highlight-card h3,
 .info-card h3,
 .tile-card h3,

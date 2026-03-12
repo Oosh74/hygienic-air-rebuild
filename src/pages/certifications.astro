@@ -13,11 +13,18 @@ const points = [
   "Industry membership reinforces accountability, ethics, and process consistency.",
   "Credentialed companies are better positioned to deliver complete HVAC cleaning and restoration.",
 ];
+
+const credentialHighlights = [
+  "NADCA-aligned indoor air system cleaning standards",
+  "CSIA and NCSG chimney and venting best-practice awareness",
+  "NFPA-informed fire and life-safety service recommendations",
+  "EPA-informed indoor air quality and contaminant-control practices",
+];
 ---
 
 <SiteLayout
-  title="Our Certifications | Hygienic Air, Inc"
-  description="Explore Hygienic Air's certifications and industry associations that support high-quality duct, dryer vent, and chimney cleaning services."
+  title="Air Duct Cleaning Certifications | Hygienic Air Plus"
+  description="Review Hygienic Air certifications, memberships, and industry-aligned standards supporting duct, dryer vent, and chimney cleaning services in Central Florida."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -59,6 +66,13 @@ const points = [
             {points.map((item) => <li>{item}</li>)}
           </ul>
         </aside>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Credential Focus Areas</h3>
+        <ul class="feature-list">
+          {credentialHighlights.map((item) => <li>{item}</li>)}
+        </ul>
       </div>
     </div>
   </section>

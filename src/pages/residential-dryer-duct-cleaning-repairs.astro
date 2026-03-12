@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
+import ServiceIcon from "@components/Site/ServiceIcon.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
@@ -25,37 +26,55 @@ const processSteps = [
   "Document findings and leave the area clean.",
 ];
 
+const processCards = [
+  {
+    title: "Certified Technicians",
+    body: "Our team includes CSIA-certified dryer duct technicians with focused training in fire prevention and safe vent restoration.",
+    icon: "residential" as const,
+  },
+  {
+    title: "High-Powered Equipment",
+    body: "We use professional vacuum and agitation systems to remove packed lint that basic tools or leaf-blower methods can leave behind.",
+    icon: "commercial" as const,
+  },
+  {
+    title: "Safety & Compliance Focus",
+    body: "We inspect vent terminations and provide practical recommendations for compliant covers and safer long-term operation.",
+    icon: "industrial" as const,
+  },
+];
+
 const galleryItems = [
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/aHR0cHM6Ly9jb21wYW55Y2FtLXBlbmRpbmcuczMuYW1hem9uYXdzLmNvbS83N2RmNDE2Mi00YjNiLTQxMzYtYmFmNy0yZjZiNjc4ZGQ5MDIuanBn-b997edd0-1920w.jpeg",
+    src: "/images/cdn-migrated/aHR0cHM6Ly9jb21wYW55Y2FtLXBlbmRpbmcuczMuYW1hem9uYXdzLmNvbS83N2RmNDE2Mi00YjNiLTQxMzYtYmFmNy0yZjZiNjc4ZGQ5MDIuanBn-b997edd0-1920w.jpeg",
     alt: "Dryer vent service setup at a residential property.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/20210106_090947-16042c8e-5931f315-1920w.jpg",
+    src: "/images/cdn-migrated/20210106_090947-16042c8e-5931f315-1920w.jpg",
     alt: "Technician inspecting a residential dryer vent exit.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/336761177_750350489820967_6735450353802090564_n-8431bf98-1920w.jpg",
+    src: "/images/cdn-migrated/336761177_750350489820967_6735450353802090564_n-8431bf98-1920w.jpg",
     alt: "Dryer duct cleaning tools and equipment in use.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/337032203_1291816934704016_6389814168425175620_n-619d12cf-1920w.jpg",
+    src: "/images/cdn-migrated/337032203_1291816934704016_6389814168425175620_n-619d12cf-1920w.jpg",
     alt: "Team performing professional dryer vent cleaning.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/goose-neck-lint-blockage-838f5778-da2a2bf3-1920w.jpg",
+    src: "/images/cdn-migrated/goose-neck-lint-blockage-838f5778-da2a2bf3-1920w.jpg",
     alt: "Example of severe lint blockage in a dryer vent.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/Screenshot-2024-06-17-203508-1-1920w.png",
+    src: "/images/cdn-migrated/Screenshot-2024-06-17-203508-1-1920w.png",
     alt: "Residential dryer vent cover option.",
   },
 ];
 ---
 
 <SiteLayout
-  title="Residential Dryer Duct Cleaning | Hygienic Air, Inc"
-  description="Certified residential dryer duct cleaning and repair services focused on fire prevention, safer operation, and efficient drying performance."
+  title="Residential Dryer Vent Cleaning & Repair in Central Florida"
+  description="Certified residential dryer vent cleaning and repair services in Central Florida focused on fire prevention, safer dryer operation, and efficient airflow."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -118,29 +137,15 @@ const galleryItems = [
       </header>
 
       <div class="info-card-grid">
-        <article class="info-card">
-          <h3>Certified Technicians</h3>
-          <p>
-            Our team includes CSIA-certified dryer duct technicians with focused training in fire
-            prevention and safe vent restoration.
-          </p>
-        </article>
-
-        <article class="info-card">
-          <h3>High-Powered Equipment</h3>
-          <p>
-            We use professional vacuum and agitation systems to remove packed lint that basic tools
-            or leaf-blower methods can leave behind.
-          </p>
-        </article>
-
-        <article class="info-card">
-          <h3>Safety & Compliance Focus</h3>
-          <p>
-            We inspect vent terminations and provide practical recommendations for compliant covers
-            and safer long-term operation.
-          </p>
-        </article>
+        {processCards.map((item) => (
+          <article class="info-card">
+            <div class="card-icon-wrap" aria-hidden="true">
+              <ServiceIcon variant={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
       </div>
 
       <div class="notice-box" style="margin-top: var(--space-l);">

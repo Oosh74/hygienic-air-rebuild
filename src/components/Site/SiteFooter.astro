@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import reviewBbbLogo from "@assets/images/logos/review-bbb.png";
+
 interface NavLink {
   href: string;
   label: string;
@@ -28,7 +31,7 @@ const businessHours = [
       <a href="/" aria-label="Hygienic Air home">
         <img
           class="site-footer__brand-logo"
-          src="https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/logo-white-471w.png"
+          src="/images/cdn-migrated/logo-white-471w.png"
           alt="Hygienic Air"
           width="320"
           height="91"
@@ -44,11 +47,11 @@ const businessHours = [
           <span class="social-icon social-icon--google" aria-hidden="true">G</span>
         </a>
         <a href="https://www.bbb.org/us/fl/clermont/profile/air-duct-cleaning/hygienic-air-plus-0733-90445717" target="_blank" rel="noreferrer" aria-label="View BBB accreditation">
-          <img
-            src="https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/BBB-Accredited-Business-176w.png"
+          <Image
+            src={reviewBbbLogo}
             alt="BBB Accredited Business"
-            width="96"
-            height="36"
+            width={96}
+            height={36}
           />
         </a>
       </div>

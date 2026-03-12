@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
+import ServiceIcon from "@components/Site/ServiceIcon.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
@@ -27,48 +28,58 @@ const impacts = [
   {
     title: "Indoor Air Quality",
     body: "Contaminants in ductwork can contribute to poor indoor air quality and occupant discomfort.",
+    icon: "residential" as const,
   },
   {
     title: "Workforce Performance",
     body: "Cleaner HVAC systems support healthier environments, helping reduce disruptions and absenteeism.",
+    icon: "commercial" as const,
   },
   {
     title: "System Efficiency",
     body: "Cleaner airflow pathways reduce strain on HVAC components and support efficient operation.",
+    icon: "industrial" as const,
   },
+];
+
+const facilityTypes = [
+  "Office buildings and business parks",
+  "Retail, hospitality, and mixed-use properties",
+  "Healthcare and educational facilities",
+  "Industrial operations and manufacturing spaces",
 ];
 
 const galleryItems = [
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/453337629_1677824812952250_4148574405933219806_n-a2974961-1920w.jpg",
+    src: "/images/cdn-migrated/453337629_1677824812952250_4148574405933219806_n-a2974961-1920w.jpg",
     alt: "Commercial duct cleaning at an industrial facility.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/453304724_2202899220067420_5575271529760227530_n-ae3f3a79-1920w.jpg",
+    src: "/images/cdn-migrated/453304724_2202899220067420_5575271529760227530_n-ae3f3a79-1920w.jpg",
     alt: "Technicians servicing large commercial duct runs.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/453293531_997099555218148_5821268677402918691_n-2a6523f0-1920w.jpg",
+    src: "/images/cdn-migrated/453293531_997099555218148_5821268677402918691_n-2a6523f0-1920w.jpg",
     alt: "Commercial airflow system cleaning equipment.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/451622238_1153893099170938_3626138309021834960_n-7bffb50a-a7f4bb20-1920w.jpg",
+    src: "/images/cdn-migrated/451622238_1153893099170938_3626138309021834960_n-7bffb50a-a7f4bb20-1920w.jpg",
     alt: "Crew performing duct cleaning in a commercial building.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/453349336_474491078626899_5796806996728609189_n-c74a6e71-1920w.jpg",
+    src: "/images/cdn-migrated/453349336_474491078626899_5796806996728609189_n-c74a6e71-1920w.jpg",
     alt: "Facility ductwork cleaning project.",
   },
   {
-    src: "https://lirp.cdn-website.com/e5bcce9c/dms3rep/multi/opt/453277604_1033712348351469_5573308226265591582_n-304f417c-1920w.jpg",
+    src: "/images/cdn-migrated/453277604_1033712348351469_5573308226265591582_n-304f417c-1920w.jpg",
     alt: "High-capacity duct cleaning setup at commercial site.",
   },
 ];
 ---
 
 <SiteLayout
-  title="Top Commercial Air Duct Cleaning | Hygienic Air, Inc"
-  description="Commercial and industrial air duct cleaning for better indoor air quality, cleaner operations, and dependable HVAC system performance."
+  title="Commercial Air Duct Cleaning in Central Florida"
+  description="Commercial and industrial air duct cleaning services in Central Florida for improved indoor air quality, healthier facilities, and HVAC performance."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -129,6 +140,9 @@ const galleryItems = [
       <div class="highlight-grid">
         {impacts.map((item) => (
           <article class="highlight-card">
+            <div class="card-icon-wrap" aria-hidden="true">
+              <ServiceIcon variant={item.icon} />
+            </div>
             <h3>{item.title}</h3>
             <p>{item.body}</p>
           </article>
@@ -139,6 +153,13 @@ const galleryItems = [
         <h3>Air Duct Cleaning Process</h3>
         <ul class="feature-list">
           {processHighlights.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Facilities We Commonly Serve</h3>
+        <ul class="feature-list">
+          {facilityTypes.map((item) => <li>{item}</li>)}
         </ul>
       </div>
     </div>

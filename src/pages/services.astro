@@ -66,11 +66,26 @@ const serviceCategories = [
     ],
   },
 ];
+
+const propertyTypes = [
+  "Single-family homes, condos, and luxury homes",
+  "Apartment communities and multi-family properties",
+  "Restaurants, hospitality, and retail businesses",
+  "Healthcare, education, and mixed-use facilities",
+  "Industrial and high-dust production environments",
+];
+
+const serviceApproach = [
+  "Scope and recommendations based on system type and contamination level",
+  "High-powered source-removal equipment with containment-focused workflows",
+  "Clear communication before, during, and after each service visit",
+  "Flexible scheduling for occupied homes and active facilities",
+];
 ---
 
 <SiteLayout
-  title="Services | Hygienic Air, Inc"
-  description="Explore residential, commercial, and industrial duct cleaning services from Hygienic Air, Inc across Central Florida."
+  title="Air Duct, Dryer Vent & Chimney Cleaning Services"
+  description="Explore residential, commercial, and industrial air duct, dryer vent, chimney, and high-dust cleaning services available across Central Florida."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -126,6 +141,24 @@ const serviceCategories = [
           </article>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container split-grid">
+      <article class="notice-box">
+        <h3>Property Types We Serve</h3>
+        <ul class="feature-list">
+          {propertyTypes.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="notice-box">
+        <h3>How We Deliver Service</h3>
+        <ul class="feature-list">
+          {serviceApproach.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
     </div>
   </section>
 

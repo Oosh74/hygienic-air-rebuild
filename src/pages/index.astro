@@ -50,11 +50,25 @@ const serviceAreas = [
   "Palm Coast Market",
   "DeLand / Deltona Market",
 ];
+
+const trustPoints = [
+  "Serving Florida homes and businesses since 2002.",
+  "Certified teams for air duct, dryer vent, and chimney cleaning.",
+  "High-powered truck-mounted vacuum equipment for source-removal cleaning.",
+  "Before-and-after project documentation available.",
+];
+
+const specialtyServices = [
+  "Air duct cleaning for residential, commercial, and industrial systems",
+  "Dryer duct cleaning and repairs focused on fire prevention",
+  "Chimney cleaning and repair support for safer venting",
+  "High-dust zone and combustible dust contact cleaning",
+];
 ---
 
 <SiteLayout
-  title="Central Florida's Leading Duct Cleaning Experts"
-  description="Hygienic Air, Inc specializes in duct cleaning services for homes and businesses in Central Florida."
+  title="Air Duct, Dryer Vent & Chimney Cleaning in Central Florida"
+  description="Hygienic Air, Inc provides residential, commercial, and industrial air duct, dryer vent, chimney, and high-dust cleaning services across Central Florida."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -112,6 +126,31 @@ const serviceAreas = [
             <img src={item.src} alt={item.alt} loading="lazy" />
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Why Homeowners & Businesses Choose Us</p>
+        <h2 class="section-title">Trusted Results, Specialized Services, and Clear Communication</h2>
+      </header>
+
+      <div class="split-grid">
+        <article class="notice-box">
+          <h3>What You Can Expect</h3>
+          <ul class="feature-list">
+            {trustPoints.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+
+        <article class="notice-box">
+          <h3>Services Available</h3>
+          <ul class="feature-list">
+            {specialtyServices.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
       </div>
     </div>
   </section>
@@ -185,9 +224,8 @@ const serviceAreas = [
 
       <div class="home-assistance__financing">
         <div class="home-assistance__icon" aria-hidden="true">
-          <svg width="100%" height="100%" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" id="1838187722" class="svg u_1838187722" data-icon-custom="true" data-icon-name="Warning_6961319.svg">
-            <title id="1862289427">A black and white triangle with an exclamation point inside of it.</title>
-            <path d="m57.367 13.984 36.676 63.531c3.3555 5.8125-0.95703 12.758-7.3633 12.758h-73.352c-4.8164 0-8.5352-3.9492-8.5352-8.5117 0-2.5039 1.0625-3.8516 1.1719-4.2539l36.676-63.523c0.76953-1.3359 1.832-2.3945 3.1016-3.125l-0.003907-0.003906c2.6055-1.5039 5.9297-1.5039 8.5352 0l-0.003907 0.003906c1.2617 0.73438 2.3242 1.7891 3.0977 3.125zm-7.3672 54.469c-3.4453 0-6.2422 2.7969-6.2422 6.2422 0 5.5391 6.7305 8.3398 10.656 4.4141 3.9258-3.9258 1.1289-10.656-4.4141-10.656zm1.3711 4.8711c-1.8047-1.8047-4.543 0.9375-2.7383 2.7383 1.8008 1.8047 4.543-0.93359 2.7383-2.7383zm-4.2383-36.375c-2.2656 0-4.2461 1.7617-4.1172 4.0547l1.2148 21.781c0.023437 1.2617 0.96484 2.1836 2.1523 2.1836h7.2383v-0.003906c1.1328 0 2.082-0.88672 2.1445-2.0312l1.2227-21.93c0.0625-1.1367-0.40234-2.2109-1.25-2.9727l-0.003906 0.003906c-1.8281-1.6406-5.3086-1.0859-8.6016-1.0859zm5.5391 4.3047h-5.3398l1.082 19.41h3.1758zm37.656 38.402-0.003906 0.003906-36.676-63.523c-1.6289-2.8203-5.668-2.8203-7.2969 0l-36.672 63.523-0.003907-0.003906c-0.76953 1.3398-0.76953 2.8711 0 4.2109l0.003907-0.003907c0.79297 1.3711 2.0625 2.1016 3.6484 2.1016h73.348c1.5859 0 2.8555-0.73047 3.6484-2.1016l0.003906 0.003907c0.76953-1.3398 0.76953-2.8711 0-4.2109z" fill-rule="evenodd"></path>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+            <path d="m83.58 65.6-4.13 20.25a2 2 0 0 1-1.77 1.59c-2.24.21-5.42.49-7.29.49-34.91 0-63.31-29.79-63.31-66.4a69.28 69.28 0 0 1 .4-7.39 2 2 0 0 1 2-1.79h21.76a2 2 0 0 1 2 1.63l4 21.39a2 2 0 0 1-.46 1.69l-6.52 7.41a61 61 0 0 0 20 19.28l11.94-7.68a2 2 0 0 1 1.8-.17l18.36 7.45a2 2 0 0 1 1.22 2.25Zm-5.45-46.74A37.19 37.19 0 0 0 54.29 8.07a2 2 0 0 0-2.13 1.87A2 2 0 0 0 54 12.06 33.11 33.11 0 0 1 84.93 43a2 2 0 0 0 2 1.87h.14a2 2 0 0 0 1.86-2.12 37.19 37.19 0 0 0-10.8-23.89ZM53.2 23.58a21.56 21.56 0 0 1 20.22 20.21 2 2 0 0 0 2 1.87h.13a2 2 0 0 0 1.87-2.12 25.56 25.56 0 0 0-23.95-24 2 2 0 1 0-.26 4Zm-.81 11.49a10.09 10.09 0 0 1 9.53 9.53 2 2 0 0 0 2 1.89H64a2 2 0 0 0 1.88-2.11 14.07 14.07 0 0 0-13.26-13.3 2 2 0 0 0-.23 4Z"></path>
           </svg>
         </div>
         <div class="home-assistance__financing-content">

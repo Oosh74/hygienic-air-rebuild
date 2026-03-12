@@ -3,7 +3,7 @@ export const SITE = {
 	title: "Hygienic Air, Inc",
 	tagline: "Professional Air Duct, Dryer Vent, and Chimney Cleaning",
 	description:
-		"Hygienic Air, Inc provides residential and commercial air duct, dryer vent, chimney, and overhead cleaning services across Central Florida.",
+		"Hygienic Air, Inc provides residential, commercial, and industrial air duct, dryer vent, chimney, and overhead cleaning services across Central Florida.",
 	url: "https://www.hygienicairplus.com",
 	author: "Hygienic Air, Inc",
 	locale: "en-US",
@@ -27,7 +27,36 @@ export const BUSINESS = {
 	},
 	socials: {
 		facebook: "https://www.facebook.com/hygienicair",
+		google: "http://google.com/search?q=Hygienic+Air+Plus",
+		bbb: "https://www.bbb.org/us/fl/clermont/profile/air-duct-cleaning/hygienic-air-plus-0733-90445717",
 	},
+	hours: [
+		{ dayOfWeek: "Monday", opens: "07:00", closes: "20:00" },
+		{ dayOfWeek: "Tuesday", opens: "07:00", closes: "20:00" },
+		{ dayOfWeek: "Wednesday", opens: "07:00", closes: "20:00" },
+		{ dayOfWeek: "Thursday", opens: "07:00", closes: "20:00" },
+		{ dayOfWeek: "Friday", opens: "07:00", closes: "20:00" },
+		{ dayOfWeek: "Saturday", opens: "07:00", closes: "19:00" },
+		{ dayOfWeek: "Sunday", opens: "08:00", closes: "17:00" },
+	],
+	serviceAreas: [
+		"Central Florida",
+		"Orlando Market",
+		"Tampa Market",
+		"Lakeland Market",
+		"Ocala Market",
+		"Daytona Market",
+		"Melbourne Market",
+		"Spring Hill Market",
+		"Homosassa Springs Market",
+		"Port St. Lucie Market",
+		"Sebring Market",
+		"Sarasota Market",
+		"Gainesville Market",
+		"The Villages Market",
+		"Palm Coast Market",
+		"DeLand / Deltona Market",
+	],
 };
 
 // ===== SEO DEFAULTS =====
