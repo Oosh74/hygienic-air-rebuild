@@ -5,69 +5,246 @@ import ServiceIcon from "@components/Site/ServiceIcon.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
+import FaqAccordion from "@components/Site/FaqAccordion.astro";
 
 const heroImageUrl = "/images/heroes/residential-dryer-duct-hero.jpg";
 
-const warningSigns = [
-  "Are you running your dryer multiple times to dry one load?",
-  "Do your clothes smell hot or burnt after a cycle?",
-  "Has your vent not been professionally cleaned in the last year?",
-  "Does the laundry room feel unusually hot or humid?",
-  "Is the dryer exterior hot to the touch?",
-  "Are lint levels increasing around the appliance?",
-  "Is the dryer flow sensor or blockage light on?",
+const fireStats = [
+  { value: "5", label: "Deaths", icon: "deaths" as const },
+  { value: "100", label: "Injuries", icon: "injuries" as const },
+  { value: "$35M", label: "In Annual Property Loss", icon: "loss" as const },
 ];
 
-const processSteps = [
-  "Connect a power vacuum truck to place the line under negative pressure.",
-  "Use proper agitation tools to remove compacted lint and debris.",
-  "Inspect termination points and confirm safe airflow.",
-  "Recommend compliant vent cover upgrades where needed.",
-  "Document findings and leave the area clean.",
+const warningSigns = [
+  "Are you running your dryer multiple times?",
+  "Do your clothes smell funny, like a burning smell?",
+  "Have you not had your dryer vent cleaned in the last year?",
+  "Does your laundry room feel like a sauna?",
+  "Is your dryer hot to the touch?",
+  "Do you have more lint buildup than normal?",
+  "Is the flow sensor light on your dryer lit?",
 ];
 
 const processCards = [
   {
-    title: "Certified Technicians",
-    body: "Our team includes CSIA-certified dryer duct technicians with focused training in fire prevention and safe vent restoration.",
+    title: "Certified Dryer Vent Expertise",
+    body: "Our team includes more Certified CSIA Dryer Duct Technicians than any other company in Central Florida.",
     icon: "residential" as const,
   },
   {
-    title: "High-Powered Equipment",
-    body: "We use professional vacuum and agitation systems to remove packed lint that basic tools or leaf-blower methods can leave behind.",
+    title: "Annual Safety Focus",
+    body: "We prioritize yearly cleaning and inspection to reduce fire risk, improve dryer performance, and support safer operation.",
     icon: "commercial" as const,
   },
   {
-    title: "Safety & Compliance Focus",
-    body: "We inspect vent terminations and provide practical recommendations for compliant covers and safer long-term operation.",
+    title: "NFPA-Aligned Service",
+    body: "As proud NFPA members, we deliver code-aware recommendations and compliance-focused dryer vent service.",
     icon: "industrial" as const,
   },
 ];
 
+const processHighlights = [
+  "We hook our power vacuum truck to the dryer exhaust duct behind your dryer.",
+  "We send our air whip in from the exterior to dislodge lint from duct walls while the vacuum pulls debris out.",
+  "We ensure the exit point has full vacuum suction.",
+  "We run your dryer at completion to confirm optimal operation.",
+];
+
+const competitorMethods = [
+  {
+    title: "Leaf Blower from the Dryer Side",
+    problems: "Can blow clogs and lint back into the home.",
+    risks: "Increased fire hazards and inefficient cleaning.",
+  },
+  {
+    title: "Drill with a Brush",
+    problems: "Brushes can get stuck in the duct system.",
+    risks: "Incomplete cleaning and potential duct damage.",
+  },
+  {
+    title: "Air Only from the Exterior",
+    problems: "Can blow lint into yards and nearby belongings.",
+    risks: "May leave clogs behind and create inconsistent airflow.",
+  },
+];
+
+const professionalServiceChecklist = [
+  "Use of industrial-grade, high-powered vacuum equipment.",
+  "Use of high-powered compressed air agitation for full duct-wall cleaning.",
+  "Verifiable negative suction throughout the cleaning process.",
+  "Final airflow confirmation and dryer performance check.",
+];
+
+const ventConsequences = [
+  "Dryer fires",
+  "Wear and tear on the dryer",
+  "High utility bills",
+  "Carbon monoxide poisoning",
+];
+
+const workflowSteps = [
+  {
+    title: "Step One",
+    body: "A power vacuum truck is connected to the duct behind the dryer, placing the line under negative suction.",
+  },
+  {
+    title: "Step Two",
+    body: "Our technician moves to the exterior exhaust point and prepares the line for full-path agitation.",
+  },
+  {
+    title: "Step Three",
+    body: "Our agitation whip is sent through the dryer pipe to loosen all compacted lint and debris.",
+  },
+  {
+    title: "Step Four",
+    body: "As debris dislodges, negative suction pulls it into the truck, leaving no mess behind.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Bird Guards and Dryer Vents",
+    answer:
+      "Purpose: Bird guards help prevent birds and small animals from nesting in dryer vents.\nAdditional Benefits: They can also reduce outside wind back pressure that may push harmful gases indoors.\nOptions: Metal and plastic options are available. Metal typically lasts longer, while plastic can be a lower-cost option.",
+  },
+  {
+    question: "Screens on Dryer Vents",
+    answer:
+      "Per building code M1502.3, screens are not allowed on dryer vent terminations because they clog quickly with lint. This restricts airflow, increases overheating risk, and can contribute to fire hazards.",
+  },
+  {
+    question: "Cost of Dryer Vent Cleaning",
+    answer:
+      "Beware of unrealistically low offers. Low-price services often use leaf blowers, shop vacs, or drill brushes that do not provide proper suction and may cause additional issues. Proper cleaning requires specialized equipment.",
+  },
+  {
+    question: "Frequency of Cleaning",
+    answer:
+      "The NFPA recommends cleaning dryer vents at least once per year. If your dryer is running longer, smells burnt, or is hot to the touch, your vent may need immediate service.",
+  },
+  {
+    question: "Duration of Cleaning",
+    answer:
+      "Typical residential dryer vent cleaning takes about 30 to 45 minutes, including inspection, full cleaning, and performance verification.",
+  },
+];
+
+const disconnectedVentSigns = [
+  "Longer drying times",
+  "Excessive lint around the dryer area",
+  "Musty odors from the attic or wall cavities",
+  "Visible gaps, separations, or sagging in vent piping",
+];
+
+const repairTopics = [
+  {
+    title: "Improper Materials Used for Dryer Vent",
+    body: "We routinely find plastic, duct tape, and thin-gauge materials used as quick fixes. We bring these installations back to safer code-compliant standards.",
+  },
+  {
+    title: "Attic Lint Accumulation",
+    body: "When vents disconnect, lint-laden air can dump into attic spaces. Lint buildup on insulation and framing increases fire risk over time.",
+  },
+  {
+    title: "Wall Lint Buildup",
+    body: "Disconnected or leaking wall runs can trap lint in hidden cavities, increasing fire risk, reducing efficiency, and causing moisture-related damage.",
+  },
+];
+
+const dryerboxBenefits = [
+  "Cleaner, more professional finish",
+  "Safer, roomier, more efficient homes",
+  "Allows dryer to perform at peak efficiency",
+  "Helps protect against fire spread",
+  "Protects the exhaust duct inside the wall",
+];
+
 const galleryItems = [
   {
-    src: "/images/cdn-migrated/aHR0cHM6Ly9jb21wYW55Y2FtLXBlbmRpbmcuczMuYW1hem9uYXdzLmNvbS83N2RmNDE2Mi00YjNiLTQxMzYtYmFmNy0yZjZiNjc4ZGQ5MDIuanBn-b997edd0-1920w.jpeg",
-    alt: "Dryer vent service setup at a residential property.",
+    src: "/images/residential-dryer-duct/gallery/service-setup.jpeg",
+    alt: "Residential dryer vent service setup at the home exterior.",
   },
   {
-    src: "/images/cdn-migrated/20210106_090947-16042c8e-5931f315-1920w.jpg",
-    alt: "Technician inspecting a residential dryer vent exit.",
+    src: "/images/residential-dryer-duct/gallery/roof-termination.jpg",
+    alt: "Technician inspecting dryer vent termination at roof level.",
   },
   {
-    src: "/images/cdn-migrated/336761177_750350489820967_6735450353802090564_n-8431bf98-1920w.jpg",
-    alt: "Dryer duct cleaning tools and equipment in use.",
+    src: "/images/residential-dryer-duct/gallery/lint-blockage-1.jpg",
+    alt: "Example of heavy lint blockage removed from a dryer vent.",
   },
   {
-    src: "/images/cdn-migrated/337032203_1291816934704016_6389814168425175620_n-619d12cf-1920w.jpg",
-    alt: "Team performing professional dryer vent cleaning.",
+    src: "/images/residential-dryer-duct/gallery/lint-blockage-2.jpg",
+    alt: "Debris and blockage sample removed during dryer vent cleaning.",
   },
   {
-    src: "/images/cdn-migrated/goose-neck-lint-blockage-838f5778-da2a2bf3-1920w.jpg",
-    alt: "Example of severe lint blockage in a dryer vent.",
+    src: "/images/residential-dryer-duct/gallery/goose-neck-blockage.jpg",
+    alt: "Goose-neck termination clogged with lint buildup.",
   },
   {
-    src: "/images/cdn-migrated/Screenshot-2024-06-17-203508-1-1920w.png",
-    alt: "Residential dryer vent cover option.",
+    src: "/images/residential-dryer-duct/gallery/roof-vent-lint.jpg",
+    alt: "Roof vent with visible lint output before correction.",
+  },
+  {
+    src: "/images/residential-dryer-duct/gallery/tech-on-roof.jpeg",
+    alt: "Technician accessing roof vent point for full-line cleaning.",
+  },
+];
+
+const repairsGallery = [
+  {
+    src: "/images/residential-dryer-duct/repairs/repair-1.jpg",
+    alt: "Dryer vent repair condition requiring code correction.",
+  },
+  {
+    src: "/images/residential-dryer-duct/repairs/repair-2.jpg",
+    alt: "Disconnected or improperly joined dryer vent segment.",
+  },
+  {
+    src: "/images/residential-dryer-duct/repairs/repair-3.jpg",
+    alt: "Dryer vent piping issue with improper support or sealing.",
+  },
+  {
+    src: "/images/residential-dryer-duct/repairs/repair-4.jpg",
+    alt: "Attic dryer vent routing with installation deficiencies.",
+  },
+  {
+    src: "/images/residential-dryer-duct/repairs/repair-5.jpg",
+    alt: "Dryer vent repair scenario requiring full reinstallation.",
+  },
+  {
+    src: "/images/residential-dryer-duct/repairs/repair-6.jpg",
+    alt: "Code-compliance issue in attic dryer vent configuration.",
+  },
+  {
+    src: "/images/residential-dryer-duct/repairs/repair-7.jpg",
+    alt: "Vent pipe braces and seams requiring repair updates.",
+  },
+  {
+    src: "/images/residential-dryer-duct/repairs/repair-8.jpg",
+    alt: "Improperly installed attic vent material requiring correction.",
+  },
+];
+
+const dryerboxGallery = [
+  {
+    src: "/images/residential-dryer-duct/dryerbox/dryerbox-product.png",
+    alt: "Dryerbox product display for recessed dryer exhaust connection.",
+  },
+  {
+    src: "/images/residential-dryer-duct/dryerbox/dryerbox-installed.jpg",
+    alt: "Installed Dryerbox recessed receptacle.",
+  },
+  {
+    src: "/images/residential-dryer-duct/dryerbox/crushed-hose.jpg",
+    alt: "Example of crushed dryer hose that reduces airflow.",
+  },
+  {
+    src: "/images/residential-dryer-duct/dryerbox/in-wall-connection-1.png",
+    alt: "In-wall dryer exhaust connection component example.",
+  },
+  {
+    src: "/images/residential-dryer-duct/dryerbox/in-wall-connection-2.png",
+    alt: "Additional in-wall dryer connection detail.",
   },
 ];
 ---
@@ -83,7 +260,7 @@ const galleryItems = [
     imageUrl={heroImageUrl}
     topper="Residential Service"
     title="Residential Dryer Duct Cleaning / Repair"
-    body="We prioritize fire safety with certified dryer duct inspections, code-aware repairs, and high-powered cleaning methods designed for lasting performance."
+    body="At Hygienic Air, Inc, we prioritize fire safety and recognize the critical importance of annual dryer duct cleanings and inspections. Our team boasts more Certified CSIA Dryer Duct Technicians than any other company in Central Florida. With state-of-the-art equipment and extensive knowledge, you can rest assured that your home's dryer duct will remain clear of obstructions. Additionally, we are proud members of the National Fire Protection Agency (NFPA), further demonstration our dedication to safety and compliance."
     actions={[
       { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
       {
@@ -95,32 +272,41 @@ const galleryItems = [
     ]}
   />
 
+  <section class="section section--alert">
+    <div class="u-container">
+      <article class="notice-box alert-box">
+        <h3>ATTENTION</h3>
+        <p>
+          IRC M1502.3 states that screens on dryer vent terminations are a violation and fire
+          hazard. These screens are often left in place during roofing work and should be removed
+          and corrected.
+        </p>
+      </article>
+    </div>
+  </section>
+
   <section class="section section--page-intro">
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
-        <p class="section-topper">Why Dryer Vent Cleaning Is Important</p>
-        <h2 class="section-title">Protect Your Home from Dryer Fire Risks</h2>
+        <p class="section-topper">Clean Duct, Clean Home Air</p>
+        <h2 class="section-title">Annual Dryer Vent Cleaning Is a Home Safety Essential</h2>
       </header>
 
       <div class="split-grid content-grid">
         <div class="rich-text">
           <p>
-            Dryer vent cleaning removes lint and debris from the full exhaust path, from behind
-            the dryer to the outside termination. According to NFPA guidance, failure to clean
-            dryer vents is a leading cause of dryer-related fires.
+            Cleaning frequency: every year. Annual cleaning helps reduce lint accumulation,
+            protects airflow, and lowers avoidable dryer fire risks.
           </p>
           <p>
-            Clogged lines force the dryer to run longer, increase wear, and can lead to overheating,
-            elevated utility costs, and carbon monoxide risks in fuel-burning systems.
-          </p>
-          <p>
-            We also help homeowners address common code and safety issues, including improper
-            termination screens that trap lint and restrict airflow.
+            Clogged or screened terminations can lead to longer dry times, equipment failures, and
+            severe safety risks. We can dispatch a certified dryer vent technician to bring your
+            system back to safer operation.
           </p>
         </div>
 
         <aside class="notice-box">
-          <h3>Warning Signs It's Time to Clean</h3>
+          <h3>Warning Signs It's Time To Clean</h3>
           <ul class="check-list">
             {warningSigns.map((item) => <li>{item}</li>)}
           </ul>
@@ -129,14 +315,84 @@ const galleryItems = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section--deep-blue">
     <div class="u-container">
       <header class="section__head content-stack">
-        <p class="section-topper">Our Process</p>
-        <h2 class="section-title">Why Our Dryer Duct Cleaning Stands Out</h2>
+        <p class="section-topper">Dryer Fire Facts</p>
+        <h2 class="section-title">Did You Know Dryer Fires In The U.S. Annually Cause</h2>
       </header>
 
-      <div class="info-card-grid">
+      <div class="metric-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+        {fireStats.map((item) => (
+          <article class="metric-card">
+            <span class="metric-card__icon" aria-hidden="true">
+              {item.icon === "deaths" && (
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path d="m76.699 31.301-24.398-16.699c-0.5-0.39844-1.1992-0.39844-1.6992 0l-24.301 16.699c-0.5 0.30078-0.69922 0.89844-0.60156 1.5l9.3008 48.699c0.10156 0.69922 0.80078 1.1992 1.5 1.1992h30.102c0.69922 0 1.3008-0.5 1.5-1.1992l9.3008-48.699c-0.003906-0.60156-0.20312-1.1992-0.70312-1.5zm-11.398 48.5h-27.602l-8.8984-46.5 22.699-15.602 22.699 15.602z"></path>
+                    <path d="m50 31.199v7.1992h-6.5c-0.80078 0-1.5 0.69922-1.5 1.5 0 0.80078 0.69922 1.5 1.5 1.5h6.5v16.301c0 0.80078 0.69922 1.5 1.5 1.5s1.5-0.69922 1.5-1.5v-16.301h6.5c0.80078 0 1.5-0.69922 1.5-1.5 0-0.80078-0.69922-1.5-1.5-1.5h-6.5v-7.1992c0-0.80078-0.69922-1.5-1.5-1.5s-1.5 0.69922-1.5 1.5z"></path>
+                  </g>
+                </svg>
+              )}
+              {item.icon === "injuries" && (
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path d="m87.977 35.641 1.5625-2.1875c0.12109-0.17188 0.17188-0.38672 0.13672-0.59375-0.035156-0.20703-0.15234-0.39453-0.32812-0.51562l-3.1367-2.1992 1.4336-2.0039c0.12109-0.17188 0.17188-0.38672 0.13672-0.59375s-0.15234-0.39453-0.32812-0.51562l-3.1719-2.2227 1.4883-2.332c0.18359-0.28906 0.16016-0.66797-0.058593-0.93359s-0.58594-0.35938-0.90625-0.23047c-1.1602 0.46094-2.3633 0.75781-3.582 0.88672-2.7812 0.28906-5.1406-0.40625-7.4258-1.5938l-0.66406-4.418c-1.1328-7.5547-6.9297-13.691-14.43-15.273-2.8516-0.60937-5.7852-0.91406-8.7031-0.91406-2.8984 0-5.8281 0.30469-8.707 0.91016-7.5 1.5742-13.297 7.7109-14.43 15.273l-0.66016 4.418c-2.2852 1.1875-4.6445 1.8828-7.4258 1.5938-1.2188-0.125-2.4219-0.42578-3.582-0.88672-0.32031-0.12891-0.6875-0.035156-0.90625 0.23047-0.21875 0.26563-0.24219 0.64063-0.058593 0.93359l1.4883 2.332-3.1719 2.2227c-0.17188 0.12109-0.29297 0.30859-0.32812 0.51562s0.011719 0.42188 0.13672 0.59375l1.4336 2.0039-3.1406 2.1992c-0.17188 0.12109-0.29297 0.30859-0.32813 0.51562-0.035156 0.20703 0.011719 0.42188 0.13672 0.59375l1.5625 2.1875-1.5586 2.1211c-0.14453 0.19922-0.19141 0.45313-0.125 0.6875 0.066406 0.23438 0.24219 0.42969 0.46875 0.51953 1.4297 0.57031 2.9141 0.9375 4.418 1.0898 3.1055 0.32031 5.7812-0.34766 8.2852-1.5117l-1.2188 8.1328c-0.51172 3.4141 0.87109 6.8555 3.5547 9.0117-0.5 0.61719-0.91797 1.2734-1.2383 1.9805-1.1836 2.6289-1.1875 6.1875-0.011719 9.0664 1.3945 3.4062 5.1133 7.0391 9.2695 7.0586h0.03125c0.64453 0 1.2031-0.089844 1.7031-0.23438-2.1719 5.2734-3.4258 10.168-3.6328 14.254-0.23828 4.6914 0.90234 8.2148 3.293 10.184 1.6211 1.3359 3.9102 2.0039 6.1953 2 2.2891 0 4.5742-0.66797 6.1953-2 2.3828-1.9609 3.5234-5.457 3.2969-10.117-0.1875-3.9258-1.3477-8.6094-3.3672-13.66 0.67969 0.30859 1.4648 0.51172 2.4102 0.51172 2.1641 0 3.4883-1.0664 4.6562-2.0078 1.1484-0.92578 2.1406-1.7266 3.8906-1.7422 1.5273-0.015625 2.3789 0.58203 3.3672 1.2695 1.043 0.72266 2.2227 1.543 4.1875 1.543h0.03125c4.1523-0.019531 7.875-3.6484 9.2695-7.0586 1.1758-2.875 1.1719-6.4336-0.011719-9.0664-0.31641-0.70703-0.73438-1.3672-1.2344-1.9844 2.6836-2.1523 4.0664-5.5938 3.5547-9.0078l-1.2188-8.1289c2.0781 0.96875 4.2734 1.5938 6.7344 1.5938 0.50391 0 1.0195-0.027344 1.5469-0.082031 1.5039-0.15625 2.9883-0.52344 4.418-1.0898 0.22656-0.089844 0.40234-0.28125 0.46875-0.51953 0.066406-0.23438 0.023437-0.49219-0.125-0.6875zm-59.543-19.223c1.0352-6.9062 6.3359-12.516 13.188-13.953 2.7695-0.58203 5.5898-0.87891 8.3789-0.87891 2.8086 0 5.6289 0.29297 8.3789 0.875 6.8516 1.4453 12.152 7.0547 13.188 13.953l0.47656 3.1797c-1.0938-0.67969-2.1953-1.4414-3.3359-2.2383-3.5-2.4336-7.4688-5.1914-12.84-6.4023-2.1914-0.49219-6.6289-1.1484-11.734 0-5.3711 1.2109-9.3398 3.9688-12.84 6.4023-1.1406 0.79297-2.2422 1.5586-3.3359 2.2383zm-0.77734 5.1992c1.5391-0.86328 3.0273-1.8984 4.5469-2.9531 3.5469-2.4648 7.2148-5.0156 12.281-6.1562 4.8008-1.082 8.9727-0.46484 11.035 0 5.0703 1.1406 8.7344 3.6914 12.281 6.1562 1.5195 1.0547 3.0078 2.0898 4.5469 2.9531l2.1016 14.016c-1.2383-0.76172-2.4766-1.625-3.7656-2.5234-3.8711-2.6914-8.2617-5.7422-14.199-7.082-2.4219-0.54688-7.3242-1.2695-12.965 0-5.9375 1.3359-10.324 4.3906-14.199 7.082-1.2891 0.89844-2.5312 1.7578-3.7656 2.5234zm-12.266 16.863c-1.0195-0.10547-2.0312-0.32031-3.0195-0.63672l1.2695-1.7266c0.20312-0.27734 0.20703-0.65234 0.007813-0.92969l-1.4336-2.0039 3.1367-2.1992c0.17188-0.12109 0.29297-0.30859 0.32813-0.51562 0.035156-0.20703-0.011719-0.42188-0.13672-0.59375l-1.4336-2.0039 3.1367-2.1992c0.34766-0.24219 0.44141-0.71875 0.21484-1.0781l-0.72656-1.1367c0.61719 0.14453 1.2422 0.25 1.8711 0.31641 2.7344 0.28516 5.0977-0.27734 7.3047-1.2734l-2.1211 14.141c-2.5742 1.3633-5.2383 2.168-8.3984 1.8398zm33.98 49.477c0.19922 4.1367-0.74219 7.1836-2.7188 8.8125-2.668 2.1953-7.707 2.1953-10.375 0-1.9883-1.6367-2.9297-4.707-2.7188-8.8789 0.21875-4.3438 1.6914-9.6836 4.2539-15.453 1.2344-0.82812 2.4531-1.3281 3.6445-1.4609 1.668 0.015626 2.6445 0.74219 3.7266 1.6094 2.5312 5.7461 3.9805 11.059 4.1875 15.371zm24.559-21.82c-1.1992 2.9336-4.3438 6.0541-7.8047 6.0703h-0.023438c-1.4648 0-2.3086-0.58594-3.2812-1.2617-1.0586-0.73828-2.2617-1.5703-4.2891-1.5547-2.3047 0.023437-3.668 1.125-4.8711 2.0938-1.1016 0.89062-2.0547 1.6562-3.6562 1.6562-1.6055 0-2.5547-0.76953-3.6562-1.6562-1.2031-0.97266-2.5703-2.0742-4.8711-2.0938h-0.070312c-1.9844 0-3.1719 0.82422-4.2188 1.5547-0.97656 0.67969-1.8203 1.2656-3.3047 1.2617-3.4648-0.015625-6.6094-3.1406-7.8047-6.0703-1.1602-2.8398-0.84375-5.9688-0.011719-7.8125 2.6289-5.8359 13.918-8.4453 23.953-8.4453h0.039063c10.008 0.007813 21.273 2.6211 23.891 8.4453 0.82031 1.8477 1.1406 4.9805-0.019531 7.8125z"></path>
+                    <path d="m35.012 56.188c-0.30078-0.32031-0.80078-0.33594-1.1211-0.035156l-4.3555 4.082c-0.32031 0.30078-0.33594 0.80078-0.035156 1.1211 0.15625 0.16797 0.36719 0.25 0.57812 0.25 0.19531 0 0.39062-0.070313 0.54297-0.21484l4.3516-4.082c0.32031-0.30078 0.33594-0.80078 0.039063-1.1211z"></path>
+                    <path d="m38.074 58.355-4.3516 4.082c-0.32031 0.30078-0.33594 0.80078-0.035156 1.1211 0.15625 0.16797 0.36719 0.25 0.57812 0.25 0.19531 0 0.39062-0.070313 0.54297-0.21484l4.3516-4.082c0.32031-0.30078 0.33594-0.80078 0.035156-1.1211-0.30078-0.31641-0.80078-0.33203-1.1211-0.035156z"></path>
+                    <path d="m58.691 56.309c-0.32031-0.30078-0.82031-0.28516-1.1211 0.035156-0.30078 0.32031-0.28516 0.82031 0.035157 1.1211l4.0195 3.7695c0.15234 0.14453 0.34766 0.21484 0.54297 0.21484 0.21094 0 0.42188-0.085938 0.57812-0.25 0.30078-0.32031 0.28516-0.82031-0.035156-1.1211z"></path>
+                    <path d="m54.336 58.355c-0.32031-0.30078-0.82031-0.28516-1.1211 0.035156-0.30078 0.32031-0.28516 0.82031 0.035156 1.1211l4.3516 4.082c0.15234 0.14453 0.34766 0.21484 0.54297 0.21484 0.21094 0 0.42188-0.085938 0.57812-0.25 0.30078-0.32031 0.28516-0.82031-0.035156-1.1211z"></path>
+                    <path d="m63.621 54.945c-0.32031-0.30078-0.82031-0.28516-1.1211 0.035157-0.30078 0.32031-0.28516 0.82031 0.035156 1.1211l2.2148 2.0781c0.15234 0.14453 0.34766 0.21484 0.54297 0.21484 0.21094 0 0.42188-0.085937 0.57812-0.25 0.30078-0.32031 0.28516-0.82031-0.035156-1.1211z"></path>
+                  </g>
+                </svg>
+              )}
+              {item.icon === "loss" && (
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path d="m62.406 59.984v26.344h-38.539v-56.953h25.219v-2.3438h-27.562v61.641h43.227v-28.688z"></path>
+                    <path d="m40.625 53.664c-1.0195-1.0117-1.332-2.543-0.78516-3.8711 0.54688-1.332 1.8398-2.2031 3.2773-2.207 0.65625 0 1.3047 0.17578 1.8672 0.51562l1.2109-2.0078c-0.92969-0.55859-1.9922-0.85156-3.0781-0.85156-2.3906 0.003906-4.5391 1.4531-5.4453 3.6641s-0.38672 4.75 1.3125 6.4297c1.1211 1.082 2.6133 1.6875 4.1719 1.6953 2.1094-0.003906 4.1367 0.83984 5.6172 2.3438 1.4531 1.4453 2.2656 3.418 2.25 5.4688 0.007812 3.6094-2.4336 6.7578-5.9297 7.6562l-0.88281 0.22656v3.5234h-2.1953v-3.4375l-0.86719-0.23438c-1.3789-0.36328-2.6406-1.0859-3.6484-2.0938-1.2812-1.3164-2.0742-3.0312-2.2578-4.8594v-0.10938h2v0.10938c0.15625 1.3203 0.75391 2.5508 1.7031 3.4844 1.1172 1.0859 2.6133 1.6992 4.1719 1.7109 3.25 0 5.8828-2.6328 5.8828-5.8828s-2.6328-5.8828-5.8828-5.8828c-2.1055 0.011718-4.1289-0.82031-5.6172-2.3125-1.4883-1.4922-2.332-3.5078-2.3438-5.6172-0.015625-3.6211 2.4258-6.7891 5.9297-7.6953l0.88281-0.22656v-3.7734h3.3672v-2.3438h-5.6641v4.3203c-4.7109 1.6758-7.5312 6.5-6.6836 11.43 0.85156 4.9258 5.1289 8.5234 10.129 8.5234 1.9531 0 3.5391 1.5859 3.5391 3.5391 0 1.9531-1.5859 3.5391-3.5391 3.5391-0.94922-0.003906-1.8633-0.37891-2.5391-1.0469-0.5625-0.55859-0.91797-1.293-1.0078-2.0781l-0.24219-2.1797h-6.6641l0.24219 2.6797c0.36328 3.9805 3.0039 7.3867 6.7656 8.7344v4.0547h6.8828v-4.0625c4.0859-1.4453 6.8164-5.3125 6.8125-9.6484 0.023437-2.6758-1.0312-5.25-2.9297-7.1406-1.9141-1.9609-4.5391-3.0664-7.2812-3.0625-0.94531 0-1.8516-0.36719-2.5312-1.0234z"></path>
+                    <path d="m67.133 57.758 0.78125-1.8516c1.5-3.6875 1.8047-6.5469 0.89844-8.4922-0.24609-0.46094-0.52734-0.90234-0.84375-1.3203-0.80859-1.1094-1.4414-2.332-1.8828-3.6328-0.10938-0.32031-0.21094-0.64063-0.29688-0.96094-2.0625 4.5586-2.0156 9.7969 0.125 14.32l0.89063 1.8828-2.0703-0.21094c-3.2344-0.33594-7.7656-1.5625-11.031-5.6016-5.9453-7.3594-4.9688-20.984 2.2969-31.578l1.2578-1.8359 0.78125 2.0703c0.35938 0.93359 0.72266 1.8633 1.0938 2.7891 0.4375-0.87891 0.87891-1.7461 1.3281-2.6016 2.25-4.2891 4.7344-8.4922 7.3672-12.5l2.5078-3.8203-0.35938 4.5547c-0.47656 5.7812 0.085938 11.605 1.6641 17.188 0.54688 1.9219 1.2188 3.8086 2.0156 5.6406 0.4375-0.75781 0.82812-1.5391 1.1719-2.3438 1.0234-2.4844 1.6016-5.1289 1.7109-7.8125l0.16406-3.9062 2.0312 3.3594c6.5312 10.938 6.8672 24.078 0.78125 31.172-2.6797 3.0117-6.3984 4.8984-10.414 5.2734z"></path>
+                  </g>
+                </svg>
+              )}
+            </span>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">What Is Dryer Vent Cleaning?</p>
+        <h2 class="section-title">Why It Matters and Why Our Process Works</h2>
+      </header>
+
+      <div class="split-grid content-grid">
+        <div class="rich-text">
+          <p>
+            Dryer vent cleaning is the cleaning of the dryer exhaust line from the back of the
+            dryer to the exterior of the home.
+          </p>
+          <p>
+            According to NFPA data, over 17,000 structural fires occur annually from dryer fires,
+            and failure to clean dryer vents is a leading cause. Lint buildup also forces longer
+            run times, increases utility cost, and can elevate carbon monoxide and fire risks.
+          </p>
+        </div>
+
+        <aside class="notice-box">
+          <h3>Why Is Our Process The Best?</h3>
+          <ul class="feature-list">
+            {processHighlights.map((item) => <li>{item}</li>)}
+          </ul>
+        </aside>
+      </div>
+
+      <div class="info-card-grid" style="margin-top: var(--space-l);">
         {processCards.map((item) => (
           <article class="info-card">
             <div class="card-icon-wrap" aria-hidden="true">
@@ -147,21 +403,14 @@ const galleryItems = [
           </article>
         ))}
       </div>
-
-      <div class="notice-box" style="margin-top: var(--space-l);">
-        <h3>Typical Service Workflow</h3>
-        <ul class="feature-list">
-          {processSteps.map((step) => <li>{step}</li>)}
-        </ul>
-      </div>
     </div>
   </section>
 
   <section class="section section--alt">
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
-        <p class="section-topper">View Our Gallery</p>
-        <h2 class="section-title">Residential Dryer Vent Projects</h2>
+        <p class="section-topper">Project Gallery</p>
+        <h2 class="section-title">Residential Dryer Vent Cleaning in the Field</h2>
       </header>
 
       <ImageCarousel
@@ -170,6 +419,192 @@ const galleryItems = [
         items={galleryItems}
         fit="contain"
       />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">What To Expect From Competitors</p>
+        <h2 class="section-title">Common Issues with Shortcut Methods</h2>
+      </header>
+
+      <div class="info-card-grid">
+        {competitorMethods.map((item) => (
+          <article class="info-card">
+            <h3>{item.title}</h3>
+            <p><strong>Problems:</strong> {item.problems}</p>
+            <p style="margin-top: var(--space-xs);"><strong>Risks:</strong> {item.risks}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>What To Look for in a Professional Service</h3>
+        <ul class="feature-list">
+          {professionalServiceChecklist.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container split-grid">
+      <article class="notice-box">
+        <h3>Dryer Vent Rodent Covers</h3>
+        <p>
+          Bird/rodent guards help keep pests out of vent terminations, but the cover type and
+          installation method matter.
+        </p>
+        <ul class="feature-list" style="margin-top: var(--space-s);">
+          <li>Metal covers typically last 2 to 4 years longer than plastic.</li>
+          <li>Plastic can dry rot faster under direct sun exposure.</li>
+          <li>Termination design must still maintain proper dryer exhaust airflow.</li>
+        </ul>
+      </article>
+
+      <article class="notice-box">
+        <h3>Clogged Vent Consequences</h3>
+        <ul class="feature-list">
+          {ventConsequences.map((item) => <li>{item}</li>)}
+        </ul>
+        <p style="margin-top: var(--space-s);">
+          As part of home maintenance, clean your lint trap between cycles and schedule annual
+          professional dryer vent cleaning.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Our Dryer Vent Cleaning Process</p>
+        <h2 class="section-title">Step-by-Step</h2>
+      </header>
+
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        {workflowSteps.map((step) => (
+          <article class="info-card">
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Why Our Dryer Duct Cleaning Stands Out</h3>
+        <p>
+          We disconnect the dryer from the vent line when needed to ensure 100% negative suction,
+          then clean with proper vacuum and agitation tools designed specifically for dryer duct
+          systems. This removes lint thoroughly, reduces clog risk, and avoids the mess and
+          limitations of leaf blowers or drill-brush shortcut methods.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Dryer Vent Cleaning FAQs</p>
+        <h2 class="section-title">Answers to Common Safety and Code Questions</h2>
+      </header>
+
+      <FaqAccordion items={faqItems} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Dryer Vent Repairs / Installs</p>
+        <h2 class="section-title">Bring Vent Systems Back To Code Compliance</h2>
+      </header>
+
+      <div class="rich-text">
+        <p>
+          Dryer vents often require repair over time. Pipes can loosen, sag, or disconnect,
+          especially after roof replacement. When that happens, lint and moisture can accumulate in
+          attics or walls. Hygienic Air provides comprehensive repair and install services so dryer
+          systems exhaust properly to the outside.
+        </p>
+      </div>
+
+      <div class="info-card-grid" style="margin-top: var(--space-l);">
+        {repairTopics.map((topic) => (
+          <article class="info-card">
+            <h3>{topic.title}</h3>
+            <p>{topic.body}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Signs of Disconnected Vents</h3>
+        <ul class="feature-list">
+          {disconnectedVentSigns.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div style="margin-top: var(--space-l);">
+        <ImageCarousel
+          id="residential-dryer-repairs-gallery"
+          label="Residential dryer vent repair examples"
+          items={repairsGallery}
+          fit="contain"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container split-grid service-inline-grid">
+      <article class="service-inline-copy">
+        <h3>Give the Dryer Some Space with Dryerbox</h3>
+        <p>
+          The Dryerbox recessed exhaust receptacle allows dryer placement closer to the wall without
+          crushing the transition hose or restricting airflow. This supports safer, roomier, and
+          more efficient laundry layouts.
+        </p>
+        <ul class="feature-list" style="margin-top: var(--space-s);">
+          {dryerboxBenefits.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <figure class="service-inline-media">
+        <img
+          src="/images/residential-dryer-duct/dryerbox/dryerbox-product.png"
+          alt="Dryerbox product and recessed dryer vent receptacle illustration."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Dryerbox Exhaust Receptacle</p>
+        <h2 class="section-title">Safer, Roomier, and More Efficient Homes</h2>
+      </header>
+
+      <div class="rich-text" style="max-width: 70ch; margin: 0 auto;">
+        <p>
+          In traditional installations, flex duct bends and kinks create friction, trap lint, and
+          increase fire risk. Dryerbox creates a cleaner in-wall connection that protects the hose,
+          improves airflow, and helps your appliance run more efficiently.
+        </p>
+      </div>
+
+      <div style="margin-top: var(--space-l);">
+        <ImageCarousel
+          id="residential-dryer-dryerbox-gallery"
+          label="Dryerbox and in-wall connection examples"
+          items={dryerboxGallery}
+          fit="contain"
+        />
+      </div>
     </div>
   </section>
 

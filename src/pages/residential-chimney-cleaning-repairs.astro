@@ -7,69 +7,187 @@ import Lightbox from "@components/Site/Lightbox.astro";
 
 const heroImageUrl = "/images/heroes/residential-chimney-hero.jpg";
 
-const reasonsToClean = [
-  "Prevent chimney fires caused by creosote and soot accumulation.",
-  "Reduce blockage risks from debris and animal intrusion.",
-  "Maintain safe ventilation for wood, gas, and oil systems.",
-  "Protect flue liners from corrosive byproducts.",
-  "Support reliable appliance performance and draft.",
+const fireStats = [
+  {
+    value: "250,000+",
+    label: "Chimney fires per year in the U.S., responsible for over $125 million in property damage.",
+    icon: "chimney" as const,
+  },
+  {
+    value: "Leading Cause",
+    label: "Failing to keep heating equipment clean remains the leading cause of heating-equipment fires.",
+    icon: "fireplace" as const,
+  },
 ];
 
-const safetyFacts = [
-  "Over 250,000 chimney fires are reported annually in the U.S.",
-  "Failure to keep heating systems clean is a leading fire cause.",
-  "Oil and gas byproducts can damage flue liners over time.",
-  "Restricted chimney flow can increase carbon monoxide risk.",
+const chimneyTypes = [
+  "Wood-burning chimneys.",
+  "Chimneys venting gas-fired boilers, furnaces, or water heaters.",
+  "Chimneys venting oil-fired boilers, furnaces, or water heaters.",
+  "Any venting system where soot, debris, moisture, or byproduct buildup can reduce safe draft.",
+];
+
+const reasonsToClean = [
+  "Fire prevention: reduce creosote-related chimney fire risk.",
+  "Clearing blockages: remove leaves, twigs, and animal nests that obstruct venting.",
+  "Efficiency: improve airflow and support cleaner, more efficient appliance operation.",
+  "Air quality: reduce soot and byproducts that can affect indoor air.",
+  "Longevity: identify wear early and reduce long-term repair costs.",
+];
+
+const gasOilConcerns = [
+  "Oil-burning appliances still create soot buildup that can block the chimney and allow deadly carbon monoxide to leak into the home.",
+  "Gas and oil byproducts can combine with condensation and create corrosive solutions that damage flue liners over time.",
+  "Buildup on chimney flues restricts airflow, causing appliances and boilers to malfunction or burn richer than intended.",
 ];
 
 const processSteps = [
-  "Connect a power vacuum truck to create constant negative suction.",
-  "Sweep the full flue path from top to bottom with proper chimney tools.",
-  "Capture soot and debris directly into the vacuum system.",
-  "Inspect cap, damper, and critical chimney components.",
-  "Recommend repairs or replacement parts where needed.",
+  {
+    title: "Step One",
+    body: "First, our power vacuum truck hose is connected into the base of the chimney to establish controlled negative suction.",
+  },
+  {
+    title: "Step Two",
+    body: "Next, the technician moves to the chimney exit point to prepare for top-down flue cleaning.",
+  },
+  {
+    title: "Step Three",
+    body: "A chimney brush is used to clean the full flue from top to bottom while debris is captured by the vacuum system.",
+  },
+  {
+    title: "Step Four",
+    body: "The chimney cap is inspected for function and condition, and replacement recommendations are provided if needed.",
+  },
+  {
+    title: "Step Five",
+    body: "As soot and debris dislodge, negative suction pulls contaminants back into the truck, leaving no mess behind.",
+  },
 ];
 
-const galleryItems = [
+const chimneyTips = [
+  "Burn well-seasoned, dry wood to minimize creosote production.",
+  "Schedule annual chimney and wood stove cleaning.",
+  "Use EPA-certified wood stoves when possible for cleaner, more efficient burn performance.",
+];
+
+const chasePanServiceIncludes = [
+  "Thorough assessment for rust, holes, and signs of leakage.",
+  "High-quality replacement materials such as stainless steel and copper.",
+  "Precise measurements for proper fit and gap-free coverage.",
+  "Professional removal of damaged chase pans without harming surrounding structure.",
+  "Expert installation with secure fasteners and correct clearances.",
+  "Watertight sealing at edges to prevent future water intrusion.",
+  "Post-installation inspection to verify secure fit and seal integrity.",
+  "Annual maintenance inspections to catch wear before larger damage occurs.",
+];
+
+const damperBenefits = [
+  "Energy efficiency by sealing the flue when not in use.",
+  "Protection from rain and debris that can degrade chimney systems.",
+  "Pest prevention against birds, animals, and insects.",
+  "Improved draft control for easier and more reliable fires when open.",
+];
+
+const damperTypes = [
+  "Top-sealing dampers that also function as a chimney cap.",
+  "Energy-top dampers with silicone gasket seals for tighter closure.",
+  "Durable material options including stainless steel and cast aluminum.",
+];
+
+const damperInstallAndMaintenance = [
+  "Professional installation to ensure proper fit and full operation.",
+  "Routine inspections and cleaning for smooth operation over time.",
+  "Sizing and product selection based on flue dimensions and usage goals.",
+];
+
+const chimneyCapApproach = [
+  "Inspection: assess the current cap and chimney structure before replacement.",
+  "Selection: choose material, size, and design based on performance and durability goals.",
+  "Installation: secure fit with experienced technicians and proper safety controls.",
+  "Clean process: use proper equipment to minimize dust and debris during work.",
+];
+
+const chimneyCapBenefits = [
+  "Experienced technicians focused on thorough workmanship.",
+  "Clear communication on process, scope, and expected outcomes.",
+  "EPA-approved antimicrobial options, including Benefect Decon 30 when appropriate.",
+  "Strong focus on customer satisfaction and long-term performance.",
+];
+
+const chimneyCapWhyReplace = [
+  "Prevents water damage by keeping rain out of the flue.",
+  "Blocks debris and animals that can clog or damage the chimney.",
+  "Can improve draft performance for cleaner fireplace operation.",
+  "Reduces fire risk by helping contain and manage escaping sparks.",
+];
+
+const cleaningGallery = [
   {
-    src: "/images/cdn-migrated/120366594_4668438859862708_8245985451948799327_n-06836df3-1920w.jpg",
-    alt: "Residential chimney service in progress.",
+    src: "/images/residential-chimney/cleaning/chimney-cleaning-1.jpg",
+    alt: "Residential chimney interior before cleaning service.",
   },
   {
-    src: "/images/cdn-migrated/121808322_4760170340689559_784714374917580093_n-75c60b0f-1920w.jpg",
-    alt: "Chimney cleaning tools and setup.",
+    src: "/images/residential-chimney/cleaning/chimney-cleaning-2.jpg",
+    alt: "Chimney cleaning work in progress with professional setup.",
   },
   {
-    src: "/images/cdn-migrated/138817212_5143293509043905_4284558922839957839_n-d8052e2c-1920w.jpg",
-    alt: "Technician inspecting residential chimney top.",
+    src: "/images/residential-chimney/cleaning/chimney-cleaning-3.jpg",
+    alt: "Technician chimney sweep service on a residential system.",
   },
   {
-    src: "/images/cdn-migrated/236702974_6164607643579148_3031194368481838994_n-929b164c-1920w.jpg",
-    alt: "Chimney sweep process at rooftop.",
+    src: "/images/residential-chimney/cleaning/chimney-cleaning-4.jpg",
+    alt: "Top-down flue cleaning process during chimney maintenance.",
   },
   {
-    src: "/images/cdn-migrated/chimney-damper-5c33ad2f-1920w.jpg",
-    alt: "Chimney damper component detail.",
+    src: "/images/residential-chimney/cleaning/chimney-cleaning-5.jpg",
+    alt: "Chimney flue condition before and during cleaning service.",
   },
   {
-    src: "/images/cdn-migrated/chimney-repair-and-restoration-653bcdb0-1920w.jpg",
-    alt: "Chimney repair and restoration example.",
+    src: "/images/residential-chimney/cleaning/chimney-cleaning-6.jpg",
+    alt: "Residential chimney sweep visit in Central Florida.",
+  },
+];
+
+const chasePanGallery = [
+  {
+    src: "/images/residential-chimney/chase-pan/chase-pan-diagram.png",
+    alt: "Diagram for chimney chase pan measurement dimensions.",
+  },
+  {
+    src: "/images/residential-chimney/chase-pan/chase-pan-1.jpg",
+    alt: "Chimney chase pan installation example on rooftop.",
+  },
+  {
+    src: "/images/residential-chimney/chase-pan/chase-pan-2.jpg",
+    alt: "Stainless chimney chase pan replacement project.",
+  },
+  {
+    src: "/images/residential-chimney/chase-pan/chase-pan-3.jpg",
+    alt: "Chase pan fabrication and fitment detail.",
+  },
+  {
+    src: "/images/residential-chimney/chase-pan/chase-pan-4.jpg",
+    alt: "Completed chase pan replacement on a residential chimney.",
+  },
+  {
+    src: "/images/residential-chimney/chase-pan/chase-pan-5.jpg",
+    alt: "Chase pan replacement and sealing work at rooftop level.",
   },
 ];
 ---
 
 <SiteLayout
   title="Residential Chimney Cleaning & Repair in Central Florida"
-  description="Residential chimney cleaning and repair services in Central Florida focused on fire prevention, safer venting, and reliable heating performance."
+  description="Residential chimney cleaning and repair in Central Florida including annual sweeps, chase pan replacement, dampers, and chimney cap services."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
   <HeroSection
     align="left-bottom"
     imageUrl={heroImageUrl}
-    topper="Residential Service"
+    topper="Soot Happens. Let Us Take Care of It."
     title="Residential Chimney Cleaning / Repairs"
-    body="Soot happens. Let our certified team keep your chimney clean, code-conscious, and ready to perform safely all year."
+    body="At Hygienic Air, Inc, we prioritize fire safety and recognize the critical importance of annual chimney sweeps and inspections. Our team boasts more Certifications from The Chimney Safety Institute of America (CSIA), National Chimney Sweep Guild (NCSG) and the National Fire Protection Association (NFPA) than any other company in Central Florida. With state-of-the-art equipment and extensive knowledge, you can rest assured that your home's chimney will remain clear of obstructions and maintain code compliance."
     actions={[
       { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
       {
@@ -84,54 +202,27 @@ const galleryItems = [
   <section class="section section--page-intro">
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
-        <p class="section-topper">Why Clean The Chimney?</p>
-        <h2 class="section-title">Fire Safety Starts with Routine Maintenance</h2>
+        <p class="section-topper">Cleaning Frequency</p>
+        <h2 class="section-title">Every Year</h2>
       </header>
 
-      <div class="split-grid content-grid">
-        <div class="rich-text">
-          <p>
-            Both wood-burning chimneys and systems venting gas or oil appliances need regular
-            inspection and cleaning. Buildup can restrict airflow, affect appliance performance,
-            and create serious safety risks.
-          </p>
-          <p>
-            Hygienic Air, Inc prioritizes annual chimney sweeps and inspections using professional
-            equipment and experienced technicians trained in CSIA, NCSG, and NFPA best practices.
-          </p>
-          <p>
-            We also help identify wear from moisture exposure, storm conditions, and normal
-            age-related deterioration so repairs can be addressed before they become larger safety
-            issues.
-          </p>
-        </div>
-
-        <aside class="notice-box">
-          <h3>Common Reasons Homeowners Schedule Service</h3>
-          <ul class="check-list">
-            {reasonsToClean.map((item) => <li>{item}</li>)}
-          </ul>
-        </aside>
-      </div>
-
-      <div class="metric-grid">
-        {safetyFacts.map((item) => (
+      <div class="metric-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        {fireStats.map((item) => (
           <article class="metric-card">
-            <strong class="metric-card__icon" aria-hidden="true">
-              <svg
-                width="100%"
-                height="100%"
-                version="1.1"
-                viewBox="0 0 100 100"
-                xmlns="http://www.w3.org/2000/svg"
-                class="svg"
-                data-icon-custom="true"
-                data-icon-name="Warning_6961319.svg"
-              >
-                <path d="m57.367 13.984 36.676 63.531c3.3555 5.8125-0.95703 12.758-7.3633 12.758h-73.352c-4.8164 0-8.5352-3.9492-8.5352-8.5117 0-2.5039 1.0625-3.8516 1.1719-4.2539l36.676-63.523c0.76953-1.3359 1.832-2.3945 3.1016-3.125l-0.003907-0.003906c2.6055-1.5039 5.9297-1.5039 8.5352 0l-0.003907 0.003906c1.2617 0.73438 2.3242 1.7891 3.0977 3.125zm-7.3672 54.469c-3.4453 0-6.2422 2.7969-6.2422 6.2422 0 5.5391 6.7305 8.3398 10.656 4.4141 3.9258-3.9258 1.1289-10.656-4.4141-10.656zm1.3711 4.8711c-1.8047-1.8047-4.543 0.9375-2.7383 2.7383 1.8008 1.8047 4.543-0.93359 2.7383-2.7383zm-4.2383-36.375c-2.2656 0-4.2461 1.7617-4.1172 4.0547l1.2148 21.781c0.023437 1.2617 0.96484 2.1836 2.1523 2.1836h7.2383v-0.003906c1.1328 0 2.082-0.88672 2.1445-2.0312l1.2227-21.93c0.0625-1.1367-0.40234-2.2109-1.25-2.9727l-0.003906 0.003906c-1.8281-1.6406-5.3086-1.0859-8.6016-1.0859zm5.5391 4.3047h-5.3398l1.082 19.41h3.1758zm37.656 38.402-0.003906 0.003906-36.676-63.523c-1.6289-2.8203-5.668-2.8203-7.2969 0l-36.672 63.523-0.003907-0.003906c-0.76953 1.3398-0.76953 2.8711 0 4.2109l0.003907-0.003907c0.79297 1.3711 2.0625 2.1016 3.6484 2.1016h73.348c1.5859 0 2.8555-0.73047 3.6484-2.1016l0.003906 0.003907c0.76953-1.3398 0.76953-2.8711 0-4.2109z" fill-rule="evenodd"></path>
-              </svg>
-            </strong>
-            <span>{item}</span>
+            <span class="metric-card__icon" aria-hidden="true">
+              {item.icon === "chimney" && (
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m84.73 14.5h-69.461c-1.5312 0-2.7695 1.2383-2.7695 2.7695v7.9297c0 1.5312 1.2383 2.7695 2.7695 2.7695h3.8203v48.23h-0.96875c-1.6797 0-3.0508 1.3711-3.0508 3.0508v3.2109c0 1.6797 1.3711 3.0508 3.0508 3.0508h63.75c1.6797 0 3.0508-1.3711 3.0508-3.0508v-3.2109c0-1.6797-1.3711-3.0508-3.0508-3.0508h-0.96875v-18.609c3.8281-1.3086 6.5898-4.9414 6.5898-9.1992l-0.003907-31.121c0-1.5312-1.2383-2.7695-2.7695-2.7695zm-69.461 11.031c-0.17969 0-0.33984-0.14844-0.33984-0.33984v-7.9297c0-0.17969 0.16016-0.33984 0.33984-0.33984h8.6992v2.9688c0 1.8008 1.4609 3.3008 3.2617 3.3281 0.48828 0.011719 0.87891 0.42188 0.87891 0.89844v1.3984l-12.84 0.003906zm38.199 19.148c2.7695 0 5.0195-2.25 5.0195-5.0195 0-2.2109 1.8008-4.0117 4.0117-4.0117h0.76953c2.6406 0 4.7812 2.1484 4.7812 4.7812v5.1094h-29.121c0.62891-0.94141 1-2.0703 1-3.2812v-3.5781c0-2.3516 1.9102-4.2617 4.2617-4.2617 2.3516 0 4.2617 1.9102 4.2617 4.2617v0.98047c0 2.7695 2.25 5.0195 5.0195 5.0195zm-4.6914 24.57v6.9492h-27.258v-6.9492h27.262zm-27.262-2.4297v-8.1992h12.109v8.1992zm14.551 0v-8.1992h27.859v8.1992zm15.148 2.4297h27.262v6.9492h-27.262zm15.148-2.4297v-8.1992h12.109v8.1992zm-15.148-10.629v-8.1992h16.84v0.39844c0 3.1914 1.5391 6.0195 3.9219 7.8008h-20.77zm-2.4297-8.1992v8.1992h-27.266v-8.1992h11.012c0.48047 0.12891 0.98047 0.19141 1.5 0.19141s1.0195-0.070313 1.5-0.19141zm-27.262-2.4297v-8.1992h6.6016v4.9219c0 1.2109 0.37109 2.3398 1 3.2812h-7.6016zm0-10.629v-6.9492h6.6016v6.9492zm60.359 43.719c0.32813 0 0.60938 0.28125 0.60938 0.60938v3.2109c0 0.32812-0.28125 0.60938-0.60938 0.60938l-63.762-0.003906c-0.32812 0-0.60938-0.28125-0.60938-0.60938v-3.2109c0-0.32812 0.28125-0.60937 0.60938-0.60937h63.75zm3.1914-30.238c0 4.0195-3.2695 7.2891-7.2891 7.2891-4.0195 0-7.2891-3.2695-7.2891-7.2891v-7.9492c0-3.9805-3.2383-7.2188-7.2188-7.2188h-0.76953c-3.5586 0-6.4492 2.8906-6.4492 6.4492 0 1.4219-1.1602 2.5781-2.5781 2.5781-1.4219 0-2.5781-1.1602-2.5781-2.5781v-0.98047c0-3.6914-3-6.6914-6.6914-6.6914-3.6914 0-6.6914 3-6.6914 6.6914v3.5781c0 1.9219-1.5586 3.4805-3.4805 3.4805-1.9219 0-3.4805-1.5586-3.4805-3.4805v-18.152c0-1.8008-1.4609-3.3008-3.2617-3.3281-0.48828-0.011719-0.87891-0.42188-0.87891-0.89844v-2.9688h58.32c0.17969 0 0.33984 0.14844 0.33984 0.33984v31.121z"></path>
+                </svg>
+              )}
+              {item.icon === "fireplace" && (
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m27.125 32.551c3.3945 0.85156 8.1992 2.25 10.855 6.9961 1.5508-1.6406 3.0391-3.2891 3.1758-4.7852 0.79688-8.7656-8.4336-15.281 9.0938-29.293 0.79688-0.63672 1.9688 0.097656 1.7422 1.0938-5.3242 23.219 15.465 18.344 15.004 38.656 3.4453-1.5898 5.4727-4.2031 6.0195-8.0273 0.16406-1.1602 1.8438-1.293 2.1445-0.078125 3.3906 12.277 3.1953 22.316-0.57812 30.125h19.109c0.60156 0 1.0938 0.48828 1.0938 1.0938v25.355c0 0.60156-0.48828 1.0938-1.0938 1.0938l-87.375-0.011719c-0.60156 0-1.0938-0.48828-1.0938-1.0938v-25.355c0-0.60156 0.48828-1.0938 1.0938-1.0938h17.957c-1.3477-2.5508-2.0039-5.3242-1.8008-8.3047 0.42969-6.293 1.332-7.9609 3.6797-13.195 3.3281-7.418-1.7305-12.621 0.96875-13.184zm-0.32812 34.68h6.043c0.29297-5.1641 3.6641-9.3242 0.57812-15.316-0.40625-0.78906 0.21875-1.668 1.0586-1.5938 4.2578 0.38672 6.1953 2.918 7.2734 6.375 6.6328-2.2305-2.4805-10.957 8.0234-20.57 0.70312-0.64453 1.8516-0.13281 1.8242 0.83203-0.36328 12.773 9.7148 9.5508 6.7852 24.121 1.6328-1.4922 2.5391-3.6953 3.0664-5.8008 0.23047-0.91797 1.457-1.1289 1.9727-0.32031 2.3984 3.7578 3.375 7.8516 2.9844 12.273h5.7148c3.5859-6.6602 4.2109-15.258 1.8672-25.789-1.5703 3.2383-4.168 5.0938-7.7773 6.4258-0.80078 0.29687-1.5469-0.33203-1.4883-1.0977 0.73828-9.5859-3.5195-13.543-7.7031-17.43-4.7969-4.457-9.5039-8.832-7.7539-20.215-13.074 11.66-5.1406 16.91-5.9531 25.828-0.24609 2.7227-2.8047 5.0039-4.8203 7.2461-0.53125 0.59375-1.5312 0.4375-1.832-0.33203-1.3398-3.457-4.293-5.4961-7.8789-6.6953 1.0312 4.8359 1.2812 7.1484-0.98047 12.18-2.0586 4.582-2.7852 6.1992-3.1602 11.715-0.19922 2.9531 0.57812 5.668 2.1406 8.1602zm37.426 0c0.30859-3.1484-0.14453-6.1289-1.4492-8.9492-1.1172 2.7812-2.9062 5.0195-5.6484 6.1289-0.83203 0.33594-1.7031-0.42578-1.457-1.3086 4.1484-15.02-5.2305-12.117-6.1797-23.508-7.2383 8.8906 2.2852 17.301-8.2695 19.496-2.2266 0.46484-0.80469-4.5039-5.0234-6.168 2.0312 5.9219-0.85156 9.7578-1.1758 14.312h29.199zm28.371 2.1836h-85.184v23.172h2.9727v-11.633c0-2.7734 2.2734-5.0469 5.0469-5.0469h4.5234c2.7812 0 5.0469 2.2656 5.0469 5.0469v11.633h6.9219v-11.633c0-2.7734 2.2734-5.0469 5.0469-5.0469h4.5234c2.7812 0 5.0469 2.2656 5.0469 5.0469v11.633h6.9219v-11.633c0-2.7734 2.2734-5.0469 5.0469-5.0469h4.5234c2.7812 0 5.0469 2.2656 5.0469 5.0469v11.633h6.9219v-11.633c0-2.7734 2.2734-5.0469 5.0469-5.0469h4.5234c2.7812 0 5.0469 2.2656 5.0469 5.0469v11.633h2.9727v-23.172zm-80.027 23.172h10.25v-11.633c0-1.5742-1.2891-2.8633-2.8633-2.8633h-4.5234c-1.582 0-2.8633 1.2812-2.8633 2.8633zm21.539 0h10.25v-11.633c0-1.5742-1.2891-2.8633-2.8633-2.8633h-4.5234c-1.582 0-2.8633 1.2812-2.8633 2.8633zm21.539 0h10.25v-11.633c0-1.5742-1.2891-2.8633-2.8633-2.8633h-4.5234c-1.582 0-2.8633 1.2812-2.8633 2.8633zm21.539 0h10.25v-11.633c0-1.5742-1.2891-2.8633-2.8633-2.8633h-4.5234c-1.582 0-2.8633 1.2812-2.8633 2.8633z" fill-rule="evenodd"></path>
+                </svg>
+              )}
+            </span>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
           </article>
         ))}
       </div>
@@ -140,32 +231,208 @@ const galleryItems = [
 
   <section class="section">
     <div class="u-container">
-      <header class="section__head content-stack">
-        <p class="section-topper">Our Chimney Cleaning Process</p>
-        <h2 class="section-title">Thorough, Controlled, and Documented</h2>
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">What Type Of Chimneys Should Be Cleaned?</p>
+        <h2 class="section-title">Have A Chimney? If Yes, You Will Need It Cleaned</h2>
       </header>
 
-      <div class="notice-box">
+      <div class="split-grid content-grid" style="align-items: start;">
+        <article class="rich-text">
+          <p>
+            Both wood-burning chimneys and those venting fuel-burning appliances such as gas or
+            oil-fired boilers, furnaces, and water heaters should be inspected and cleaned
+            regularly. Routine maintenance helps prevent dangerous buildup of creosote, soot, and
+            other residues that can cause chimney fires or blockages.
+          </p>
+          <ul class="feature-list" style="margin-top: var(--space-s);">
+            {chimneyTypes.map((item) => <li>{item}</li>)}
+          </ul>
+          <p>
+            Regular service also supports proper ventilation and safer operation of your home's
+            heating systems.
+          </p>
+        </article>
+
+        <aside class="notice-box">
+          <h3>Why Clean A Chimney?</h3>
+          <ul class="feature-list">
+            {reasonsToClean.map((item) => <li>{item}</li>)}
+          </ul>
+        </aside>
+      </div>
+
+      <div class="notice-band" style="margin-top: var(--space-l);">
+        <p>Chimney ownership includes annual cleaning responsibility to help prevent fire and venting hazards.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Gas & Oil Appliance Safety</p>
+        <h2 class="section-title">Even Without Creosote, Chimneys Still Need Service</h2>
+      </header>
+
+      <div class="notice-box" style="max-width: 78ch; margin: 0 auto;">
         <ul class="feature-list">
-          {processSteps.map((step) => <li>{step}</li>)}
+          {gasOilConcerns.map((item) => <li>{item}</li>)}
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Our Chimney Cleaning Process</p>
+        <h2 class="section-title">Clean, Controlled, and Thorough</h2>
+      </header>
+
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        {processSteps.map((step) => (
+          <article class="info-card">
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
   <section class="section section--alt">
     <div class="u-container">
-      <header class="section__head section__head--left content-stack">
-        <p class="section-topper">View Our Gallery</p>
-        <h2 class="section-title">Residential Chimney Projects</h2>
+      <header class="section__head content-stack">
+        <p class="section-topper">Tips For Keeping Your Fireplace Chimney Clean</p>
+        <h2 class="section-title">Best Practices for Year-Round Performance</h2>
       </header>
 
+      <div class="notice-box" style="max-width: 74ch; margin: 0 auto var(--space-l);">
+        <ul class="feature-list">
+          {chimneyTips.map((tip) => <li>{tip}</li>)}
+        </ul>
+      </div>
+
       <ImageCarousel
-        id="residential-chimney-gallery"
-        label="Residential chimney project gallery"
-        items={galleryItems}
+        id="residential-chimney-cleaning-gallery"
+        label="Residential chimney cleaning gallery"
+        items={cleaningGallery}
         fit="contain"
       />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Replacement Chimney Chase Pan Installation</p>
+        <h2 class="section-title">Protect Your Chimney from Water and Debris</h2>
+      </header>
+
+      <div class="rich-text" style="max-width: 78ch;">
+        <p>
+          At Hygienic Air, we provide comprehensive chimney chase pan replacement services designed
+          to protect chimney systems from water intrusion, corrosion, and long-term deterioration.
+        </p>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Our Service Includes</h3>
+        <ul class="feature-list">
+          {chasePanServiceIncludes.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div style="margin-top: var(--space-l);">
+        <ImageCarousel
+          id="residential-chimney-chase-pan-gallery"
+          label="Chimney chase pan replacement gallery"
+          items={chasePanGallery}
+          fit="contain"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container split-grid service-inline-grid" style="align-items: start;">
+      <article class="service-inline-copy">
+        <h3>Chimney Rooftop Dampers</h3>
+        <p>
+          Rooftop dampers install at the top of the flue and seal the chimney when not in use to
+          help protect your home from weather, pests, and conditioned-air loss.
+        </p>
+        <h4 style="margin: var(--space-m) 0 var(--space-xs); color: inherit;">Benefits</h4>
+        <ul class="feature-list">
+          {damperBenefits.map((item) => <li>{item}</li>)}
+        </ul>
+        <h4 style="margin: var(--space-m) 0 var(--space-xs); color: inherit;">Types We Offer</h4>
+        <ul class="feature-list">
+          {damperTypes.map((item) => <li>{item}</li>)}
+        </ul>
+        <h4 style="margin: var(--space-m) 0 var(--space-xs); color: inherit;">Installation & Maintenance</h4>
+        <ul class="feature-list">
+          {damperInstallAndMaintenance.map((item) => <li>{item}</li>)}
+        </ul>
+        <p style="margin-top: var(--space-s);">
+          Choosing the right damper means matching chimney flue dimensions, expected usage, and
+          durability goals with professional recommendations.
+        </p>
+        <p style="margin-top: var(--space-s);">
+          When closed, rooftop dampers help retain conditioned indoor air and block outside
+          elements from entering your chimney system.
+        </p>
+      </article>
+
+      <figure class="service-inline-media">
+        <img
+          src="/images/residential-chimney/features/chimney-damper.jpg"
+          alt="Chimney rooftop damper component installed at chimney top."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container split-grid service-inline-grid service-inline-grid--reverse" style="align-items: start;">
+      <article class="service-inline-copy">
+        <h3>Chimney Cap Replacement</h3>
+        <p>
+          Replacing a chimney cap is essential for maintaining chimney safety, draft performance,
+          and long-term durability. Our team performs detailed inspection, proper cap selection,
+          and secure installation.
+        </p>
+        <h4 style="margin: var(--space-m) 0 var(--space-xs);">Hygienic Air's Approach</h4>
+        <ul class="feature-list">
+          {chimneyCapApproach.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <figure class="service-inline-media">
+        <img
+          src="/images/residential-chimney/features/chimney-cap-replacement.jpg"
+          alt="Residential chimney cap replacement and restoration example."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+
+    <div class="u-container" style="margin-top: var(--space-l);">
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        <article class="info-card">
+          <h3>Benefits of Choosing Hygienic Air</h3>
+          <ul class="feature-list">
+            {chimneyCapBenefits.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+        <article class="info-card">
+          <h3>Why Replace a Chimney Cap?</h3>
+          <ul class="feature-list">
+            {chimneyCapWhyReplace.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
     </div>
   </section>
 

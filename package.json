@@ -10,12 +10,14 @@
 		"preview": "astro preview"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.7.0",
-		"astro": "^5.18.0",
+		"@astrojs/sitemap": "^3.7.2",
+		"astro": "^6.1.1",
 		"autoprefixer": "^10.4.27",
 		"less": "^4.5.1"
 	},
 	"devDependencies": {
-		"netlify-plugin-cache": "^1.0.3"
+		"netlify-plugin-cache": "^1.0.3",
+		"oxfmt": "^0.42.0",
+		"oxlint": "^1.57.0"
 	}
 }

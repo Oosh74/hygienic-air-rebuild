@@ -1,52 +1,96 @@
 ---
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
-import ServiceIcon from "@components/Site/ServiceIcon.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
 
 const heroImageUrl = "/images/heroes/residential-air-duct-hero.jpg";
 
+const iaqStats = [
+  {
+    value: "5",
+    label: "Indoor air pollution ranks among the top environmental dangers.",
+  },
+  {
+    value: "2.31M",
+    label: "Deaths worldwide were attributed to indoor pollution in the latest reporting year.",
+  },
+  {
+    value: "90%",
+    label: "Of our lives are spent indoors.",
+  },
+  {
+    value: "40 lbs",
+    label: "The average home collects this much dust yearly.",
+  },
+  {
+    value: "150,000+",
+    label: "Quarts of air are inhaled per person each day.",
+  },
+  {
+    value: "8x",
+    label: "Indoor air can circulate through your home per hour.",
+  },
+  {
+    value: "5x",
+    label: "Indoor air can be more polluted than outdoor air.",
+  },
+];
+
 const warningSigns = [
   "Have your air ducts been cleaned in the last 3 to 5 years?",
-  "Do you have allergies, asthma, or frequent respiratory irritation?",
-  "Do you smell musty odors when your HVAC system turns on?",
-  "Are persistent pet, smoke, or nicotine odors hard to remove?",
-  "Have you recently renovated or moved into a new home?",
-  "Do you see visible dirt buildup around vent covers?",
+  "Are you dusting daily?",
+  "Do you have allergies, asthma, or feel like you are always sick?",
+  "Do you smell a musty odor when your HVAC system turns on?",
+  "Are you unable to get rid of pet, nicotine, or other lingering odors?",
+  "Have you moved into a new home recently?",
+  "Have you completed construction or renovations recently?",
+  "Do you see visible dirt or mold on vent covers and surrounding areas?",
 ];
 
-const airQualityFacts = [
-  "Indoor air pollution is among the top environmental risks to public health.",
-  "Indoor air can be more polluted than outdoor air.",
-  "Most people spend the majority of their time indoors.",
-  "Dirty duct systems can recirculate contaminants 5 to 7 times per hour.",
+const whyMatters = [
+  "Reduce HVAC efficiency: accumulated debris restricts airflow and increases energy use.",
+  "Shorten HVAC lifespan: strained systems break down more frequently over time.",
+  "Exacerbate allergies and respiratory issues: contaminants can trigger irritation and flare-ups.",
 ];
 
-const whyHomeownersBook = [
-  "Household allergy and asthma sensitivity concerns",
-  "Pet dander, dust, and odor buildup inside the HVAC system",
-  "Post-construction or renovation particulate cleanup",
-  "Long intervals between professional duct cleanings",
+const poorIaqIndicators = [
+  "Vent/register covers have visible dust buildup.",
+  "Ceiling or wall areas around vents are darkened or black.",
+  "Dust quickly returns on furniture and surfaces after cleaning.",
+  "You are dusting more frequently than normal.",
+  "Your air ducts have not been cleaned within the last 3 to 5 years.",
 ];
 
-const impacts = [
+const processSteps = [
   {
-    title: "Better Indoor Air Quality",
-    body: "Cleaning helps reduce recirculation of allergens and airborne debris trapped in ductwork.",
-    icon: "residential" as const,
+    title: "Step One",
+    body: "Prep and protect the home with floor coverings, furniture protection, and corner guards where needed.",
   },
   {
-    title: "Improved HVAC Efficiency",
-    body: "Removing buildup from system pathways can improve airflow and reduce equipment strain.",
-    icon: "commercial" as const,
+    title: "Step Two",
+    body: "Run an 8-inch vacuum hose from the truck to the main trunk lines at the A/C unit to place the system under negative suction.",
   },
   {
-    title: "Odor Reduction",
-    body: "Dust and residue in ducts can hold lingering odors that return whenever the system runs.",
-    icon: "industrial" as const,
+    title: "Step Three",
+    body: "Remove and wash supply and return vent covers as a standard part of proper duct cleaning.",
   },
+  {
+    title: "Step Four",
+    body: "Send forced-air agitation whips through supply, return, and main duct lines to loosen debris and pull it back to the truck.",
+  },
+  {
+    title: "Step Five",
+    body: "Sanitize the A/C system with Benefect Decon 30 to treat bacteria and organic growth.",
+  },
+];
+
+const completionChecklist = [
+  "Ensure the system is up and running properly.",
+  "Complete a final walkthrough to confirm no mess is left behind.",
+  "Confirm satisfaction and answer any additional questions.",
+  "Collect payment and signature upon completion.",
 ];
 
 const galleryItems = [
@@ -56,23 +100,58 @@ const galleryItems = [
   },
   {
     src: "/images/cdn-migrated/3-Jun-18--2024-20-42-21-aM47-1920w.jpg",
-    alt: "Technician working on residential duct cleaning setup.",
+    alt: "Technician setting up residential air duct cleaning equipment.",
   },
   {
     src: "/images/cdn-migrated/2-Jun-21--2024-22-16-47-hqYK-1920w.jpg",
-    alt: "Air duct interior and access panel during service.",
+    alt: "Air duct access panel and interior during source-removal service.",
   },
   {
     src: "/images/cdn-migrated/4-Jun-21--2024-22-17-47-Tost-1920w.jpg",
-    alt: "Duct cleaning equipment and hoses at residential jobsite.",
-  },
-  {
-    src: "/images/cdn-migrated/candle-filter-1920w.jpg",
-    alt: "Air filter with soot buildup demonstrating contamination.",
+    alt: "Duct cleaning truck and hose setup at a residential jobsite.",
   },
   {
     src: "/images/cdn-migrated/20211101_174802-be64c3c5-1920w.jpg",
-    alt: "Residential vent cleaning in progress.",
+    alt: "Residential truck-mounted vacuum setup for duct cleaning.",
+  },
+  {
+    src: "/images/cdn-migrated/candle-filter-1920w.jpg",
+    alt: "Air filter darkened by soot and particulate buildup.",
+  },
+];
+
+const ventIndicatorGallery = [
+  {
+    src: "/images/residential-air-duct/vent-indicators/20210311_120425-7109acdd-1920w.jpg",
+    alt: "Dirty ceiling vent with visible dust staining on surrounding surface.",
+  },
+  {
+    src: "/images/residential-air-duct/vent-indicators/20211101_174802-be64c3c5-1920w.jpg",
+    alt: "Ceiling vent with heavy dark buildup around and inside the grille.",
+  },
+  {
+    src: "/images/residential-air-duct/vent-indicators/20210311_120453-ec7bb0fb-1920w.jpg",
+    alt: "Close-up of contaminated vent register with dust accumulation.",
+  },
+  {
+    src: "/images/residential-air-duct/vent-indicators/20211101_174724-7926b171-1920w.jpg",
+    alt: "Vent grille with visible soot and debris around the vent opening.",
+  },
+  {
+    src: "/images/residential-air-duct/vent-indicators/20211101_174729-3eca4d63-1920w.jpg",
+    alt: "Return vent showing dark buildup trapped in vent slats.",
+  },
+  {
+    src: "/images/residential-air-duct/vent-indicators/20211101_174825-d50fb114-1920w.jpg",
+    alt: "Vent with dense dust buildup indicating poor indoor air quality.",
+  },
+  {
+    src: "/images/residential-air-duct/vent-indicators/20211101_174836-9aca4d50-1920w.jpg",
+    alt: "Ceiling vent with visible contamination before cleaning.",
+  },
+  {
+    src: "/images/residential-air-duct/vent-indicators/20180921_111215-cd717334-1920w.jpg",
+    alt: "Dirty vent register with heavy dust accumulation in the grille.",
   },
 ];
 ---
@@ -88,7 +167,7 @@ const galleryItems = [
     imageUrl={heroImageUrl}
     topper="Residential Service"
     title="Residential Air Duct Cleaning"
-    body="At Hygienic Air, Inc, we enhance home air quality through comprehensive duct cleaning delivered by experienced, certified technicians."
+    body="At Hygienic Air, Inc, we're committed to enhancing the air quality of your home through our comprehensive residential services. Our meticulous air duct cleanings completed by our experienced, certified technicians ensure that every corner is free from contaminants, allergens, and debris. With over two decades of experience serving Central Florida, we pride ourselves on delivering top-tier service and unparalleled results. Trust us to create a healthier living environment for you and your loved ones, where every breath is cleaner, fresher, and safer. Contact us today to experience the Hygienic Air difference firsthand!"
     actions={[
       { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
       {
@@ -100,45 +179,51 @@ const galleryItems = [
     ]}
   />
 
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Indoor Air Quality Facts</p>
+        <h2 class="section-title">Indoor Air Pollution Ranks Among the Top Environmental Risks</h2>
+      </header>
+
+      <div class="metric-grid">
+        {iaqStats.map((item) => (
+          <article class="metric-card">
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section section--page-intro">
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
         <p class="section-topper">What Is Air Duct Cleaning?</p>
-        <h2 class="section-title">Clean Ducts, Cleaner Home Air</h2>
+        <h2 class="section-title">Clean Ducts, Cleaner Air for Everyday Living</h2>
       </header>
 
       <div class="split-grid content-grid">
         <div class="rich-text">
           <p>
-            Air duct cleaning removes built-up contaminants from your home's HVAC system using
-            high-powered negative suction and agitation tools. Supply and return ducts, plus key
-            HVAC components, are cleaned to improve indoor air quality and airflow performance.
+            Air duct cleaning is the process of removing contaminants from your home's heating,
+            ventilation, and air conditioning (HVAC) system by placing the system under negative
+            suction and using agitation tools to loosen buildup.
           </p>
           <p>
-            Over time, dust, pollen, mold particles, and pet dander collect inside ductwork.
-            When the system runs, those pollutants can recirculate throughout the home.
-            Professional cleaning helps reduce that load and supports long-term equipment health.
-          </p>
-          <p>
-            Our full-service approach focuses on complete source removal, not surface-level
-            blow-and-go cleaning, so contaminants are removed at the system and captured away from
-            your living space.
+            Professional service includes cleaning both supply and return duct lines along with
+            key HVAC components. This helps improve indoor air quality, support system efficiency,
+            and extend equipment life.
           </p>
         </div>
 
         <aside class="notice-box">
-          <h3>Does Your Home Need Air Duct Cleaning?</h3>
+          <h3>Do You Need Air Duct Cleaning?</h3>
           <ul class="check-list">
             {warningSigns.map((item) => <li>{item}</li>)}
           </ul>
         </aside>
-      </div>
-
-      <div class="notice-band" style="margin-top: var(--space-l);">
-        <p>
-          Protect your family's health and extend the life of your HVAC system with periodic duct
-          cleaning and proper filter maintenance.
-        </p>
       </div>
     </div>
   </section>
@@ -146,34 +231,26 @@ const galleryItems = [
   <section class="section">
     <div class="u-container">
       <header class="section__head content-stack">
-        <p class="section-topper">Do You Need Air Duct Cleaning?</p>
-        <h2 class="section-title">Why It Matters</h2>
+        <p class="section-topper">Why Air Duct Cleaning Matters</p>
+        <h2 class="section-title">Dust and Debris Recirculate Through Your Home</h2>
       </header>
 
-      <div class="highlight-grid">
-        {impacts.map((item) => (
-          <article class="highlight-card">
-            <div class="card-icon-wrap" aria-hidden="true">
-              <ServiceIcon variant={item.icon} />
-            </div>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-
-      <div class="notice-box" style="margin-top: var(--space-l);">
-        <h3>Indoor Air Quality Facts</h3>
-        <ul class="feature-list">
-          {airQualityFacts.map((item) => <li>{item}</li>)}
+      <div class="notice-box">
+        <p>
+          Your ductwork can become a hidden collection point for dust, dirt, pollen, pet dander,
+          and other allergens. Each time your HVAC system turns on, contaminants can recirculate
+          throughout the home.
+        </p>
+        <ul class="feature-list" style="margin-top: var(--space-s);">
+          {whyMatters.map((item) => <li>{item}</li>)}
         </ul>
       </div>
 
-      <div class="notice-box" style="margin-top: var(--space-l);">
-        <h3>Common Reasons Homeowners Schedule Service</h3>
-        <ul class="feature-list">
-          {whyHomeownersBook.map((item) => <li>{item}</li>)}
-        </ul>
+      <div class="notice-band" style="margin-top: var(--space-l);">
+        <p>
+          Protect your family's health and extend the life of your HVAC system with regular air
+          duct cleaning.
+        </p>
       </div>
     </div>
   </section>
@@ -191,6 +268,109 @@ const galleryItems = [
         items={galleryItems}
         fit="contain"
       />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container split-grid service-inline-grid">
+      <article class="service-inline-copy">
+        <h3>Dust: The Hidden Odor Culprit</h3>
+        <p>
+          Even after deep cleaning carpets and repainting walls, odors can linger when dust inside
+          ductwork continues to trap and recirculate pet, smoke, nicotine, and musty smells.
+        </p>
+        <p style="margin-top: var(--space-s);">
+          Professional duct cleaning removes odor-holding debris from the system and helps restore
+          fresher indoor air across your home, and antimicrobial treatment can be included when
+          appropriate. Contact us for a free estimate.
+        </p>
+      </article>
+
+      <figure class="service-inline-media">
+        <img
+          src="/images/residential-air-duct/vent-indicators/20180921_111215-cd717334-1920w.jpg"
+          alt="Dust-loaded return vent showing heavy buildup across the grille."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container split-grid service-inline-grid service-inline-grid--reverse">
+      <article class="service-inline-copy">
+        <h3>Candle Soot and Indoor Air Quality</h3>
+        <p>
+          Candle soot can accumulate on surfaces and in HVAC pathways. Over time, this fine black
+          residue can affect breathing comfort, airflow performance, and home appearance.
+        </p>
+        <ul class="feature-list" style="margin-top: var(--space-s);">
+          <li>Can contribute to respiratory irritation for sensitive occupants.</li>
+          <li>Can clog filters and strain HVAC operation.</li>
+          <li>Can discolor walls, ceilings, and surrounding surfaces.</li>
+        </ul>
+      </article>
+
+      <figure class="service-inline-media">
+        <img
+          src="/images/residential-air-duct/feature/candle-filter-1920w.jpg"
+          alt="Darkened air filter with candle soot and particulate buildup."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Does Your Home Have Poor Indoor Air Quality?</p>
+        <h2 class="section-title">Visible Indicators to Watch For</h2>
+      </header>
+
+      <div class="notice-box">
+        <ul class="feature-list">
+          {poorIaqIndicators.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div class="notice-band" style="margin-top: var(--space-l);">
+        <p>If vent/register covers look like the images below, it's time for air duct cleaning.</p>
+      </div>
+
+      <div style="margin-top: var(--space-l);">
+        <ImageCarousel
+          id="residential-air-duct-vent-indicators"
+          label="Examples of vent and duct conditions indicating need for cleaning"
+          items={ventIndicatorGallery}
+          fit="contain"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Our Service Workflow</p>
+        <h2 class="section-title">Step-by-Step Residential Duct Cleaning Process</h2>
+      </header>
+
+      <div class="info-card-grid">
+        {processSteps.map((step) => (
+          <article class="info-card">
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>At Completion, Technicians Will</h3>
+        <ul class="feature-list">
+          {completionChecklist.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
     </div>
   </section>
 

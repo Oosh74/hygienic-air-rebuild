@@ -1,94 +1,114 @@
 ---
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
-import ServiceIcon from "@components/Site/ServiceIcon.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
 
 const heroImageUrl = "/images/heroes/commercial-air-duct-hero.jpg";
 
+const indoorAirStats = [
+  {
+    value: "Top 5",
+    label: "Indoor air pollution ranks among the top environmental dangers.",
+  },
+  {
+    value: "2.31M",
+    label: "Deaths worldwide were attributed to indoor pollution in the latest year.",
+  },
+  {
+    value: "90%",
+    label: "Of our lives are spent indoors.",
+  },
+  {
+    value: "40 lbs",
+    label: "The average home collects about 40 pounds of dust yearly.",
+  },
+  {
+    value: "150,000+",
+    label: "Quarts of air are inhaled per person per day (approximately).",
+  },
+  {
+    value: "8x/hr",
+    label: "Indoor air is circulated up to 8 times per hour through the building.",
+  },
+  {
+    value: "Up to 5x",
+    label: "Indoor air can be more polluted than outdoor air.",
+  },
+];
+
 const warningSigns = [
-  "Have your ducts gone 3 to 5 years without cleaning?",
-  "Are employees reporting odors, irritation, or stale air?",
-  "Do you notice musty smells when HVAC equipment starts?",
-  "Did you recently complete remodeling or buildout work?",
-  "Is visible dirt or debris collecting around supply or return vents?",
+  "Have your air ducts been cleaned in the last 3 to 5 years?",
+  "Are you dusting daily?",
+  "Do you have allergies, asthma, or feel like you are always sick?",
+  "Do you smell a musty odor when your HVAC system is on?",
+  "Are you unable to get rid of pet, nicotine, or other odors?",
+  "Have you completed construction or renovations recently?",
+  "Do you see visible dirt or mold on vent covers or nearby surfaces?",
 ];
 
-const processHighlights = [
-  "System is placed under negative pressure with high-powered vacuum trucks.",
-  "Agitation tools loosen buildup from duct interior surfaces.",
-  "Debris is extracted directly into vacuum collection equipment.",
-  "No loose dust is left circulating in occupied spaces.",
-  "Service can be phased to match facility operating needs.",
+const businessIndicators = [
+  "Do your vent/register covers have visible dust buildup?",
+  "Is the ceiling or wall around vents turning black?",
+  "Is dust building up on desks, counters, or furniture quickly?",
+  "Are teams dusting more frequently than usual?",
+  "Have your air ducts gone 3 to 5 years without cleaning?",
 ];
 
-const impacts = [
-  {
-    title: "Indoor Air Quality",
-    body: "Contaminants in ductwork can contribute to poor indoor air quality and occupant discomfort.",
-    icon: "residential" as const,
-  },
-  {
-    title: "Workforce Performance",
-    body: "Cleaner HVAC systems support healthier environments, helping reduce disruptions and absenteeism.",
-    icon: "commercial" as const,
-  },
-  {
-    title: "System Efficiency",
-    body: "Cleaner airflow pathways reduce strain on HVAC components and support efficient operation.",
-    icon: "industrial" as const,
-  },
-];
-
-const facilityTypes = [
-  "Office buildings and business parks",
-  "Retail, hospitality, and mixed-use properties",
-  "Healthcare and educational facilities",
-  "Industrial operations and manufacturing spaces",
+const hvacComponents = [
+  "Air ducts",
+  "Air cleaner",
+  "Air filter",
+  "Air plenum",
+  "Coils",
+  "Grills",
+  "Drain pan",
+  "Registers",
+  "Blower motor and assembly",
+  "Heat exchanger",
 ];
 
 const galleryItems = [
   {
-    src: "/images/cdn-migrated/453337629_1677824812952250_4148574405933219806_n-a2974961-1920w.jpg",
-    alt: "Commercial duct cleaning at an industrial facility.",
+    src: "/images/commercial-air-duct/gallery/air-duct-commercial-1.jpg",
+    alt: "Commercial duct interior with heavy dust buildup before cleaning.",
   },
   {
-    src: "/images/cdn-migrated/453304724_2202899220067420_5575271529760227530_n-ae3f3a79-1920w.jpg",
-    alt: "Technicians servicing large commercial duct runs.",
+    src: "/images/commercial-air-duct/gallery/air-duct-commercial-2.jpg",
+    alt: "Commercial vent and duct surface requiring deep cleaning.",
   },
   {
-    src: "/images/cdn-migrated/453293531_997099555218148_5821268677402918691_n-2a6523f0-1920w.jpg",
-    alt: "Commercial airflow system cleaning equipment.",
+    src: "/images/commercial-air-duct/gallery/air-duct-commercial-3.jpg",
+    alt: "Industrial ductwork cleaning project in progress.",
   },
   {
-    src: "/images/cdn-migrated/451622238_1153893099170938_3626138309021834960_n-7bffb50a-a7f4bb20-1920w.jpg",
-    alt: "Crew performing duct cleaning in a commercial building.",
+    src: "/images/commercial-air-duct/gallery/air-duct-commercial-4.jpg",
+    alt: "Large-scale commercial air duct cleaning setup.",
   },
   {
-    src: "/images/cdn-migrated/453349336_474491078626899_5796806996728609189_n-c74a6e71-1920w.jpg",
-    alt: "Facility ductwork cleaning project.",
+    src: "/images/commercial-air-duct/gallery/air-duct-commercial-5.jpg",
+    alt: "Poor indoor-air indicator near duct-related system area.",
   },
   {
-    src: "/images/cdn-migrated/453277604_1033712348351469_5573308226265591582_n-304f417c-1920w.jpg",
-    alt: "High-capacity duct cleaning setup at commercial site.",
+    src: "/images/commercial-air-duct/gallery/air-duct-commercial-6.jpg",
+    alt: "Vacuum truck and filtration equipment supporting commercial cleaning.",
   },
 ];
 ---
 
 <SiteLayout
   title="Commercial Air Duct Cleaning in Central Florida"
-  description="Commercial and industrial air duct cleaning services in Central Florida for improved indoor air quality, healthier facilities, and HVAC performance."
+  description="Commercial and industrial air duct cleaning services in Central Florida focused on indoor air quality, safer workplaces, and cleaner HVAC systems."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
   <HeroSection
     align="left-bottom"
     imageUrl={heroImageUrl}
-    topper="Commercial / Industrial Service"
+    topper="Good Air in Workplace"
     title="Commercial & Industrial Air Duct Cleaning"
-    body="Keep facilities cleaner, safer, and more efficient with high-powered source-removal duct cleaning performed by experienced crews."
+    body="At Hygienic Air, Inc, we're committed to enhancing the air quality of your home through our comprehensive residential services. Our meticulous air duct cleanings completed by our experienced, certified technicians ensure that every corner is free from contaminants, allergens, and debris. With over two decades of experience serving Central Florida, we pride ourselves on delivering top-tier service and unparalleled results. Trust us to create a healthier living environment for you and your loved ones, where every breath is cleaner, fresher, and safer. Contact us today to experience the Hygienic Air difference firsthand!"
     actions={[
       { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
       {
@@ -103,22 +123,29 @@ const galleryItems = [
   <section class="section section--page-intro">
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
-        <p class="section-topper">Air Duct Cleaning for Your Business</p>
-        <h2 class="section-title">A Healthier Facility Starts with Cleaner Airflow</h2>
+        <p class="section-topper">Cleaning Frequency</p>
+        <h2 class="section-title">Every 1 - 2 Years</h2>
       </header>
 
-      <div class="split-grid content-grid">
-        <div class="rich-text">
+      <div class="split-grid content-grid" style="align-items: start;">
+        <article class="rich-text">
+          <h3 style="margin: 0 0 var(--space-xs);">Air Duct Cleaning For Your Business</h3>
           <p>
-            Contaminants inside duct systems can recirculate through occupied areas throughout the
-            day. That impacts comfort, cleanliness, and system performance in offices, retail,
-            hospitality, education, and industrial environments.
+            As a business, maintaining a productive, safe, and healthful work environment is
+            essential for efficient operations and employee retention. One key factor is indoor air
+            quality.
           </p>
           <p>
-            Hygienic Air, Inc delivers commercial source-removal cleaning that removes buildup from
-            duct surfaces and captures debris at the truck, keeping dirt out of your indoor spaces.
+            According to the EPA, indoor air can be five to seven times more polluted than outdoor
+            air. Poor indoor air quality can impact employee performance and increase absenteeism,
+            reducing overall productivity.
           </p>
-        </div>
+          <p>
+            The EPA ranks indoor air pollution (sick building syndrome) among the top five
+            environmental risks to public health, and contaminants in ductwork are a major
+            contributor. To improve workplace indoor air quality, start with Hygienic Air, Inc.
+          </p>
+        </article>
 
         <aside class="notice-box">
           <h3>Do You Need Air Duct Cleaning?</h3>
@@ -130,37 +157,20 @@ const galleryItems = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section--deep-blue">
     <div class="u-container">
       <header class="section__head content-stack">
-        <p class="section-topper">Does Your Business Have Poor Indoor Air Quality?</p>
-        <h2 class="section-title">Operational Impact</h2>
+        <p class="section-topper">Indoor Air Facts</p>
+        <h2 class="section-title">Why Routine Duct Cleaning Matters</h2>
       </header>
 
-      <div class="highlight-grid">
-        {impacts.map((item) => (
-          <article class="highlight-card">
-            <div class="card-icon-wrap" aria-hidden="true">
-              <ServiceIcon variant={item.icon} />
-            </div>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
+      <div class="metric-grid" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
+        {indoorAirStats.map((item) => (
+          <article class="metric-card">
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
           </article>
         ))}
-      </div>
-
-      <div class="notice-box" style="margin-top: var(--space-l);">
-        <h3>Air Duct Cleaning Process</h3>
-        <ul class="feature-list">
-          {processHighlights.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
-
-      <div class="notice-box" style="margin-top: var(--space-l);">
-        <h3>Facilities We Commonly Serve</h3>
-        <ul class="feature-list">
-          {facilityTypes.map((item) => <li>{item}</li>)}
-        </ul>
       </div>
     </div>
   </section>
@@ -178,6 +188,93 @@ const galleryItems = [
         items={galleryItems}
         fit="contain"
       />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container split-grid" style="align-items: start;">
+      <article class="notice-box">
+        <h3>Does Your Business Have Poor Indoor Air Quality?</h3>
+        <p>
+          These are key indicators that can signal poor indoor air quality in your business.
+        </p>
+        <ul class="feature-list" style="margin-top: var(--space-s);">
+          {businessIndicators.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <figure class="service-inline-media">
+        <img
+          src="/images/commercial-air-duct/feature/poor-indoor-air-indicator.jpg"
+          alt="Visible buildup and dirty material indicating poor indoor air quality conditions."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">HVAC Scope</p>
+        <h2 class="section-title">Components Included in Full-System Cleaning</h2>
+      </header>
+
+      <div class="notice-box" style="max-width: 74ch; margin: 0 auto;">
+        <ul class="feature-list" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+          {hvacComponents.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Air Duct Cleaning Process</p>
+        <h2 class="section-title">Source Removal with Negative Pressure</h2>
+      </header>
+
+      <div class="rich-text" style="max-width: 78ch; margin: 0 auto;">
+        <p>
+          The most effective way to clean air ducts is through source-removal methods. The HVAC
+          system is placed under negative pressure using specialized vacuum trucks. As the trucks
+          draw air through the system, agitation whips are inserted to loosen dirt and debris from
+          interior duct surfaces.
+        </p>
+        <p>
+          Loosened contaminants are carried through the ducts into the vacuum trucks, removing them
+          from the system and building without leaving mess behind.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container split-grid service-inline-grid" style="align-items: start;">
+      <article class="service-inline-copy">
+        <h3>Did You Know?</h3>
+        <p>
+          Schools can accommodate up to 4x more occupants (staff and students) than a regular
+          office building with the same amount of conditioned space. Children often breathe more
+          air relative to body weight than adults, and the EPA identifies school air quality as a
+          major concern.
+        </p>
+        <p style="margin-top: var(--space-s);">
+          EPA states: "Children may be more sensitive to pollution, and children with asthma are
+          especially sensitive. Asthma is responsible for millions of missed school days each year.
+          Parents' and caregivers' involvement helps daycare facilities become aware of asthma
+          triggers and the need to reduce them."
+        </p>
+      </article>
+
+      <figure class="service-inline-media">
+        <img
+          src="/images/commercial-air-duct/feature/schools-epa-example.jpg"
+          alt="Vacuum truck and filtration units parked outside commercial storefronts during service."
+          loading="lazy"
+        />
+      </figure>
     </div>
   </section>
 
