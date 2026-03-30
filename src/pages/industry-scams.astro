@@ -5,41 +5,88 @@ import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro"
 
 const heroImageUrl = "/images/heroes/industry-scams-hero.png";
 
-const redFlags = [
-  "Unrealistically low whole-home cleaning prices (for example, 'too good to be true' offers).",
-  "No clear company name, address, or verifiable credentials in ads.",
-  "Scare tactics about mold or health hazards without proper evidence.",
-  "Fast 'blow-and-go' service that skips full HVAC system cleaning.",
-  "Pressure to approve expensive add-ons once technicians arrive.",
-  "Large upfront payment requests before work begins.",
+const introWarnings = [
+  "Be skeptical of ultra-low offers like '$99 whole-house cleaning.'",
+  "Look for real company names, credentials, and established business details.",
+  "Be cautious with new or locked social profiles with little history.",
+  "Treat urgent mold or contamination claims as unverified until confirmed.",
+  "Avoid quick 'blow-and-go' cleanings that skip full-system components.",
+  "Research, compare quotes, ask for references, and avoid large upfront payments.",
+];
+
+const commonRedFlags = [
+  "Lowball pricing far below normal industry rates.",
+  "High-pressure sales claims such as 'limited time' or 'we are only nearby for a few days.'",
+  "Vague scope and poor transparency in pricing or deliverables.",
+  "Unnecessary add-ons after arrival, including sudden mold or damage claims.",
+  "Weak online presence with little verifiable company history.",
+  "Requests for full payment before the work is completed.",
 ];
 
 const protectionSteps = [
-  "Research the company and verify reputation across trusted platforms.",
-  "Compare written estimates from multiple providers.",
-  "Ask for certifications, insurance details, and references.",
-  "Confirm the exact scope: supply, return, and key HVAC components.",
-  "Request final pricing in writing before scheduling.",
-  "Avoid rushed decisions and get a second opinion when in doubt.",
+  "Do your research and review reputation across trusted platforms.",
+  "Get multiple quotes and compare scope, not just price.",
+  "Verify credentials, insurance, and relevant certifications.",
+  "Read the contract carefully and avoid vague terms.",
+  "Trust your instincts and walk away if something feels off.",
 ];
 
-const pricingTruths = [
-  "Quality duct cleaning requires trained labor, specialized equipment, and full-system cleaning time.",
-  "Ultra-low offers often recover costs through hidden fees and upselling.",
-  "A thorough cleaning should be transparent, documented, and clearly scoped.",
+const lowPriceRisks = [
+  "Underqualified technicians with limited HVAC cleaning experience.",
+  "Inadequate equipment that cannot remove contaminants effectively.",
+  "Hidden fees for surprise services or newly 'discovered' problems.",
+  "Potential duct damage caused by improper cleaning methods.",
 ];
 
-const smartQuestions = [
-  "What exactly is included in your cleaning scope beyond the vents?",
-  "How long has your company provided duct cleaning specifically?",
-  "Can you share insurance details and recent customer references?",
-  "Will you provide final pricing in writing before the work starts?",
+const whenToClean = [
+  "Visible mold growth inside hard-surface duct areas or HVAC components.",
+  "Pest infestation or evidence of animal activity in the system.",
+  "Visibly excessive dust and debris affecting indoor air quality.",
+  "Routine maintenance every 3 to 5 years to help control buildup.",
+];
+
+const misconceptions = [
+  "Indoor air quality: Duct cleaning can reduce contaminants, but filter changes and ventilation still matter.",
+  "Energy efficiency: Cleaning ducts alone is incomplete without fan and coil cleaning.",
+  "Allergy relief: Duct cleaning helps, but pets, dust mites, and mold sources must also be addressed.",
+];
+
+const scamPattern = [
+  {
+    title: "The Lowball Offer",
+    body: "Consumers are drawn in by extremely low whole-house pricing.",
+  },
+  {
+    title: "The Bait and Switch",
+    body: "On-site, the company claims unexpected duct complexity or hidden damage.",
+  },
+  {
+    title: "The Upsell",
+    body: "Additional charges are presented as required for labor, tools, or remediation.",
+  },
+  {
+    title: "The Pressure Tactic",
+    body: "Homeowners are pressured to approve extra costs immediately to avoid delays or alleged health risks.",
+  },
+];
+
+const equipmentDeception = [
+  "Underpowered equipment is used and then blamed for delays that justify extra charges.",
+  "Ductwork may be damaged during setup and presented as a costly repair necessity.",
+  "Specialized tools and chemicals are introduced as required, often at inflated prices.",
+];
+
+const whyHygienicAir = [
+  "Transparency: upfront pricing and clear service explanations.",
+  "Customer satisfaction: backed by thousands of positive reviews.",
+  "Industry leadership: supported by certifications and long-standing reputation.",
+  "Peace of mind: protect your investment with our satisfaction guarantee.",
 ];
 ---
 
 <SiteLayout
-  title="Air Duct Cleaning Scam Tips | Hygienic Air Plus"
-  description="Learn how to identify air duct cleaning scams, compare providers, and protect your home or business with transparent service decisions."
+  title="Industry Scams | Hygienic Air"
+  description="Learn how to spot air duct cleaning scams, protect your home, and choose a qualified duct cleaning company with confidence."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -48,10 +95,10 @@ const smartQuestions = [
     imageUrl={heroImageUrl}
     topper="Consumer Education"
     title="Industry Scams"
-    body="Know the warning signs, avoid high-pressure tactics, and choose qualified service providers with confidence."
+    body="Scam duct cleaning offers are common. Learn the warning signs, protect your home, and choose qualified service with confidence."
     actions={[
       { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
-      { href: "/faqs", label: "Read FAQs", variant: "secondary" },
+      { href: "/contact", label: "Get a Quote", variant: "secondary" },
     ]}
   />
 
@@ -59,19 +106,28 @@ const smartQuestions = [
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
         <p class="section-topper">How to Protect Yourself Against Scams</p>
-        <h2 class="section-title">The Duct Cleaning Scam Uncovered</h2>
+        <h2 class="section-title">Stay Alert, Stay Informed, Stay Protected</h2>
       </header>
 
-      <div class="rich-text">
-        <p>
-          With social media and search ads pushing rock-bottom pricing, homeowners can be exposed
-          to misleading offers and low-quality service. Scam tactics often start with attractive
-          promotions and end with poor workmanship, hidden charges, or unnecessary upsells.
-        </p>
-        <p>
-          Staying informed is the best defense. Choosing a reputable, transparent provider protects
-          both your budget and your indoor air quality.
-        </p>
+      <div class="split-grid content-grid">
+        <article class="rich-text">
+          <p>
+            With social media posts and paid ads promoting rock-bottom duct cleaning deals, it is
+            essential to stay vigilant. Deceptive offers can drain your wallet, deliver poor
+            workmanship, and leave your indoor air quality worse than before.
+          </p>
+          <p>
+            Staying informed and cautious is the best defense against scams and helps ensure your
+            air ducts are cleaned properly.
+          </p>
+        </article>
+
+        <aside class="notice-box">
+          <h3>Quick Scam Checklist</h3>
+          <ul class="check-list">
+            {introWarnings.map((item) => <li>{item}</li>)}
+          </ul>
+        </aside>
       </div>
     </div>
   </section>
@@ -79,15 +135,17 @@ const smartQuestions = [
   <section class="section section--alt">
     <div class="u-container split-grid">
       <article class="notice-box">
-        <h3>Common Red Flags</h3>
-        <ul class="check-list">
-          {redFlags.map((item) => <li>{item}</li>)}
+        <h3>Do Not Fall for These Dirty Tricks</h3>
+        <p style="margin-bottom: var(--space-s);">Scammers rely on predictable tactics.</p>
+        <ul class="feature-list">
+          {commonRedFlags.map((item) => <li>{item}</li>)}
         </ul>
       </article>
 
       <article class="notice-box">
-        <h3>How to Protect Yourself</h3>
-        <ul class="check-list">
+        <h3>Knowledge Is Your Best Defense</h3>
+        <p style="margin-bottom: var(--space-s);">Follow these safeguards before booking.</p>
+        <ul class="feature-list">
           {protectionSteps.map((item) => <li>{item}</li>)}
         </ul>
       </article>
@@ -98,20 +156,139 @@ const smartQuestions = [
     <div class="u-container">
       <header class="section__head content-stack">
         <p class="section-topper">Low Prices Often Hide High Costs</p>
-        <h2 class="section-title">What to Expect from a Legitimate Provider</h2>
+        <h2 class="section-title">Why $199 Whole-House Deals Are Often Suspicious</h2>
       </header>
 
-      <div class="notice-box">
+      <div class="rich-text" style="max-width: 80ch; margin: 0 auto;">
+        <p>
+          It may be tempting to accept a dirt-cheap offer, but reputable companies carry real
+          costs for trained labor, equipment, insurance, and proper full-system cleaning.
+        </p>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l); max-width: 80ch; margin-inline: auto;">
         <ul class="feature-list">
-          {pricingTruths.map((item) => <li>{item}</li>)}
+          {lowPriceRisks.map((item) => <li>{item}</li>)}
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container split-grid service-inline-grid">
+      <article class="service-inline-copy">
+        <h3>When Do You Need to Clean Your Air Ducts?</h3>
+        <p>
+          The EPA generally recommends duct cleaning when there is visible mold growth, pest
+          infestation, or excessive visible debris causing indoor air quality concerns.
+        </p>
+        <ul class="feature-list" style="margin-top: var(--space-s);">
+          {whenToClean.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <article class="service-inline-copy">
+        <h3>Common Misconceptions</h3>
+        <ul class="feature-list">
+          {misconceptions.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">The Duct Cleaning Scam Uncovered</p>
+        <h2 class="section-title">How the Bait-and-Switch Usually Works</h2>
+      </header>
+
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        {scamPattern.map((item) => (
+          <article class="info-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
       </div>
 
       <div class="notice-box" style="margin-top: var(--space-l);">
-        <h3>Questions to Ask Before You Book</h3>
+        <h3>Equipment-Based Deception Tactics</h3>
         <ul class="feature-list">
-          {smartQuestions.map((item) => <li>{item}</li>)}
+          {equipmentDeception.map((item) => <li>{item}</li>)}
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Still Unsure?</p>
+        <h2 class="section-title">Why Homeowners Trust Hygienic Air</h2>
+      </header>
+
+      <div class="rich-text" style="max-width: 82ch; margin: 0 auto;">
+        <p>
+          With over 22 years of experience, Hygienic Air helps homeowners choose safe,
+          transparent, high-quality service.
+        </p>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l); max-width: 82ch; margin-inline: auto;">
+        <ul class="feature-list">
+          {whyHygienicAir.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div class="rich-text" style="max-width: 82ch; margin: var(--space-l) auto 0;">
+        <p>
+          We have thousands of positive reviews across Facebook, Google, BBB, and Nextdoor.
+          Ready to experience the Hygienic difference? Contact us for a free quote.
+        </p>
+        <p>
+          Have you been scammed? We can help. Ask about our special offer for scam victims,
+          including 10% off for customers who were previously taken advantage of.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Watch</p>
+        <h2 class="section-title">Dateline NBC: Duct Cleaning Scam - Part 1</h2>
+      </header>
+
+      <div
+        style="position: relative; width: min(100%, 82rem); margin: 0 auto; padding-top: 56.25%; border-radius: 0.9rem; overflow: hidden; border: 1px solid #dbe3ee; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);"
+      >
+        <iframe
+          src="https://www.youtube.com/embed/Vk3Fxam49CU"
+          title="Dateline NBC - Duct Cleaning Scam - Part 1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"
+          style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <div class="notice-box" style="max-width: 82ch; margin: 0 auto;">
+        <h3>If You Suspect a Scam</h3>
+        <p>
+          Report the incident to your local consumer protection agency. Sharing your experience can
+          help protect other homeowners from becoming victims.
+        </p>
+        <p style="margin-top: var(--space-s);">
+          For additional guidance, consult a licensed HVAC professional and ask for a referral to a
+          qualified, reputable air duct cleaning company.
+        </p>
       </div>
     </div>
   </section>

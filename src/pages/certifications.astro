@@ -7,33 +7,61 @@ import { certificationLogos } from "@data/logo-sliders";
 
 const heroImageUrl = "/images/heroes/certifications-hero.jpg";
 
-const points = [
-  "Recognized certifications and affiliations indicate commitment to proven cleaning standards.",
-  "Technician training and continuing education support safe, effective system cleaning.",
-  "Industry membership reinforces accountability, ethics, and process consistency.",
-  "Credentialed companies are better positioned to deliver complete HVAC cleaning and restoration.",
+const whyCredentialsMatter = [
+  "Recognized certifications and affiliations signal accountability to published standards.",
+  "Strong training programs prepare technicians to deliver safe, consistent cleaning and restoration.",
+  "Industry ethics and compliance frameworks help protect your home, business, and indoor air quality.",
+  "Credentialed companies are more likely to provide complete, professional vent and HVAC system care.",
 ];
 
-const credentialHighlights = [
-  "NADCA-aligned indoor air system cleaning standards",
-  "CSIA and NCSG chimney and venting best-practice awareness",
-  "NFPA-informed fire and life-safety service recommendations",
-  "EPA-informed indoor air quality and contaminant-control practices",
+const certifications = [
+  {
+    title: "IAQA Certified",
+    body: "Our Indoor Air Quality Association certification reflects our focus on healthier indoor environments and better air quality outcomes.",
+  },
+  {
+    title: "BBB Accredited Business",
+    body: "Our Better Business Bureau accreditation and A+ reputation reflect our commitment to customer satisfaction and ethical service.",
+  },
+  {
+    title: "CSIA Certified",
+    body: "Chimney Safety Institute of America certification means our team is trained to inspect, clean, and maintain chimney systems properly.",
+  },
+  {
+    title: "NCSG Member",
+    body: "Membership in the National Chimney Sweep Guild supports ongoing training in modern chimney and venting best practices.",
+  },
+  {
+    title: "CSIA CDET Certified",
+    body: "Our Certified Dryer Exhaust Technician credential highlights our emphasis on dryer vent safety, fire prevention, and performance.",
+  },
+  {
+    title: "ASHRAE Affiliated",
+    body: "Our ASHRAE affiliation helps keep our team aligned with current HVAC engineering standards and technical guidance.",
+  },
+  {
+    title: "NFPA Compliant",
+    body: "We follow National Fire Protection Association standards to support fire safety in every applicable service we perform.",
+  },
+  {
+    title: "EPA Lead-Safe Certified",
+    body: "Our technicians are trained to handle lead-based paint dust safely during qualified projects to protect occupants and property.",
+  },
 ];
 ---
 
 <SiteLayout
-  title="Air Duct Cleaning Certifications | Hygienic Air Plus"
-  description="Review Hygienic Air certifications, memberships, and industry-aligned standards supporting duct, dryer vent, and chimney cleaning services in Central Florida."
+  title="Certifications and Associations | Hygienic Air"
+  description="Review Hygienic Air certifications and associations for duct, dryer vent, chimney, and indoor-air services across Central Florida."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
   <HeroSection
     align="left-bottom"
     imageUrl={heroImageUrl}
-    topper="About Hygienic Air"
-    title="Certifications and Associations"
-    body="Our credentials reflect a long-term commitment to professional standards, technician training, and quality-driven service delivery."
+    topper="Certifications and Associations"
+    title="Hygienic Air: Your Trusted Air Duct Cleaning Experts"
+    body="When you choose Hygienic Air, you are choosing a company that prioritizes your health and home with certified training, proven standards, and professional accountability."
     actions={[
       { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
       { href: "/services", label: "View Services", variant: "secondary" },
@@ -44,35 +72,29 @@ const credentialHighlights = [
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
         <p class="section-topper">What Certifications Should a Duct Cleaning Company Have?</p>
-        <h2 class="section-title">Choose Proven Standards, Not Promises</h2>
+        <h2 class="section-title">Choose a Company That Is Trained, Verified, and Accountable</h2>
       </header>
 
       <div class="split-grid content-grid">
-        <div class="rich-text">
+        <article class="rich-text">
           <p>
-            When selecting a vent cleaning company, prioritize providers with recognized
-            certifications and affiliations. Qualified organizations enforce standards for HVAC
-            cleaning ethics, methods, and technician competency.
+            When selecting a vent cleaning company, it is essential to prioritize those with
+            recognized certifications and affiliations. Companies connected to reputable industry
+            organizations follow strict codes of ethics and standards for HVAC system cleaning.
           </p>
           <p>
-            Hygienic Air is committed to high standards in both field execution and customer care.
-            Our certifications and memberships support safer, cleaner, and more consistent results.
+            Companies that invest in extensive training programs also ensure their technicians are
+            prepared to deliver high-quality cleaning and restoration services. Choosing a qualified
+            company helps ensure your vent cleaning is performed thoroughly and professionally.
           </p>
-        </div>
+        </article>
 
         <aside class="notice-box">
-          <h3>Why Credentials Matter</h3>
+          <h3>Why Certifications Matter</h3>
           <ul class="feature-list">
-            {points.map((item) => <li>{item}</li>)}
+            {whyCredentialsMatter.map((item) => <li>{item}</li>)}
           </ul>
         </aside>
-      </div>
-
-      <div class="notice-box" style="margin-top: var(--space-l);">
-        <h3>Credential Focus Areas</h3>
-        <ul class="feature-list">
-          {credentialHighlights.map((item) => <li>{item}</li>)}
-        </ul>
       </div>
     </div>
   </section>
@@ -80,15 +102,42 @@ const credentialHighlights = [
   <section class="section">
     <div class="u-container">
       <header class="section__head content-stack">
-        <p class="section-topper">Hygienic Air Credentials</p>
-        <h2 class="section-title">Professional Certifications & Memberships</h2>
+        <p class="section-topper">Associations and Credentials</p>
+        <h2 class="section-title">Recognized Industry Certifications</h2>
       </header>
 
       <LogoSlider
         id="certifications-slider"
-        label="Certification logos slider"
+        label="Certification and association logos slider"
         items={certificationLogos}
       />
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Our Qualifications</p>
+        <h2 class="section-title">Certifications and Memberships That Back Our Work</h2>
+      </header>
+
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        {certifications.map((item) => (
+          <article class="info-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l); max-width: 84ch;">
+        <h3>Why Homeowners and Businesses Choose Hygienic Air</h3>
+        <p>
+          Our certifications and affiliations are a direct reflection of our commitment to cleaner
+          air, safer systems, and high-quality service. We stay current, train continuously, and
+          apply those standards in every project we complete.
+        </p>
+      </div>
     </div>
   </section>
 

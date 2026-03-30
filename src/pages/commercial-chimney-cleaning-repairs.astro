@@ -1,75 +1,207 @@
 ---
+import { Image } from "astro:assets";
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
+import ChimneyIcon from "../icons/hygienic-air-chimney-icon.svg";
+import FireplaceIcon from "../icons/hygienic-air-fireplace-icon.svg";
+import commercialPizzaOvenCleaningImage from "@assets/images/services/commercial-chimney/hygienic-air-commercial-pizza-oven-cleaning.jpg";
+import commercialVacuumTruckSupportImage from "@assets/images/services/commercial-chimney/hygienic-air-commercial-vacuum-truck-support.jpg";
+import commercialChimneyDamperImage from "@assets/images/services/commercial-chimney/hygienic-air-commercial-chimney-damper.jpg";
+import commercialChimneyCapRestorationImage from "@assets/images/services/commercial-chimney/hygienic-air-commercial-chimney-cap-restoration.jpg";
 
 const heroImageUrl = "/images/heroes/commercial-chimney-hero.jpg";
 
-const risks = [
-  "Creosote and soot buildup can trigger chimney fires.",
-  "Blockages can restrict draft and reduce safe appliance operation.",
-  "Oil and gas byproducts can corrode flue liners over time.",
-  "Poor draft can increase harmful gas backdraft risk.",
-  "Deferred maintenance can shorten chimney system lifespan.",
+const fireStats = [
+  {
+    value: "Over 250,000",
+    label:
+      "Chimney fires per year in the U.S. are responsible for over 125 million dollars in property damage.",
+    icon: "chimney",
+  },
+  {
+    value: "Leading Cause",
+    label:
+      "The leading cause of fires in heating equipment is failing to keep it clean.",
+    icon: "fireplace",
+  },
+];
+
+const gasOilConcerns = [
+  "Oil-burning appliances still have soot buildup that can block the chimney and cause deadly carbon monoxide to leak into the home.",
+  "Gas and oil byproducts can combine with water condensed from exhaust and create a corrosive solution that damages the flue liner and can eventually allow flue gasses into your home.",
+  "Buildup on the chimney flue restricts airflow, causing appliances and boilers to malfunction or burn richer.",
 ];
 
 const processSteps = [
-  "Step 1: Connect power vacuum equipment at the base of the system.",
-  "Step 2: Brush and sweep the full flue path from top to bottom.",
-  "Capture soot and debris under controlled negative pressure.",
-  "Inspect cap, damper, and serviceable components.",
-  "Provide recommendations for repairs and replacements.",
+  {
+    title: "Step One",
+    body: "First, the hose from our power vacuum truck is hooked into the base of the chimney.",
+  },
+  {
+    title: "Step Two",
+    body: "Next, the technician goes to the point where the chimney exits and prepares for top-down cleaning.",
+  },
+  {
+    title: "Step Three",
+    body: "Then, the technician uses a chimney brush and cleans the entire flue from top to bottom as the vacuum truck removes debris.",
+  },
+  {
+    title: "Step Four",
+    body: "Additionally, the technician inspects the chimney cap to ensure it is in good working condition and recommends replacement if needed.",
+  },
+  {
+    title: "Step Five",
+    body: "Finally, the technician cleans the damper and fire box area with a hand brush and confirms the damper is in good working order.",
+  },
 ];
 
-const pizzaOvenHighlights = [
-  "Wood-fired, gas-fired, and coal-fired pizza oven systems",
-  "Soot, grease, and ash removal on service schedules",
-  "2 to 3 month maintenance cadence recommended for heavy use",
-  "Cleaner combustion and more consistent oven performance",
+const pizzaOvenExpertise = [
+  "Wood-fired ovens: cleaning fireboxes, cooking surfaces, and chimneys to remove soot that can contaminate pizzas.",
+  "Coal-fired ovens: removing ash, soot, and heat-resistant grime to prevent soot fallout on pizzas.",
+  "Gas-fired ovens: cleaning burners, heat exchangers, and interior components to optimize performance and reduce grease-fire risk.",
+  "Hybrid ovens: cleaning mixed-fuel oven systems and handling the unique challenges of each fuel source.",
+  "Chimney cap maintenance: inspections, cleaning, and replacement recommendations to reduce blockages and improve draft.",
 ];
 
-const galleryItems = [
+const pizzaOvenBenefits = [
+  "Improved pizza quality by eliminating soot and ash contamination.",
+  "Optimized oven performance with more consistent heat distribution.",
+  "Improved fuel efficiency across wood, coal, and gas systems.",
+  "Extended oven lifespan by reducing buildup-related wear.",
+  "Enhanced kitchen safety by reducing fire risk and improving working conditions.",
+];
+
+const certifications = [
+  "NCSG National Chimney Sweep Guild",
+  "CSIA Chimney Safety Institute of America",
+  "NFPA National Fire Protection Agency",
+];
+
+const chasePanServiceIncludes = [
+  "Thorough assessment of the existing chase pan for rust, holes, and signs of leakage.",
+  "High-quality replacement options including stainless steel and copper.",
+  "Precise chimney chase measurements for an exact fit.",
+  "Careful removal of damaged chase pans without harming chimney structure.",
+  "Professional installation with secure fasteners and proper fit.",
+  "Watertight edge sealing to prevent water intrusion.",
+  "Post-installation inspection to verify secure fit and sealing.",
+  "Annual chimney maintenance options to monitor and protect chase pan condition.",
+];
+
+const damperBenefits = [
+  "Energy efficiency by sealing the flue when not in use.",
+  "Protection from rain and debris that can damage chimney systems.",
+  "Pest prevention against birds, animals, and insects.",
+  "Improved draft control for easier fire starts and steadier operation.",
+];
+
+const damperTypes = [
+  "Top-sealing dampers that also function as chimney caps.",
+  "Energy-top dampers with silicone gasket seals for tighter closure.",
+  "Durable stainless steel and cast aluminum options.",
+];
+
+const damperInstallAndMaintenance = [
+  "Professional installation for proper fit and smooth function.",
+  "Regular maintenance and cleaning to keep dampers operating reliably.",
+  "Sizing guidance based on chimney flue dimensions and usage.",
+];
+
+const chimneyCapApproach = [
+  "Inspection: evaluate the condition of the existing cap and chimney structure.",
+  "Selection: help choose material, size, and design for your system.",
+  "Installation: securely install the new cap for proper performance.",
+  "Safety and cleanliness: complete service using proper tools and dust-control methods.",
+];
+
+const chimneyCapBenefits = [
+  "Experienced technicians with extensive chimney-service background.",
+  "Clear communication on process, costs, and expected outcomes.",
+  "EPA-approved antimicrobial options including Benefect Decon 30 when appropriate.",
+  "A strong focus on quality, efficiency, and customer satisfaction.",
+];
+
+const chimneyCapWhyReplace = [
+  "Prevents water damage by keeping rain out of the chimney.",
+  "Blocks debris and animals that can clog the flue.",
+  "Improves draft and overall fireplace performance.",
+  "Reduces fire risk by helping stop sparks from escaping.",
+];
+
+const cleaningGallery = [
   {
-    src: "/images/cdn-migrated/314482061_578808767394912_5991150344996773558_n-cdacb152-1920w.jpg",
-    alt: "Commercial chimney sweep at rooftop access point.",
+    src: "/images/commercial-chimney/cleaning/451454205_459124960267208_7997479178998928180_n-f4a5c03b-1920w.jpg",
+    alt: "Technician performing chimney cleaning service at a commercial property.",
   },
   {
-    src: "/images/cdn-migrated/453251710_1042334137401329_6416276907757708881_n-18bcbb25-1920w.jpg",
-    alt: "Industrial chimney cleaning equipment in use.",
+    src: "/images/commercial-chimney/cleaning/452011147_1944343102743978_2398726721880207305_n-9b4f1ec2-1920w.jpg",
+    alt: "Commercial chimney maintenance work in progress with rooftop access.",
   },
   {
-    src: "/images/cdn-migrated/296001884_8019877804718780_8434515183961045373_n-b618dbd9-1920w.jpg",
-    alt: "Commercial chimney maintenance service.",
+    src: "/images/commercial-chimney/cleaning/274717300_7313203832052851_8907889611689687634_n-e5c9213a-1920w.jpg",
+    alt: "Close view of chimney cleaning setup at service location.",
   },
   {
-    src: "/images/cdn-migrated/451454205_459124960267208_7997479178998928180_n-f4a5c03b-1920w.jpg",
-    alt: "Technician cleaning chimney flue interior.",
+    src: "/images/commercial-chimney/cleaning/314482061_578808767394912_5991150344996773558_n-cdacb152-1920w.jpg",
+    alt: "Ladder setup and rooftop chimney service preparation.",
   },
   {
-    src: "/images/cdn-migrated/chimney-damper-5c33ad2f-1920w.jpg",
-    alt: "Commercial damper component detail.",
+    src: "/images/commercial-chimney/cleaning/453251710_1042334137401329_6416276907757708881_n-18bcbb25-1920w.jpg",
+    alt: "Chimney team handling professional flue cleaning.",
   },
   {
-    src: "/images/cdn-migrated/chimney-repair-and-restoration-653bcdb0-1920w.jpg",
-    alt: "Commercial chimney repair and restoration work.",
+    src: "/images/commercial-chimney/cleaning/296001884_8019877804718780_8434515183961045373_n-b618dbd9-1920w.jpg",
+    alt: "Commercial chimney inspection and cleaning result.",
+  },
+];
+
+const chasePanGallery = [
+  {
+    src: "/images/commercial-chimney/chase-pan/Screenshot-2024-08-21-161728-1920w.png",
+    alt: "Diagram of chimney chase pan dimensions and measurements.",
+  },
+  {
+    src: "/images/commercial-chimney/chase-pan/272139297_7090073571032546_1453010238052108542_n-d83235e3-1920w.jpg",
+    alt: "Metal chase pan installed at rooftop chimney opening.",
+  },
+  {
+    src: "/images/commercial-chimney/chase-pan/20240821_114346-dde81317-1920w.jpg",
+    alt: "Chase pan replacement project showing old component condition.",
+  },
+  {
+    src: "/images/commercial-chimney/chase-pan/20240821_114739-08453bb6-1920w.jpg",
+    alt: "Custom chase pan fitment during installation service.",
+  },
+  {
+    src: "/images/commercial-chimney/chase-pan/20240821_121142-37ccc808-1920w.jpg",
+    alt: "Completed stainless chimney chase pan installed on rooftop.",
+  },
+  {
+    src: "/images/commercial-chimney/chase-pan/274784311_7324448974261670_5786124578805622794_n-aa639533-1920w.jpg",
+    alt: "Close-up of chase pan top plate fabrication and finish.",
+  },
+  {
+    src: "/images/commercial-chimney/chase-pan/274779477_7324448727595028_3917568470578873476_n-d8d1673e-e16db18a-1920w.jpg",
+    alt: "Installed chase pan system providing weather protection.",
   },
 ];
 ---
 
 <SiteLayout
   title="Commercial Chimney Cleaning & Repair in Central Florida"
-  description="Commercial and industrial chimney cleaning and repair services in Central Florida for safer operation, stronger draft performance, and long-term reliability."
+  description="Commercial chimney cleaning and repair services in Central Florida, including sweep service, pizza oven systems, chase pan replacement, rooftop dampers, and chimney cap replacement."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
   <HeroSection
     align="left-bottom"
     imageUrl={heroImageUrl}
-    topper="Commercial / Industrial Service"
+    topper="Commercial Chimney Service"
     title="Commercial Chimney Cleaning / Repairs"
-    body="Keep commercial flue systems cleaner, safer, and ready to perform with scheduled chimney cleaning and repair support."
+    body="At Hygienic Air, Inc, we're committed to enhancing the air quality of your home through our comprehensive residential services. Our meticulous air duct cleanings completed by our experienced, certified technicians ensure that every corner is free from contaminants, allergens, and debris. With over two decades of experience serving Central Florida, we pride ourselves on delivering top-tier service and unparalleled results. Trust us to create a healthier living environment for you and your loved ones, where every breath is cleaner, fresher, and safer. Contact us today to experience the Hygienic Air difference firsthand!"
     actions={[
       { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
       {
@@ -84,53 +216,89 @@ const galleryItems = [
   <section class="section section--page-intro">
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
-        <p class="section-topper">Why Clean The Chimney?</p>
-        <h2 class="section-title">Protect People, Property, and Equipment</h2>
+        <p class="section-topper">Enhance Your Home</p>
+        <h2 class="section-title">Professional Commercial Chimney Services</h2>
       </header>
 
       <div class="split-grid content-grid">
-        <div class="rich-text">
+        <article class="rich-text">
           <p>
-            Commercial and industrial chimney systems require routine cleaning to prevent hazardous
-            buildup, maintain ventilation, and support safer combustion appliance operation.
+            At Hygienic Air, Inc, we deliver comprehensive chimney cleaning and repair services backed
+            by experienced, certified technicians and decades of Central Florida service.
           </p>
           <p>
-            Hygienic Air, Inc performs thorough chimney cleaning using vacuum-assisted methods,
-            detailed inspections, and practical recommendations for repairs and component updates.
+            Our team helps remove contaminants, soot, debris, and airflow restrictions so your
+            chimney and venting systems stay safer, cleaner, and ready to perform.
           </p>
-          <p>
-            We support restaurants, production facilities, and other high-use properties that need
-            dependable draft and scheduled maintenance for safer daily operation.
-          </p>
-        </div>
+        </article>
 
-        <aside class="notice-box">
-          <h3>Common Safety Risks We Address</h3>
-          <ul class="check-list">
-            {risks.map((item) => <li>{item}</li>)}
-          </ul>
-        </aside>
+        <figure class="service-inline-media">
+          <Image
+            src={commercialPizzaOvenCleaningImage}
+            alt="Technician positioned on a rooftop during commercial chimney cleaning service."
+            loading="lazy"
+          />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Cleaning Frequency</p>
+        <h2 class="section-title">Quarterly</h2>
+      </header>
+
+      <div class="metric-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        {fireStats.map((item) => (
+          <article class="metric-card">
+            <span class="metric-card__icon" aria-hidden="true">
+              {item.icon === "chimney" ? <ChimneyIcon /> : <FireplaceIcon />}
+            </span>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="u-container">
-      <header class="section__head content-stack">
-        <p class="section-topper">Our Chimney Cleaning Process</p>
-        <h2 class="section-title">Systematic and Documented Service</h2>
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">What Type Of Chimneys Should Be Cleaned?</p>
+        <h2 class="section-title">Have A Chimney? If Yes, You Will Need It Cleaned</h2>
       </header>
 
-      <div class="notice-box">
-        <ul class="feature-list">
-          {processSteps.map((step) => <li>{step}</li>)}
-        </ul>
+      <div class="split-grid content-grid">
+        <article class="rich-text">
+          <p>
+            Both wood-burning chimneys and those venting fuel-burning appliances, such as gas or
+            oil-fired boilers, furnaces, or water heaters, should be regularly inspected and
+            cleaned. This helps prevent dangerous buildup of creosote, soot, and other residues
+            that can cause chimney fires or blockages.
+          </p>
+          <p>
+            Regular maintenance ensures proper ventilation and safe operation of your heating
+            systems.
+          </p>
+        </article>
+
+        <aside class="notice-box">
+          <h3>Why Clean The Chimney?</h3>
+          <p>
+            The largest concern about owning a home with a chimney is the potential for chimney
+            fires and blockage due to animals. Any fuel source can be a hazard and potential for
+            fire starting.
+          </p>
+        </aside>
       </div>
 
       <div class="notice-box" style="margin-top: var(--space-l);">
-        <h3>Pizza Oven Cleaning Expertise</h3>
+        <h3>Gas And Oil Appliance Concerns</h3>
         <ul class="feature-list">
-          {pizzaOvenHighlights.map((item) => <li>{item}</li>)}
+          {gasOilConcerns.map((item) => <li>{item}</li>)}
         </ul>
       </div>
     </div>
@@ -138,17 +306,218 @@ const galleryItems = [
 
   <section class="section section--alt">
     <div class="u-container">
-      <header class="section__head section__head--left content-stack">
-        <p class="section-topper">View Our Gallery</p>
-        <h2 class="section-title">Commercial Chimney Projects</h2>
+      <header class="section__head content-stack">
+        <p class="section-topper">Our Chimney Cleaning Process</p>
+        <h2 class="section-title">Five-Step Service Workflow</h2>
       </header>
 
-      <ImageCarousel
-        id="commercial-chimney-gallery"
-        label="Commercial chimney project gallery"
-        items={galleryItems}
-        fit="contain"
-      />
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        {processSteps.map((step) => (
+          <article class="info-card">
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </article>
+        ))}
+      </div>
+
+      <div style="margin-top: var(--space-l);">
+        <ImageCarousel
+          id="commercial-chimney-cleaning-gallery"
+          label="Commercial chimney cleaning gallery"
+          items={cleaningGallery}
+          fit="contain"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container split-grid service-inline-grid">
+      <article class="service-inline-copy">
+        <h3>Mastering the Art of Pizza Oven Cleanliness</h3>
+        <p>
+          Whether you are crafting Neapolitan pizzas in a wood-fired oven, serving classic pies
+          from a coal-fired system, or producing high-volume output from gas-fired equipment, our
+          cleaning services are tailored to your fuel source and oven configuration.
+        </p>
+
+        <h4 style="margin: var(--space-m) 0 var(--space-xs);">Our Expertise Encompasses</h4>
+        <ul class="feature-list">
+          {pizzaOvenExpertise.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h4 style="margin: var(--space-m) 0 var(--space-xs);">Benefits of Our Service</h4>
+        <ul class="feature-list">
+          {pizzaOvenBenefits.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <p style="margin-top: var(--space-s);">
+          Regular maintenance is crucial for oven performance and food safety. We recommend
+          professional cleanings every 2 to 3 months to prevent buildup and maintain efficiency.
+        </p>
+        <p style="margin-top: var(--space-s);">
+          Do not let soot and grime hurt your pizza reputation. Schedule recurring cleaning and
+          keep your oven operating at peak performance.
+        </p>
+      </article>
+
+      <figure class="service-inline-media">
+        <Image
+          src={commercialPizzaOvenCleaningImage}
+          alt="Rooftop service access used during pizza-oven chimney cleaning operations."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container split-grid service-inline-grid service-inline-grid--reverse">
+      <article class="service-inline-copy">
+        <h3>Commercial Equipment and Credentials</h3>
+        <p>
+          With vacuum trucks capable of creating up to 16,000 CFM of suction, Hygienic Air makes
+          clean work of a sooty situation.
+        </p>
+        <p style="margin-top: var(--space-s);">
+          With decades of proven service, Hygienic Air provides professional pizza oven cleaning at
+          competitive rates for restaurants throughout Central Florida.
+        </p>
+
+        <h4 style="margin: var(--space-m) 0 var(--space-xs); color: inherit;">
+          Certifications and Affiliations
+        </h4>
+        <ul class="feature-list">
+          {certifications.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <figure class="service-inline-media">
+        <Image
+          src={commercialVacuumTruckSupportImage}
+          alt="Vacuum truck and technician support equipment used for chimney cleaning service."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Replacement Chimney Chase Pan Installation</p>
+        <h2 class="section-title">Protect Your Chimney from Water Damage and Debris</h2>
+      </header>
+
+      <div class="rich-text" style="max-width: 78ch;">
+        <p>
+          At Hygienic Air, we understand the importance of a well-protected chimney. Our chimney
+          chase pan replacement service helps keep your system sealed from water intrusion and
+          exterior debris.
+        </p>
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l);">
+        <h3>Our Service Includes</h3>
+        <ul class="feature-list">
+          {chasePanServiceIncludes.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div style="margin-top: var(--space-l);">
+        <ImageCarousel
+          id="commercial-chimney-chase-pan-gallery"
+          label="Commercial chimney chase pan gallery"
+          items={chasePanGallery}
+          fit="contain"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container split-grid service-inline-grid">
+      <article class="service-inline-copy">
+        <h3>Chimney Rooftop Dampers</h3>
+        <p>
+          Chimney rooftop dampers are installed at the top of the flue and act as a seal when the
+          chimney is not in use. They help block rain and debris while retaining conditioned indoor
+          air for better energy efficiency.
+        </p>
+
+        <h4 style="margin: var(--space-m) 0 var(--space-xs); color: inherit;">Benefits</h4>
+        <ul class="feature-list">
+          {damperBenefits.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h4 style="margin: var(--space-m) 0 var(--space-xs); color: inherit;">Types We Offer</h4>
+        <ul class="feature-list">
+          {damperTypes.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h4 style="margin: var(--space-m) 0 var(--space-xs); color: inherit;">
+          Installation and Maintenance
+        </h4>
+        <ul class="feature-list">
+          {damperInstallAndMaintenance.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <p style="margin-top: var(--space-s);">
+          Choosing the right damper means selecting durable materials, a proper flue fit, and
+          products with strong professional recommendations.
+        </p>
+      </article>
+
+      <figure class="service-inline-media">
+        <Image
+          src={commercialChimneyDamperImage}
+          alt="Chimney rooftop damper and cap assembly installed on a brick chimney."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container split-grid service-inline-grid service-inline-grid--reverse">
+      <article class="service-inline-copy">
+        <h3>Chimney Cap Replacement</h3>
+        <p>
+          Replacing a chimney cap is an essential maintenance task that helps keep your chimney
+          functional and safe.
+        </p>
+
+        <h4 style="margin: var(--space-m) 0 var(--space-xs);">Hygienic Air&apos;s Approach</h4>
+        <ul class="feature-list">
+          {chimneyCapApproach.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+
+      <figure class="service-inline-media">
+        <Image
+          src={commercialChimneyCapRestorationImage}
+          alt="Chimney cap replacement and restoration work on commercial structure."
+          loading="lazy"
+        />
+      </figure>
+    </div>
+
+    <div class="u-container" style="margin-top: var(--space-l);">
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        <article class="info-card">
+          <h3>Benefits of Choosing Hygienic Air</h3>
+          <ul class="feature-list">
+            {chimneyCapBenefits.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <h3>Why Replace a Chimney Cap?</h3>
+          <ul class="feature-list">
+            {chimneyCapWhyReplace.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
     </div>
   </section>
 

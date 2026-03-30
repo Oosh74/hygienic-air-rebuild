@@ -1,6 +1,9 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
 interface ImageSlide {
-  src: string;
+  src: string | ImageMetadata;
   alt: string;
   caption?: string;
 }
@@ -22,8 +25,17 @@ const { id, label, items, fit = "cover" } = Astro.props;
     <div class="media-carousel__track" data-carousel-track>
       {items.map((item, index) => (
         <figure class="media-carousel__slide">
-          <a href={item.src} data-lightbox-item data-index={index} aria-label={`Open image ${index + 1}`}>
-            <img src={item.src} alt={item.alt} loading="lazy" />
+          <a
+            href={typeof item.src === "string" ? item.src : item.src.src}
+            data-lightbox-item
+            data-index={index}
+            aria-label={`Open image ${index + 1}`}
+          >
+            {typeof item.src === "string" ? (
+              <img src={item.src} alt={item.alt} loading="lazy" />
+            ) : (
+              <Image src={item.src} alt={item.alt} loading="lazy" />
+            )}
           </a>
           {item.caption && <figcaption>{item.caption}</figcaption>}
         </figure>

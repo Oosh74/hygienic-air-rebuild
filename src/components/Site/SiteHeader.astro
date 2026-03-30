@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+import brandLogoWhite from "@assets/images/brand/hygienic-air-logo-white.png";
+import brandLogoBlack from "@assets/images/brand/hygienic-air-logo-black.png";
+
 interface NavLink {
   href: string;
   label: string;
@@ -66,19 +70,21 @@ const isAboutActive = aboutPaths.has(currentPath);
   <div class="mainnav">
     <div class="u-container mainnav__inner">
       <a href="/" class="brand" aria-label="Hygienic Air home">
-        <img
+        <Image
           class="brand__logo brand__logo--light"
-          src="/images/cdn-migrated/logo-white-471w.png"
-          alt="Hygienic Air"
-          width="235"
-          height="67"
+          src={brandLogoWhite}
+          alt="Hygienic Air white logo"
+          width={235}
+          height={67}
+          loading="eager"
         />
-        <img
+        <Image
           class="brand__logo brand__logo--dark"
-          src="/images/cdn-migrated/logo-black-1920w.png"
-          alt="Hygienic Air"
-          width="235"
-          height="67"
+          src={brandLogoBlack}
+          alt="Hygienic Air black logo"
+          width={235}
+          height={67}
+          loading="eager"
         />
       </a>
 

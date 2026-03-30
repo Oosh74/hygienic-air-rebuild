@@ -6,13 +6,13 @@ import reviewFacebook from "@assets/images/logos/review-facebook.png";
 import reviewNicejob from "@assets/images/logos/review-nicejob.png";
 import reviewAngi from "@assets/images/logos/review-angi.png";
 
-import certBbb from "@assets/images/logos/cert-bbb.png";
-import certNadca from "@assets/images/logos/cert-nadca.png";
+import certAshrae from "@assets/images/logos/cert-bbb.png";
+import certBbb from "@assets/images/logos/cert-nadca.png";
 import certNfpa from "@assets/images/logos/cert-nfpa.png";
-import certCsia from "@assets/images/logos/cert-csia.png";
-import certNcsg from "@assets/images/logos/cert-ncsg.png";
+import certNcsg from "@assets/images/logos/cert-csia.png";
+import certIaqa from "@assets/images/logos/cert-ncsg.png";
 import certEpa from "@assets/images/logos/cert-epa.png";
-import certServiceBadge from "@assets/images/logos/cert-service-badge.png";
+import certCsia from "@assets/images/logos/cert-service-badge.png";
 import certCdet from "@assets/images/logos/cert-cdet.png";
 
 interface LogoItem {
@@ -51,43 +51,53 @@ export const reviewPlatformLogos: LogoItem[] = [
 
 export const certificationLogos: LogoItem[] = [
   {
+    src: certAshrae,
+    alt: "ASHRAE affiliated logo",
+    href: "https://www.ashrae.org/",
+  },
+  {
     src: certBbb,
     alt: "BBB accredited business logo",
     href: "https://www.bbb.org/",
   },
   {
-    src: certNadca,
-    alt: "NADCA related credential logo",
-    href: "https://nadca.com/",
-  },
-  {
     src: certNfpa,
-    alt: "NFPA related association logo",
+    alt: "NFPA compliance logo",
     href: "https://www.nfpa.org/",
   },
   {
-    src: certCsia,
-    alt: "Industry certification logo",
-    href: "https://www.csia.org/",
-  },
-  {
     src: certNcsg,
-    alt: "Professional training affiliation logo",
+    alt: "National Chimney Sweep Guild logo",
     href: "https://www.ncsg.org/",
   },
   {
+    src: certIaqa,
+    alt: "IAQA certification logo",
+    href: "https://iaqa.org/",
+  },
+  {
     src: certEpa,
-    alt: "Air quality and safety credential logo",
+    alt: "EPA lead-safe certification logo",
     href: "https://www.epa.gov/",
   },
   {
-    src: certServiceBadge,
-    alt: "Service quality badge",
-    href: "https://www.google.com/",
+    src: certCsia,
+    alt: "Chimney Safety Institute of America logo",
+    href: "https://www.csia.org/",
   },
   {
     src: certCdet,
-    alt: "CDET logo",
-    href: "https://www.csia.org/",
+    alt: "Certified Dryer Exhaust Technician logo",
+    href: "https://www.csia.org/certified-dryer-exhaust-technician/",
+  },
+  {
+    src: certAshrae,
+    alt: "ASHRAE affiliated logo",
+    href: "https://www.ashrae.org/",
+  },
+  {
+    src: certBbb,
+    alt: "BBB accredited business logo",
+    href: "https://www.bbb.org/",
   },
 ];

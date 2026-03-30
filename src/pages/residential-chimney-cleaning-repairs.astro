@@ -1,9 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
+import residentialChimneyDamperImage from "@assets/images/services/residential-chimney/hygienic-air-residential-chimney-damper.jpg";
+import residentialChimneyCapReplacementImage from "@assets/images/services/residential-chimney/hygienic-air-residential-chimney-cap-replacement.jpg";
 
 const heroImageUrl = "/images/heroes/residential-chimney-hero.jpg";
 
@@ -236,7 +239,7 @@ const chasePanGallery = [
         <h2 class="section-title">Have A Chimney? If Yes, You Will Need It Cleaned</h2>
       </header>
 
-      <div class="split-grid content-grid" style="align-items: start;">
+      <div class="split-grid content-grid">
         <article class="rich-text">
           <p>
             Both wood-burning chimneys and those venting fuel-burning appliances such as gas or
@@ -355,7 +358,7 @@ const chasePanGallery = [
   </section>
 
   <section class="section section--deep-blue">
-    <div class="u-container split-grid service-inline-grid" style="align-items: start;">
+    <div class="u-container split-grid service-inline-grid">
       <article class="service-inline-copy">
         <h3>Chimney Rooftop Dampers</h3>
         <p>
@@ -385,8 +388,8 @@ const chasePanGallery = [
       </article>
 
       <figure class="service-inline-media">
-        <img
-          src="/images/residential-chimney/features/chimney-damper.jpg"
+        <Image
+          src={residentialChimneyDamperImage}
           alt="Chimney rooftop damper component installed at chimney top."
           loading="lazy"
         />
@@ -395,7 +398,7 @@ const chasePanGallery = [
   </section>
 
   <section class="section">
-    <div class="u-container split-grid service-inline-grid service-inline-grid--reverse" style="align-items: start;">
+    <div class="u-container split-grid service-inline-grid service-inline-grid--reverse">
       <article class="service-inline-copy">
         <h3>Chimney Cap Replacement</h3>
         <p>
@@ -410,8 +413,8 @@ const chasePanGallery = [
       </article>
 
       <figure class="service-inline-media">
-        <img
-          src="/images/residential-chimney/features/chimney-cap-replacement.jpg"
+        <Image
+          src={residentialChimneyCapReplacementImage}
           alt="Residential chimney cap replacement and restoration example."
           loading="lazy"
         />

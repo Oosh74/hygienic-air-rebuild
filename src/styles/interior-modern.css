@@ -274,7 +274,14 @@
   order: 1;
 }
 
+.section--deep-blue .service-inline-copy {
+  color: #e2e8f0;
+}
+
 .section--deep-blue .service-inline-copy h3,
+.section--deep-blue .service-inline-copy h4,
+.section--deep-blue .service-inline-copy h5,
+.section--deep-blue .service-inline-copy h6,
 .section--deep-blue .service-inline-copy p,
 .section--deep-blue .service-inline-copy .feature-list li {
   color: #e2e8f0;
@@ -282,6 +289,11 @@
 
 .section--deep-blue .service-inline-copy .feature-list li::before {
   background: #7dd3fc;
+}
+
+.section--deep-blue .rich-text p,
+.section--deep-blue .rich-text li {
+  color: #e2e8f0;
 }
 
 .alert-box {

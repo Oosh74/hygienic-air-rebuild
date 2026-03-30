@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
 import ServiceIcon from "@components/Site/ServiceIcon.astro";
@@ -6,6 +7,7 @@ import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro"
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
 import FaqAccordion from "@components/Site/FaqAccordion.astro";
+import residentialDryerboxProductImage from "@assets/images/services/residential-dryer-duct/hygienic-air-dryerbox-product.png";
 
 const heroImageUrl = "/images/heroes/residential-dryer-duct-hero.jpg";
 
@@ -573,8 +575,8 @@ const dryerboxGallery = [
       </article>
 
       <figure class="service-inline-media">
-        <img
-          src="/images/residential-dryer-duct/dryerbox/dryerbox-product.png"
+        <Image
+          src={residentialDryerboxProductImage}
           alt="Dryerbox product and recessed dryer vent receptacle illustration."
           loading="lazy"
         />

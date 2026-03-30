@@ -1,9 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 import ImageCarousel from "@components/Site/ImageCarousel.astro";
 import Lightbox from "@components/Site/Lightbox.astro";
+import residentialDustyVentImage from "@assets/images/services/residential-air-duct/hygienic-air-residential-dusty-vent.jpg";
+import residentialCandleSootFilterImage from "@assets/images/services/residential-air-duct/hygienic-air-residential-candle-soot-filter.jpg";
 
 const heroImageUrl = "/images/heroes/residential-air-duct-hero.jpg";
 
@@ -287,8 +290,8 @@ const ventIndicatorGallery = [
       </article>
 
       <figure class="service-inline-media">
-        <img
-          src="/images/residential-air-duct/vent-indicators/20180921_111215-cd717334-1920w.jpg"
+        <Image
+          src={residentialDustyVentImage}
           alt="Dust-loaded return vent showing heavy buildup across the grille."
           loading="lazy"
         />
@@ -312,8 +315,8 @@ const ventIndicatorGallery = [
       </article>
 
       <figure class="service-inline-media">
-        <img
-          src="/images/residential-air-duct/feature/candle-filter-1920w.jpg"
+        <Image
+          src={residentialCandleSootFilterImage}
           alt="Darkened air filter with candle soot and particulate buildup."
           loading="lazy"
         />

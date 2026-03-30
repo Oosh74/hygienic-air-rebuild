@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
@@ -35,9 +36,10 @@ const heroImageUrl = "/images/heroes/gallery-hero.jpg";
 
       <div class="rich-text">
         <p>
-          With over 20 years of experience, our crews deliver thorough and efficient cleaning for
-          homes, commercial institutions, and industrial buildings using proven methods and
-          specialized equipment.
+         With over 20 years of experience, we specialize in cleaning homes, commercial institutions, and industrial buildings. Our team provides thorough and efficient cleaning services, ensuring your air ducts and dryer vents are spotless and functioning optimally.
+
+
+We use state-of-the-art equipment and follow industry best practices to deliver top- notch results. Our experienced technicians are trained to handle any cleaning challenge, big or small, with precision and care. Trust us to improve the air quality in your space and enhance the efficiency of your HVAC systems.
         </p>
         <p>
           These photos highlight real service conditions, equipment deployment, and completion
@@ -47,8 +49,14 @@ const heroImageUrl = "/images/heroes/gallery-hero.jpg";
 
       <div class="gallery-masonry" style="margin-top: var(--space-l);">
         {galleryPageImages.map((item, idx) => (
-          <a href={item.src} data-lightbox-item data-index={idx} aria-label={`Open gallery image ${idx + 1}`}>
-            <img src={item.src} alt={item.alt} loading="lazy" />
+          <a href={item.src.src} data-lightbox-item data-index={idx} aria-label={`Open gallery image ${idx + 1}`}>
+            <Image
+              src={item.src}
+              alt={item.alt}
+              loading="lazy"
+              width={1200}
+              sizes="(min-width: 68rem) 33vw, (min-width: 42rem) 50vw, 100vw"
+            />
           </a>
         ))}
       </div>

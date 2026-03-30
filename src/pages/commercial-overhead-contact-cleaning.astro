@@ -1,64 +1,131 @@
 ---
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
-import ServiceIcon from "@components/Site/ServiceIcon.astro";
+import DustZoneIcon from "@components/Site/DustZoneIcon.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
 
 const heroImageUrl = "/images/heroes/high-dust-zone-hero.jpg";
 
+const companionCards = [
+  {
+    title: "One Clears the System",
+    body: "Air duct cleaning clears the pathways your air travels through.",
+    icon: "system" as const,
+  },
+  {
+    title: "The Other Clears the Space",
+    body: "High-Dust Zone Contact Cleaning clears the elevated surfaces where that dust settles.",
+    icon: "surface" as const,
+  },
+];
+
 const whatWeClean = [
   {
     title: "Wall Niche Detail",
-    body: "Architectural cutouts and decorative recesses that quietly collect dust, cobwebs, and pet hair.",
-    icon: "residential" as const,
+    body: "Architectural cutouts and decorative recesses that quietly collect dust, cobwebs, and pet hair. These often go unnoticed but can affect both air quality and visual presentation.",
+    icon: "niche" as const,
   },
   {
     title: "Ceiling Fan Precision",
-    body: "Blades, motor housings, and mounting hardware that can redistribute allergens and dust throughout occupied spaces.",
-    icon: "commercial" as const,
+    body: "Blades, motor housing, and mounting hardware, often coated in airborne debris and allergens. Clean fans circulate cleaner air and reduce recontamination.",
+    icon: "fan" as const,
   },
   {
     title: "Cabinet Top Sweep",
-    body: "Upper surfaces in kitchens, laundry rooms, and break areas where grease-laced dust builds up over time.",
-    icon: "industrial" as const,
+    body: "Especially in kitchens, laundry rooms, and break areas, where grease-laced dust builds up over time. These surfaces are rarely seen but often contribute to lingering odors and allergens.",
+    icon: "cabinet" as const,
   },
   {
     title: "Exposed Ductwork & Beams",
-    body: "Structural and decorative elements that are difficult to reach during routine cleaning in loft-style and commercial spaces.",
-    icon: "commercial" as const,
+    body: "In loft-style homes or commercial settings, exposed structural elements gather dust and cobwebs that detract from the space's aesthetic and cleanliness.",
+    icon: "beams" as const,
   },
   {
     title: "Ledges & Transoms",
-    body: "High window ledges and decorative trim details where dust and pollen accumulate over long periods.",
-    icon: "residential" as const,
-  },
-  {
-    title: "Additional Specialty Surfaces",
-    body: "Service scope is customized for specialty overhead zones based on layout, occupancy, and usage.",
-    icon: "industrial" as const,
+    body: "High window ledges and decorative transoms that collect dust and pollen, especially in homes with open floor plans or tall windows.",
+    icon: "transom" as const,
   },
 ];
 
 const howWeClean = [
-  "Manual contact cleaning using HEPA-filtered vacuums, microfiber cloths, and extension tools.",
-  "Safe access protocols with ladders, step stools, containment barriers, and OSHA-aware practices.",
-  "Protective prep including drop cloths and area protection for floors, furniture, and fixtures.",
-  "Before-and-after photo documentation for cleaned surfaces.",
-  "No blow-and-go shortcuts: surfaces are physically contacted, cleaned, and verified.",
+  {
+    title: "Manual Contact Method",
+    body: "We use HEPA-filtered vacuums, microfiber cloths, and extension tools to physically remove buildup. No shortcuts and no blow-and-go.",
+    icon: "manual" as const,
+  },
+  {
+    title: "Safe Access Protocols",
+    body: "Ladders, step stools, and containment barriers allow us to reach elevated surfaces without disrupting your space. We follow OSHA-compliant safety practices and use PPE as needed.",
+    icon: "ladder" as const,
+  },
+  {
+    title: "Protective Prep & Containment",
+    body: "We prep each area with care using drop cloths, corner guards, and protective gear to shield floors, furniture, and fixtures from dust and cleaning agents.",
+    icon: "shield" as const,
+  },
+  {
+    title: "Photo Documentation Standard",
+    body: "Before-and-after images of every cleaned surface are included so you know exactly what was done. Images are timestamped and organized for your records.",
+    icon: "camera" as const,
+  },
+];
+
+const whatToExpect = [
+  {
+    title: "Visible Results",
+    body: "We do not just clean, we restore. Surfaces look refreshed, airflow improves, and buildup disappears. You will notice the difference immediately.",
+    icon: "sparkle" as const,
+  },
+  {
+    title: "Peace of Mind",
+    body: "You receive clear documentation of every cleaned area, so you know exactly what was done and why. No guesswork and no vague promises.",
+    icon: "clipboard" as const,
+  },
+  {
+    title: "Tailored Service",
+    body: "We adjust scope and access methods based on layout, ceiling height, and surface types. Every job is customized.",
+    icon: "sliders" as const,
+  },
+  {
+    title: "Professionalism at Every Step",
+    body: "From prep to cleanup, our technicians work with care and respect for your space. We treat your home or business like it is our own.",
+    icon: "shield" as const,
+  },
 ];
 
 const whoBenefits = [
-  "Residential homes with high ceilings, niches, and decorative architectural features",
-  "Commercial offices, retail, and hospitality spaces where cleanliness and presentation matter",
-  "Property turnover projects, seasonal resets, and inspection prep",
-  "Real estate professionals preparing staged homes for listing and showings",
-  "Clients pairing overhead cleaning with full air duct cleaning for better indoor results",
+  {
+    title: "Residential Homes",
+    body: "Especially homes with high ceilings, wall niches, and decorative features that trap dust, including homes undergoing or recovering from renovations.",
+  },
+  {
+    title: "Commercial Spaces",
+    body: "Offices, retail, and hospitality settings where presentation and cleanliness matter. Clean ceiling fans and cabinetry improve the customer experience.",
+  },
+  {
+    title: "Property Turnover Prep",
+    body: "Ideal for managers preparing for showings, seasonal resets, or deep-clean packages. Adds polish and professionalism to any turnover checklist.",
+  },
+  {
+    title: "Real Estate Professionals",
+    body: "Perfect for staging homes and impressing buyers with spotless details. Clean niches and ledges show care and attention to detail.",
+  },
+  {
+    title: "Allergy-Sensitive Households",
+    body: "Reducing airborne dust and allergens from high surfaces can make a noticeable difference in comfort and respiratory health.",
+  },
+];
+
+const complementPoints = [
+  "Ceiling fans recirculate airborne dust. Clean blades mean cleaner airflow.",
+  "Wall niches and cabinet tops act as passive dust collectors. Removing buildup reduces recontamination.",
+  "Together, these services create a cleaner, healthier environment from the inside out.",
 ];
 ---
 
 <SiteLayout
-  title="High-Dust Zone & Combustible Dust Cleaning in Central Florida"
-  description="High-dust zone and combustible dust contact cleaning services in Central Florida for elevated surfaces that affect indoor air quality, safety, and facility cleanliness."
+  title="High-Dust Zone Contact Cleaning & Combustible Dust Service in Central Florida"
+  description="High-Dust Zone Contact Cleaning and combustible dust-focused overhead cleaning for homes and businesses in Central Florida."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -67,7 +134,7 @@ const whoBenefits = [
     imageUrl={heroImageUrl}
     topper="Commercial / Industrial Service"
     title="High-Dust Zone Contact Cleaning / Combustible Dust"
-    body="Cleaner air starts with cleaner surfaces. We target elevated dust zones that standard routines often miss."
+    body="Cleaner air starts with more than clean ducts. We clean the elevated surfaces your air touches to reduce recontamination, allergens, and overlooked dust risk."
     actions={[
       { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
       {
@@ -82,30 +149,71 @@ const whoBenefits = [
   <section class="section section--page-intro">
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
-        <p class="section-topper">Why It Matters</p>
-        <h2 class="section-title">The Perfect Companion to Air Duct Cleaning</h2>
+        <p class="section-topper">Why It Matters. Why It's Offered.</p>
+        <h2 class="section-title">Cleaner Air Includes the Surfaces Air Touches</h2>
       </header>
 
       <div class="split-grid content-grid">
-        <div class="rich-text">
+        <article class="rich-text">
           <p>
-            High-Dust Zone Contact Cleaning was developed to address elevated buildup that impacts
-            air quality, comfort, and overall cleanliness. These surfaces often go unnoticed yet
-            can continuously reintroduce fine debris into occupied environments.
+            At Hygienic Air, Inc., we believe cleaner air starts with more than just clean ducts. It
+            includes the surfaces your air touches. High-Dust Zone Contact Cleaning was developed
+            to address elevated buildup that quietly affects air quality, comfort, and safety.
           </p>
           <p>
-            This service can stand alone or pair with duct cleaning for a fuller indoor air
-            quality strategy: one clears the system, the other clears the space.
+            These zones often go unnoticed, yet they contribute to recontamination, allergen
+            circulation, and combustible dust risk. This service stands strong on its own and pairs
+            seamlessly with air duct cleaning to complete the picture.
           </p>
-        </div>
+          <p>
+            Whether you are refreshing your space, preparing for guests, or simply reclaiming
+            control over your indoor environment, this offering helps restore clarity, cleanliness,
+            and peace of mind where it matters most.
+          </p>
+        </article>
 
         <aside class="notice-box">
           <h3>Cleaning Frequency</h3>
+          <p>Tailored to the specific conditions of each home or workspace.</p>
+          <h3 style="margin-top: var(--space-m);">Combustible Dust Awareness</h3>
           <p>
-            Service intervals are tailored to each home or facility based on dust load, occupancy,
-            ceiling height, and environmental conditions.
+            Elevated fine-dust accumulation can become a hidden fuel source in high-load
+            environments. Routine contact cleaning helps reduce that risk.
           </p>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">The Perfect Companion to Air Duct Cleaning</p>
+        <h2 class="section-title">One Clears the System. The Other Clears the Space.</h2>
+      </header>
+
+      <div class="rich-text" style="max-width: 80ch; margin: 0 auto; color: #e2e8f0;">
+        <p>
+          Air duct cleaning clears the pathways your air travels, but what about the surfaces that
+          collect dust once that air circulates? High-Dust Zone Contact Cleaning targets the quiet
+          culprits: wall niches, ceiling fans, and cabinet tops.
+        </p>
+        <p>
+          Together, these services create a cleaner, healthier, and more visually refreshed
+          environment.
+        </p>
+      </div>
+
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: var(--space-l);">
+        {companionCards.map((item) => (
+          <article class="info-card">
+            <div class="card-icon-wrap" aria-hidden="true">
+              <DustZoneIcon variant={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -114,14 +222,29 @@ const whoBenefits = [
     <div class="u-container">
       <header class="section__head content-stack">
         <p class="section-topper">What We Clean</p>
-        <h2 class="section-title">Precision Cleaning for Hard-to-Reach Surfaces</h2>
+        <h2 class="section-title">Precision Cleaning for the Surfaces You Cannot Reach</h2>
       </header>
+
+      <div class="rich-text" style="max-width: 82ch; margin: 0 auto var(--space-l);">
+        <p>
+          In every home or business, elevated surfaces quietly collect dust, allergens, and buildup
+          without anyone noticing. Our High-Dust Zone Contact Cleaning service is designed to clean
+          them thoroughly, safely, and with full documentation so you can breathe easier and feel
+          proud of your space.
+        </p>
+        <p>
+          This service is especially valuable in homes with decorative features, high ceilings, and
+          architectural details that routine cleaning misses. It is also ideal before or after
+          remodeling, and for offices, retail, and hospitality environments where cleanliness is
+          part of the experience.
+        </p>
+      </div>
 
       <div class="tile-grid">
         {whatWeClean.map((item) => (
           <article class="tile-card">
             <div class="card-icon-wrap" aria-hidden="true">
-              <ServiceIcon variant={item.icon} />
+              <DustZoneIcon variant={item.icon} />
             </div>
             <h3>{item.title}</h3>
             <p>{item.body}</p>
@@ -132,20 +255,100 @@ const whoBenefits = [
   </section>
 
   <section class="section section--alt">
-    <div class="u-container split-grid">
-      <article class="notice-box">
-        <h3>How We Clean</h3>
-        <ul class="feature-list">
-          {howWeClean.map((step) => <li>{step}</li>)}
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">How We Clean</p>
+        <h2 class="section-title">Thorough, Safe, and Documented</h2>
+      </header>
+
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        {howWeClean.map((item) => (
+          <article class="info-card">
+            <div class="card-icon-wrap" aria-hidden="true">
+              <DustZoneIcon variant={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">What You Can Expect</p>
+        <h2 class="section-title">Clear Outcomes and Professional Delivery</h2>
+      </header>
+
+      <div class="info-card-grid" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+        {whatToExpect.map((item) => (
+          <article class="info-card">
+            <div class="card-icon-wrap" aria-hidden="true">
+              <DustZoneIcon variant={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Who Benefits</p>
+        <h2 class="section-title">A Practical Fit Across Home and Commercial Spaces</h2>
+      </header>
+
+      <div class="tile-grid">
+        {whoBenefits.map((item) => (
+          <article class="tile-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep-blue">
+    <div class="u-container split-grid service-inline-grid">
+      <article class="service-inline-copy">
+        <h3>Why It Complements Air Duct Cleaning</h3>
+        <p>
+          Air duct cleaning removes contaminants from inside your HVAC system. High-Dust Zone
+          Contact Cleaning handles the surfaces those contaminants settle on after circulation.
+        </p>
+        <ul class="feature-list" style="margin-top: var(--space-s);">
+          {complementPoints.map((item) => <li>{item}</li>)}
         </ul>
       </article>
 
-      <article class="notice-box">
-        <h3>Who Benefits</h3>
-        <ul class="feature-list">
-          {whoBenefits.map((item) => <li>{item}</li>)}
-        </ul>
+      <article class="service-inline-copy">
+        <h3>Inside-Out Results</h3>
+        <p>
+          Think of it as a two-part cleanse: one clears the lungs of your home, the other clears
+          the skin. When paired with duct cleaning, this service helps extend your investment by
+          reducing allergens, improving air quality, and restoring visual cleanliness to the places
+          most people forget.
+        </p>
       </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container">
+      <div class="notice-box" style="max-width: 82ch; margin: 0 auto;">
+        <h3>Clear, Clean, and Truly Refreshed</h3>
+        <p>
+          Whether you are preparing for guests, tackling a seasonal refresh, remodeling your space,
+          or simply reclaiming it from hidden dust, we will handle the details and show you the
+          results. No pressure. Just clarity, care, and confidence.
+        </p>
+      </div>
     </div>
   </section>
 

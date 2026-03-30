@@ -1,64 +1,92 @@
 ---
+import { Image } from "astro:assets";
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
-import ImageCarousel from "@components/Site/ImageCarousel.astro";
-import Lightbox from "@components/Site/Lightbox.astro";
+import equipmentPrimaryTruck from "@assets/images/equipment/primary/hygienic-air-equipment-primary-truck.jpg";
+import equipmentPrimaryQuincy340 from "@assets/images/equipment/primary/hygienic-air-equipment-primary-quincy-340.png";
+import equipmentPrimaryImpellerHose from "@assets/images/equipment/primary/hygienic-air-equipment-primary-impeller-hose.png";
+import equipmentPrimaryAuxiliaryV8 from "@assets/images/equipment/primary/hygienic-air-equipment-primary-auxiliary-v8.png";
+import equipmentPrimaryFilterBags from "@assets/images/equipment/primary/hygienic-air-equipment-primary-filter-bags.png";
+import portableVacuum2000 from "@assets/images/equipment/portable/hygienic-air-portable-vacuum-2000-cfm.jpg";
+import portableVacuum2100 from "@assets/images/equipment/portable/hygienic-air-portable-vacuum-2100-cfm.jpg";
+import portableVacuum2500 from "@assets/images/equipment/portable/hygienic-air-portable-vacuum-2500-cfm.webp";
+import portableVacuum5000 from "@assets/images/equipment/portable/hygienic-air-portable-vacuum-5000-cfm.jpg";
 
 const heroImageUrl = "/images/heroes/our-equipment-hero.jpg";
 
-const truckHighlights = [
-  "Up to 16,000 CFM suction capacity",
+const powerHighlights = [
+  "Up to 16,000 CFM of suction",
   "Up to 35 inches of static pressure",
-  "Dual-side vacuum hose connection architecture",
-  "Dedicated auxiliary V8 drive for sustained suction",
-  "Dual debris collection cans for large-scale jobs",
+  "Truck-mounted vacuum architecture for large and small jobs",
+  "High-powered agitation tools to dislodge heavy buildup",
 ];
 
-const airPowerHighlights = [
-  "Quincy 340 setup with 200 PSI and 46 CFM",
-  "Feeds agitation whips for deep debris dislodgement",
-  "Supports long-run residential and commercial system cleaning",
+const primaryEquipment = [
+  {
+    title: "Power Vacuum Truck Performance",
+    body: "Our state-of-the-art power vacuum trucks deliver the suction capacity needed for ventilation cleaning in homes, commercial properties, and industrial settings.",
+    detail: "Our trucks can create up to 16,000 CFM of suction and 35 inches of static pressure.",
+    src: equipmentPrimaryTruck,
+    alt: "Hygienic Air dry dust vacuum truck parked outside a residence during service setup.",
+  },
+  {
+    title: "Quincy 340 Air Power",
+    body: "A Quincy 340 mounted with 200 PSI and 46 CFM provides the air power required to feed our agitation whips and loosen embedded dirt from duct walls.",
+    src: equipmentPrimaryQuincy340,
+    alt: "Close-up of mounted Quincy air compressor and hose reel inside vacuum truck compartment.",
+  },
+  {
+    title: "Impeller and Hose Connection Design",
+    body: "Vacuum hose connections on either side of the truck feed through a 40-inch impeller to produce the suction needed to pull contaminants out of the system.",
+    src: equipmentPrimaryImpellerHose,
+    alt: "Interior view of truck vacuum chamber with dual hose connections and large impeller section.",
+  },
+  {
+    title: "Auxiliary V8 Engine",
+    body: "An auxiliary V8 engine powers our equipment and maintains dependable suction through demanding cleaning conditions.",
+    src: equipmentPrimaryAuxiliaryV8,
+    alt: "Close-up of auxiliary engine mounted in truck equipment bay.",
+  },
+  {
+    title: "Filter Bag Breathing System",
+    body: "Filter bags allow the trucks to breathe while keeping extracted dirt and debris traveling back to the truck instead of back into your home or business.",
+    src: equipmentPrimaryFilterBags,
+    alt: "Multiple white filter bags mounted on top of equipment housing for airflow and debris capture.",
+  },
 ];
 
-const concerns = [
-  "Low-CFM portable vacuums may loosen debris without fully removing it.",
-  "Weak suction can leave contaminants in the system to recirculate later.",
-  "Rigid hose limitations often reduce full-system cleaning reach.",
-  "Electrical-only portable setups may struggle with heavy contamination.",
-];
-
-const galleryItems = [
+const portableEquipmentWarnings = [
   {
-    src: "/images/cdn-migrated/20211005_171018-9ec3932e-1920w.jpg",
-    alt: "Hygienic Air vacuum truck and mounted equipment.",
+    title: "2000 CFM (Without Filter)",
+    body: "Not much stronger than a shop vacuum. Electric power can trip breakers and limit performance.",
+    src: portableVacuum2000,
+    alt: "Blue portable vacuum unit with wheels and top handle.",
   },
   {
-    src: "/images/cdn-migrated/Screenshot-2024-07-30-180444-1920w.png",
-    alt: "Equipment performance specification graphic.",
+    title: "2100 CFM (Without Filter)",
+    body: "Uses a rigid hose and aggressive brush setups that can damage ductwork and limit complete system access.",
+    src: portableVacuum2100,
+    alt: "Portable cart system with red hose and brush assembly.",
   },
   {
-    src: "/images/cdn-migrated/Screenshot-2024-07-30-180126-1920w.png",
-    alt: "Vacuum and air-power system component layout.",
+    title: "2500 CFM (Without Filter)",
+    body: "Often relies on AC-powered dust loosening and small-compressor tool setups that reduce cleaning effectiveness.",
+    src: portableVacuum2500,
+    alt: "Portable duct cleaning kit with compact vacuum and accessory components.",
   },
   {
-    src: "/images/cdn-migrated/Screenshot-2024-07-30-180758-1920w.png",
-    alt: "Truck setup detail for suction and debris collection.",
-  },
-  {
-    src: "/images/cdn-migrated/Screenshot-2024-07-30-180917-1920w.png",
-    alt: "Commercial-grade duct cleaning rig detail.",
-  },
-  {
-    src: "/images/cdn-migrated/download-_5_-4c43d425-1920w.jpg",
-    alt: "Example of lower-powered portable equipment.",
+    title: "5000 CFM (Without Filter)",
+    body: "Can be suitable for select small apartments or some high-rises when paired with strong air compression, but not broad heavy-load work.",
+    src: portableVacuum5000,
+    alt: "Gray portable vacuum system with vertical filter stack.",
   },
 ];
 ---
 
 <SiteLayout
   title="Duct Cleaning Equipment & Vacuum Trucks | Hygienic Air Plus"
-  description="See the truck-mounted vacuum and agitation systems Hygienic Air uses for source-removal duct cleaning in residential and commercial environments."
+  description="See the high-powered truck-mounted vacuum and agitation systems Hygienic Air uses for source-removal ventilation cleaning."
   imageUrl={heroImageUrl}
   overlayHeader={true}
 >
@@ -67,7 +95,7 @@ const galleryItems = [
     imageUrl={heroImageUrl}
     topper="About Hygienic Air"
     title="Better Equipment. Best Results."
-    body="Power and suction matter. Our equipment is engineered for complete debris removal, not partial cleanup."
+    body="When it is time to remove dust from a home or business ventilation system, both power and suction are key."
     actions={[
       { href: "tel:+13528012788", label: "Call Us", variant: "primary" },
       { href: "/services", label: "View Services", variant: "secondary" },
@@ -78,68 +106,110 @@ const galleryItems = [
     <div class="u-container">
       <header class="section__head section__head--left content-stack">
         <p class="section-topper">Our Equipment</p>
-        <h2 class="section-title">Industrial-Grade Power for Thorough System Cleaning</h2>
+        <h2 class="section-title">Cutting-Edge Power for Ventilation Cleaning</h2>
       </header>
 
-      <div class="split-grid">
-        <article class="notice-box">
-          <h3>Vacuum Truck Performance</h3>
-          <ul class="feature-list">
-            {truckHighlights.map((item) => <li>{item}</li>)}
-          </ul>
+      <div class="split-grid content-grid">
+        <article class="rich-text">
+          <p>
+            High-powered equipment ensures dust and debris are effectively dislodged from duct
+            walls, while strong suction captures and removes those particles before they re-enter
+            indoor air.
+          </p>
+          <p>
+            Hygienic Air outperforms with cutting-edge equipment for all types of ventilation
+            cleaning, with truck-mounted systems that scale for jobs large and small.
+          </p>
         </article>
 
-        <article class="notice-box">
-          <h3>Air Agitation Power</h3>
+        <aside class="notice-box">
+          <h3>Why Power and Suction Matter</h3>
           <ul class="feature-list">
-            {airPowerHighlights.map((item) => <li>{item}</li>)}
+            {powerHighlights.map((item) => <li>{item}</li>)}
           </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  {primaryEquipment.map((item, index) => (
+    <section class={`section ${index % 2 === 1 ? "section--alt" : ""}`}>
+      <div class={`u-container split-grid service-inline-grid ${index % 2 === 1 ? "service-inline-grid--reverse" : ""}`}>
+        <article class="service-inline-copy">
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+          {item.detail && <p style="margin-top: var(--space-s);">{item.detail}</p>}
         </article>
+
+        <figure class="service-inline-media">
+          <Image src={item.src} alt={item.alt} loading="lazy" />
+        </figure>
+      </div>
+    </section>
+  ))}
+
+  <section class="section section--deep-blue">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Debris Handling</p>
+        <h2 class="section-title">Capture, Contain, and Remove</h2>
+      </header>
+
+      <div class="rich-text" style="max-width: 78ch; margin: 0 auto; color: #e2e8f0;">
+        <p>
+          All dirt and debris extracted from the ventilation system is routed back to truck-based
+          containment. Our setup uses dual collection cans and high-capacity filtration so debris
+          is removed from the system instead of recirculated into occupied space.
+        </p>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="u-container">
-      <header class="section__head content-stack">
-        <p class="section-topper">Types of Equipment to Question</p>
-        <h2 class="section-title">Why Portable-Only Systems Can Fall Short</h2>
+      <header class="section__head section__head--left content-stack">
+        <p class="section-topper">Types Of Duct Cleaning Equipment to Be Questioned</p>
+        <h2 class="section-title">Portable-Only Systems Can Fall Short</h2>
       </header>
 
-      <div class="notice-box">
-        <ul class="feature-list">
-          {concerns.map((item) => <li>{item}</li>)}
-        </ul>
+      <div class="rich-text" style="max-width: 82ch;">
+        <p>
+          Just like in any trade, there are tools that should be questioned. Portable vacuums are
+          usually weaker in suction, and when there is not enough power to remove loosened dust,
+          contaminants can remain inside the system and blow back into the home or business once
+          airflow resumes.
+        </p>
       </div>
 
-      <div class="notice-box" style="margin-top: var(--space-l);">
-        <h3>Why It Matters</h3>
+      <div class="tile-grid" style="margin-top: var(--space-l);">
+        {portableEquipmentWarnings.map((item) => (
+          <article class="tile-card">
+            <figure
+              style="margin: 0 0 var(--space-s); border: 1px solid #dbe3ee; border-radius: 0.7rem; overflow: hidden; background: #f8fafc;"
+            >
+              <Image
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
+                style="width: 100%; height: clamp(10rem, 18vw, 13rem); object-fit: contain; display: block;"
+              />
+            </figure>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="notice-box" style="margin-top: var(--space-l); max-width: 84ch;">
+        <h3>Important Limitations</h3>
         <p>
-          Air movement without strong negative pressure can dislodge debris without fully removing
-          it. Our equipment is designed for full-system extraction, helping keep contaminants out
-          of occupied spaces.
+          All four of these portable vacuum examples collect dirt inside the home or business.
+          None are ideal for larger residential projects or for commercial and industrial cleaning
+          demands.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="section section--alt">
-    <div class="u-container">
-      <header class="section__head section__head--left content-stack">
-        <p class="section-topper">Equipment Gallery</p>
-        <h2 class="section-title">Power, Suction, and System Design</h2>
-      </header>
-
-      <ImageCarousel
-        id="equipment-gallery"
-        label="Hygienic Air equipment gallery"
-        items={galleryItems}
-        fit="contain"
-      />
-    </div>
-  </section>
-
   <ContactOptionsSection />
-
-  <Lightbox slot="after-body" />
 </SiteLayout>

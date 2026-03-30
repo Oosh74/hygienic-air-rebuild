@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import reviewBbbLogo from "@assets/images/logos/BBB-Accredited-Business-176w.webp";
+import brandLogoWhite from "@assets/images/brand/hygienic-air-logo-white.png";
 
 interface NavLink {
   href: string;
@@ -29,12 +30,12 @@ const businessHours = [
   <div class="u-container site-footer__top">
     <div>
       <a href="/" aria-label="Hygienic Air home">
-        <img
+        <Image
           class="site-footer__brand-logo"
-          src="/images/cdn-migrated/logo-white-471w.png"
-          alt="Hygienic Air"
-          width="320"
-          height="91"
+          src={brandLogoWhite}
+          alt="Hygienic Air white logo"
+          width={320}
+          height={91}
         />
       </a>
       <p>Professional duct, dryer duct, and chimney cleaning services across Florida.</p>
