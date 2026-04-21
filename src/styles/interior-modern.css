@@ -525,6 +525,20 @@
   object-fit: contain;
 }
 
+#review-platforms-slider .logo-slider__slide {
+  padding: 0.15rem;
+}
+
+#review-platforms-slider .logo-slider__slide a {
+  aspect-ratio: auto;
+  padding: 0.35rem;
+}
+
+#review-platforms-slider .logo-slider__slide img {
+  height: auto;
+  max-height: clamp(6rem, 9vw, 8.25rem);
+}
+
 .media-carousel,
 .quote-slider {
   position: relative;
