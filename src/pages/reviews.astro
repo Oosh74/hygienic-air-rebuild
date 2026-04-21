@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import SiteLayout from "@layouts/SiteLayout.astro";
 import HeroSection from "@components/Site/HeroSection.astro";
 import ContactOptionsSection from "@components/Site/ContactOptionsSection.astro";
@@ -6,8 +7,71 @@ import TestimonialSlider from "@components/Site/TestimonialSlider.astro";
 import LogoSlider from "@components/Site/LogoSlider.astro";
 import { testimonials } from "@data/reviews";
 import { reviewPlatformLogos } from "@data/logo-sliders";
+import reviewProofImage from "@assets/images/reviews/review-page-proof-2024-05-07.png";
+import awardImageOne from "@assets/images/reviews/awards/award-01.jpg";
+import awardImageTwo from "@assets/images/reviews/awards/award-02.jpg";
+import awardImageThree from "@assets/images/reviews/awards/award-03.jpg";
+import awardImageFour from "@assets/images/reviews/awards/award-04.png";
 
 const heroImageUrl = "/images/heroes/reviews-hero.jpg";
+
+const comparisonRows = [
+  {
+    hygienicLabel: "Advanced Equipment",
+    hygienicDetail: "Utilizes powerful vacuum trucks with up to 16,000 CFM for thorough cleaning.",
+    competitorLabel: "Basic Equipment",
+    competitorDetail: "Often use portable vacuums with minimal suction, which may not be as effective.",
+  },
+  {
+    hygienicLabel: "Established Business",
+    hygienicDetail: "Over 20 years of experience, showcasing reliability and expertise.",
+    competitorLabel: "Limited Online Presence",
+    competitorDetail: "Only a few social media posts, indicating a lack of credibility.",
+  },
+  {
+    hygienicLabel: "Certified and Insured",
+    hygienicDetail: "Fully licensed, insured, and holds multiple certifications.",
+    competitorLabel: "Unlicensed and Uninsured",
+    competitorDetail: "No license, insurance, or certifications.",
+  },
+  {
+    hygienicLabel: "Transparent Pricing",
+    hygienicDetail: "The quoted price is the final price, with no hidden fees.",
+    competitorLabel: "Variable Pricing",
+    competitorDetail: "Ballpark estimates that can change at the time of service.",
+  },
+  {
+    hygienicLabel: "Comprehensive Service",
+    hygienicDetail: "Includes sanitation and entire system cleaning at the quoted price.",
+    competitorLabel: "Upselling",
+    competitorDetail: "May upsell extras at the time of service, increasing the final cost.",
+  },
+  {
+    hygienicLabel: "Proof of Work",
+    hygienicDetail: "Provides detailed job descriptions with before-and-after photos.",
+    competitorLabel: "Lack of Proof",
+    competitorDetail: "Often do not provide proof of their work.",
+  },
+  {
+    hygienicLabel: "Strong Reputation",
+    hygienicDetail: "Thousands of online reviews and recommendations from other companies.",
+    competitorLabel: "Weak Reputation",
+    competitorDetail: "Limited or no online reviews.",
+  },
+  {
+    hygienicLabel: "Thorough Cleaning",
+    hygienicDetail: "Takes time to properly clean your air ducts.",
+    competitorLabel: "Quick and Incomplete",
+    competitorDetail: "May finish quickly, potentially compromising the quality of the cleaning.",
+  },
+];
+
+const awardImages = [
+  { src: awardImageOne, alt: "Neighborhood favorite award badge one" },
+  { src: awardImageTwo, alt: "Neighborhood favorite award badge two" },
+  { src: awardImageThree, alt: "Neighborhood favorite award badge three" },
+  { src: awardImageFour, alt: "Hygienic Air 2024 community recognition badge" },
+];
 ---
 
 <SiteLayout
@@ -34,12 +98,71 @@ const heroImageUrl = "/images/heroes/reviews-hero.jpg";
         <p class="section-topper">Satisfied Clients Speak</p>
         <h2 class="section-title">Why Customers Choose Hygienic Air</h2>
         <p>
-          With strong ratings across Google, Facebook, BBB, and other platforms, our team has
-          earned long-term trust through consistency, communication, and quality workmanship.
+          With thousands of 5-star reviews on Google, Facebook, BBB, and NiceJob, you can trust
+          that our company will deliver exceptional service every time. Our commitment to
+          excellence is reflected in the positive feedback from our satisfied customers, who
+          consistently praise our professionalism, attention to detail, and dedication to customer
+          satisfaction.
+        </p>
+        <p>
+          Whether you're looking for air duct cleaning or dryer duct cleaning, you can be
+          confident that we will go above and beyond to meet your needs and exceed your
+          expectations.
         </p>
       </div>
 
       <TestimonialSlider id="reviews-page-slider" label="Customer testimonials" items={testimonials} />
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="u-container">
+      <header class="section__head content-stack">
+        <p class="section-topper">Why Choose Hygienic Air Over Competitors?</p>
+        <h2 class="section-title">A Clear Difference in Equipment, Standards, and Results</h2>
+      </header>
+
+      <div class="review-compare-table-wrap">
+        <table class="review-compare-table">
+          <thead>
+            <tr>
+              <th scope="col">Hygienic Air</th>
+              <th scope="col">Competitors</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row) => (
+              <tr>
+                <td>
+                  <span class="review-compare-label">{row.hygienicLabel}:</span>
+                  <strong>{row.hygienicDetail}</strong>
+                </td>
+                <td>
+                  <span class="review-compare-label">{row.competitorLabel}:</span>
+                  <strong>{row.competitorDetail}</strong>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="review-favorites-copy">
+        We are thrilled to announce that Hygienic Air has been voted a favorite service provider in
+        neighborhoods across our service areas. This recognition reflects our commitment to
+        delivering top-notch air duct cleaning services.
+      </p>
+
+      <div class="review-awards">
+        <h3 class="review-awards__title">Community Awards</h3>
+        <div class="review-awards__grid">
+          {awardImages.map((award) => (
+            <figure class="review-awards__item">
+              <Image src={award.src} alt={award.alt} loading="lazy" />
+            </figure>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
@@ -55,6 +178,27 @@ const heroImageUrl = "/images/heroes/reviews-hero.jpg";
         label="Review platforms slider"
         items={reviewPlatformLogos}
       />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="u-container review-proof-grid">
+      <figure class="review-proof-image">
+        <Image
+          src={reviewProofImage}
+          alt="Review reputation screenshot for Hygienic Air"
+          loading="lazy"
+        />
+      </figure>
+
+      <div class="content-stack">
+        <p class="section-topper content-stack__topper">Trusted Reputation</p>
+        <h2 class="section-title content-stack__title">Proof of Work and Customer Satisfaction</h2>
+        <p class="content-stack__body">
+          Our reputation is built on transparent service, before-and-after documentation, and
+          customer-first communication from booking through project completion.
+        </p>
+      </div>
     </div>
   </section>
 

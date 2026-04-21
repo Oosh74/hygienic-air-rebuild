@@ -5,6 +5,7 @@ import reviewGoogle from "@assets/images/logos/review-google.png";
 import reviewFacebook from "@assets/images/logos/review-facebook.png";
 import reviewNicejob from "@assets/images/logos/review-nicejob.png";
 import reviewAngi from "@assets/images/logos/review-angi.png";
+import reviewExperienceSnapshot from "@assets/images/reviews/review-platforms-2024-08-19.png";
 
 import certAshrae from "@assets/images/logos/cert-bbb.png";
 import certBbb from "@assets/images/logos/cert-nadca.png";
@@ -46,6 +47,11 @@ export const reviewPlatformLogos: LogoItem[] = [
     src: reviewAngi,
     alt: "Angi reviews",
     href: "https://www.angi.com/",
+  },
+  {
+    src: reviewExperienceSnapshot,
+    alt: "Customer review experience snapshot",
+    href: "/reviews",
   },
 ];
 

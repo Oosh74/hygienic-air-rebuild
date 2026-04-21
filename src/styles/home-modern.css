@@ -23,7 +23,7 @@ body.nav-open {
 
 .site-header {
   position: relative;
-  z-index: 100;
+  z-index: 1200;
 }
 
 .site-header.is-scrolled {
@@ -32,7 +32,7 @@ body.nav-open {
 
 .topbar {
   position: relative;
-  z-index: 20;
+  z-index: 1220;
   background: #233e84;
   color: #fff;
 }
@@ -69,7 +69,7 @@ body.nav-open {
   top: var(--topbar-height, 44px);
   left: 0;
   right: 0;
-  z-index: 130;
+  z-index: 1230;
   background: transparent;
   transition:
     background-color 200ms ease,
@@ -766,7 +766,8 @@ body.nav-open {
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
 }
 
-.map-wrap iframe {
+.map-wrap iframe,
+.service-area-map {
   width: 100%;
   min-height: 26rem;
 }

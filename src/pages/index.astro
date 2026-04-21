@@ -8,8 +8,6 @@ import Lightbox from "@components/Site/Lightbox.astro";
 import { homeGalleryImages } from "@data/gallery-images";
 import { testimonials } from "@data/reviews";
 
-const mapEmbedSrc =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.452285900647!2d-81.72405632450307!3d28.526122175723025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7bd3a9d843b11%3A0xc2a2c16e7adc5be2!2sHygienic%20Air%20Plus!5e0!3m2!1sen!2sus!4v1773173616641!5m2!1sen!2sus";
 const heroImageUrl = "/images/heroes/home-hero.jpg";
 
 const services = [
@@ -87,6 +85,19 @@ const specialtyServices = [
       },
     ]}
   />
+
+  <Fragment slot="head">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      crossorigin=""
+      defer
+    ></script>
+  </Fragment>
 
   <section class="section section--services">
     <div class="u-container">
@@ -192,19 +203,93 @@ const specialtyServices = [
       </div>
 
       <div class="map-wrap">
-        <iframe
-          src={mapEmbedSrc}
-          width="600"
-          height="450"
-          style="border:0;"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Hygienic Air service area map"
-        ></iframe>
+        <div
+          id="home-service-area-map"
+          class="service-area-map"
+          role="img"
+          aria-label="OpenStreetMap showing Hygienic Air service area locations across Central Florida"
+        ></div>
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    (() => {
+      const marketPins = [
+        { name: "Central Florida", lat: 28.5494, lng: -81.7729 },
+        { name: "Orlando Market", lat: 28.5383, lng: -81.3792 },
+        { name: "Tampa Market", lat: 27.9506, lng: -82.4572 },
+        { name: "Lakeland Market", lat: 28.0395, lng: -81.9498 },
+        { name: "Ocala Market", lat: 29.1872, lng: -82.1401 },
+        { name: "Daytona Market", lat: 29.2108, lng: -81.0228 },
+        { name: "Melbourne Market", lat: 28.0836, lng: -80.6081 },
+        { name: "Spring Hill Market", lat: 28.4761, lng: -82.5255 },
+        { name: "Homosassa Springs Market", lat: 28.8036, lng: -82.5759 },
+        { name: "Port St. Lucie Market", lat: 27.273, lng: -80.3582 },
+        { name: "Sebring Market", lat: 27.4956, lng: -81.4409 },
+        { name: "Sarasota Market", lat: 27.3364, lng: -82.5307 },
+        { name: "Gainesville Market", lat: 29.6516, lng: -82.3248 },
+        { name: "The Villages Market", lat: 28.927, lng: -82.0038 },
+        { name: "Palm Coast Market", lat: 29.5845, lng: -81.2079 },
+        { name: "DeLand / Deltona Market", lat: 28.9645, lng: -81.2834 },
+      ];
+
+      const initServiceAreaMap = () => {
+        const mapElement = document.getElementById("home-service-area-map");
+        if (!mapElement || mapElement.dataset.bound === "true" || typeof window.L === "undefined") return;
+        mapElement.dataset.bound = "true";
+
+        const map = window.L.map(mapElement, {
+          scrollWheelZoom: false,
+          zoomControl: true,
+        });
+
+        window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 18,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        const bounds = window.L.latLngBounds([]);
+
+        marketPins.forEach((market) => {
+          window.L.marker([market.lat, market.lng]).addTo(map).bindPopup(`<strong>${market.name}</strong>`);
+          bounds.extend([market.lat, market.lng]);
+        });
+
+        map.fitBounds(bounds.pad(0.12));
+        window.setTimeout(() => map.invalidateSize(), 120);
+      };
+
+      const bootMap = () => {
+        if (typeof window.L !== "undefined") {
+          initServiceAreaMap();
+          return;
+        }
+
+        let attempts = 0;
+        const pollId = window.setInterval(() => {
+          attempts += 1;
+          if (typeof window.L !== "undefined") {
+            window.clearInterval(pollId);
+            initServiceAreaMap();
+            return;
+          }
+
+          if (attempts > 50) {
+            window.clearInterval(pollId);
+          }
+        }, 100);
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", bootMap, { once: true });
+      } else {
+        bootMap();
+      }
+
+      document.addEventListener("astro:page-load", bootMap);
+    })();
+  </script>
 
   <section class="section section--home-assistance">
     <div class="u-container home-assistance">
